@@ -1874,6 +1874,9 @@
   .text-primary-content {
     color: var(--color-primary-content);
   }
+  .text-secondary {
+    color: var(--color-secondary);
+  }
   .text-white {
     color: var(--color-white);
   }
@@ -4403,6 +4406,9 @@
   --tw-font-weight: var(--font-weight-semibold);
   font-weight: var(--font-weight-semibold);
 }
+.hdi-table__header--numeric {
+  text-align: right;
+}
 .hdi-table__body {
   :where(& > :not(:last-child)) {
     --tw-divide-y-reverse: 0;
@@ -4431,6 +4437,9 @@
   @media (width >= 40rem) {
     display: table-cell;
   }
+}
+.hdi-table_cell--numeric {
+  text-align: right;
 }
 .hdi-table-responsive__heading {
   --tw-font-weight: var(--font-weight-semibold);
