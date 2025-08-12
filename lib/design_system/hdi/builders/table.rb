@@ -24,20 +24,24 @@ module DesignSystem
         private
 
         def render_headers
+          classes = "#{brand}-table__header"
+          classes += " #{brand}-table__header--numeric" if cell_numeric?(cell)
+
           content_tag(:thead, class: "#{brand}-table__head") do
             content_tag(:tr, class: "#{brand}-table__row") do
               @table.columns.each_with_object(ActiveSupport::SafeBuffer.new) do |cell, header_buffer|
                 header_buffer <<
-                  content_tag(:th, cell_content(cell),
-                              cell[:options].merge(scope: 'col',
-                                                   class: "#{brand}-table__header"))
+                  content_tag(:th, cell_content(cell), cell[:options].merge(scope: 'col', class: classes))
               end
             end
           end
         end
 
         def render_data_cell(cell, index)
-          content_tag(:td, cell[:options].merge(class: "#{brand}-table__cell")) do
+          classes = "#{brand}-table__cell"
+          classes += " #{brand}-table__cell--numeric" if cell_numeric?(cell)
+
+          content_tag(:td, cell[:options].merge(class: classes)) do
             safe_buffer = ActiveSupport::SafeBuffer.new
             header_text = @table.columns[index][:content]
 
