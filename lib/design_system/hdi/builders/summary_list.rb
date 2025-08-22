@@ -11,7 +11,7 @@ module DesignSystem
 
           content_tag(:dd, class: "#{brand}-summary-list__actions") do
             content_tag(:ul, class: "#{brand}-summary-list__actions-list") do
-              row[:actions].map.with_index do |action, index|
+              row[:actions].map do |action|
                 content_tag(:li,
                             render_action(action),
                             class: "#{brand}-summary-list__actions-list-item")

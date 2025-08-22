@@ -4,4 +4,4 @@ Rails.application.config.dartsass.builds = {
   'hdi.scss' => 'hdi.css',
   'nhsuk.scss' => 'nhsuk.css'
 }
-Rails.application.config.dartsass.build_options = ' --style=expanded'
+Rails.application.config.dartsass.build_options = ['--style=expanded']

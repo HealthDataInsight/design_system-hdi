@@ -19,7 +19,7 @@ module HdiHelper
 
   private
 
-  def hdi_sidebar_navigation_svg_tag(svg_path, active)
+  def hdi_sidebar_navigation_svg_tag(svg_path, _active)
     content_tag(:img, nil, src: svg_path, class: 'hdi-icon', 'aria-hidden': 'true')
   end
 end
