@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 # This is the HDI branded adapter for the design system
+require 'design_system'
+require 'design_system/hdi/version'
+require 'design_system/hdi/engine'
 
 require_relative 'hdi/builders/button'
 require_relative 'hdi/builders/callout'
