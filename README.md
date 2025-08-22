@@ -1,28 +1,43 @@
 # DesignSystem::Hdi
-Short description and motivation.
+
+DesignSystem is an extensible Ruby on Rails engine that enables consistent, compliant web applications across design systems.
+
+The gem is a plugin for the Health Data Insight (HDI) design system.
 
 ## Usage
-How to use my plugin.
+
+How to use the plugin.
 
 ## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "design_system-hdi"
+gem 'design_system-hdi'
 ```
 
 And then execute:
+
 ```bash
 $ bundle
 ```
 
 Or install it yourself as:
+
 ```bash
 $ gem install design_system-hdi
 ```
 
 ## Contributing
+
 Contribution directions go here.
 
+Created using:
+
+```bash
+rails _7.1.5.2_ plugin new design_system -MOC --skip-system-test --full --no-mountable
+```
+
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

@@ -118,6 +118,12 @@ GEM
     connection_pool (2.5.3)
     crass (1.0.6)
     csv (3.3.5)
+    cypress-rails (0.7.1)
+      puma (>= 3.8.0)
+      railties (>= 5.2.0)
+    dartsass-rails (0.5.1)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     date (3.4.1)
     design_system (0.7.0)
       govuk_design_system_formbuilder (~> 5.11.0)
@@ -135,6 +141,9 @@ GEM
       rugged (~> 1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.32.0-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
     govuk_design_system_formbuilder (5.11.0)
       actionview (>= 6.1)
       activemodel (>= 6.1)
@@ -146,6 +155,10 @@ GEM
       activesupport (>= 6.1.4.4)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    importmap-rails (2.2.2)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.8.1)
     irb (1.15.2)
       pp (>= 0.6.0)
@@ -307,6 +320,8 @@ GEM
     ruby-progressbar (1.13.0)
     rubyzip (3.0.2)
     rugged (1.9.0)
+    sass-embedded (1.90.0-arm64-darwin)
+      google-protobuf (~> 4.31)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
       base64 (~> 0.2)
@@ -330,6 +345,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
+    sqlite3 (1.7.3-arm64-darwin)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.7)
@@ -357,10 +373,14 @@ PLATFORMS
   arm64-darwin
 
 DEPENDENCIES
+  cypress-rails
+  dartsass-rails (~> 0.5)
   design_system-hdi!
+  importmap-rails (~> 2.1)
   ndr_dev_support (~> 7.3)
-  puma
+  puma (>= 6.4.3)
   sprockets-rails
+  sqlite3 (~> 1.3)
 
 BUNDLED WITH
    2.6.9
