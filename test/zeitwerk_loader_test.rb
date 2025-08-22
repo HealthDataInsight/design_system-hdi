@@ -7,7 +7,7 @@ class ZeitwerkLoaderTest < Minitest::Test
     @root = Pathname.new(File.expand_path('..', __dir__))
 
     @loader = Zeitwerk::Loader.new
-    @loader.tag = 'design_system/hdi.rb'
+    @loader.tag = 'design_system-hdi.rb'
     @loader.inflector = Zeitwerk::GemInflector.new(@root.join('lib/design_system/hdi.rb'))
     # @loader.push_dir(@root.join('test'))
     @loader.ignore(@root.join('test/test_helper.rb'))

@@ -9,18 +9,18 @@ require 'zeitwerk'
 loader = Zeitwerk::Loader.for_gem_extension(DesignSystem)
 loader.setup
 
-require_relative 'hdi/builders/button'
-require_relative 'hdi/builders/callout'
-require_relative 'hdi/builders/fixed_elements'
-require_relative 'hdi/builders/heading'
-require_relative 'hdi/builders/link'
-require_relative 'hdi/builders/notification'
-require_relative 'hdi/builders/pagination_renderer'
-require_relative 'hdi/builders/panel'
-require_relative 'hdi/builders/summary_list'
-require_relative 'hdi/builders/tab'
-require_relative 'hdi/builders/table'
+require 'design_system/hdi/builders/button'
+require 'design_system/hdi/builders/callout'
+require 'design_system/hdi/builders/fixed_elements'
+require 'design_system/hdi/builders/heading'
+require 'design_system/hdi/builders/link'
+require 'design_system/hdi/builders/notification'
+require 'design_system/hdi/builders/pagination_renderer'
+require 'design_system/hdi/builders/panel'
+require 'design_system/hdi/builders/summary_list'
+require 'design_system/hdi/builders/tab'
+require 'design_system/hdi/builders/table'
 
-require_relative 'hdi/form_builder'
+require 'design_system/hdi/form_builder'
 
 DesignSystem::Registry.register('hdi')

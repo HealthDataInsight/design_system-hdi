@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
     add_navigation_item('GOV.UK', url_for(brand: 'govuk'), icon: 'ellipsis-horizontal-circle')
     add_navigation_item('NHS', url_for(brand: 'nhsuk'), icon: 'ellipsis-horizontal-circle')
+    add_navigation_item('HDI', url_for(brand: 'hdi'), icon: 'ellipsis-horizontal-circle')
   end
 
   def brand
