@@ -1,0 +1,14 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+# Specify your gem's dependencies in design_system-hdi.gemspec.
+gemspec
+
+gem 'puma'
+
+gem 'sprockets-rails'
+
+gem 'ndr_dev_support', '~> 7.3'
+
+# Start debugger with binding.b [https://github.com/ruby/debug]
+# gem "debug", ">= 1.0.0"

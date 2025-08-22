@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency 'design_system', '~> 0.7.0'
+  spec.add_dependency 'rails', '>= 7.1.5.2'
 
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
