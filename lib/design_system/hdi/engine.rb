@@ -1,5 +1,4 @@
 require 'action_dispatch/middleware/remote_ip'
-require 'stimulus-rails'
 
 module DesignSystem
   module Hdi
@@ -8,12 +7,12 @@ module DesignSystem
       # Allow changes to the design system to be reloaded in development.
       config.autoload_paths << File.expand_path('..', __dir__) if Rails.env.development?
 
-      initializer 'design_system.importmap', before: 'importmap' do |app|
-        app.config.importmap.paths << Engine.root.join('config/importmap.rb')
-      end
+      # initializer 'design_system.importmap', before: 'importmap' do |app|
+      #   app.config.importmap.paths << Engine.root.join('config/importmap.rb')
+      # end
 
       # Adding Rack::Static to serve up assets from the design_systems
-      initializer 'design_system.add_middleware' do |app|
+      initializer 'design_system-hdi.add_middleware' do |app|
         app.middleware.insert_after(
           ::ActionDispatch::RemoteIp,
           ::Rack::Static,
