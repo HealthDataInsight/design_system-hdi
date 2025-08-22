@@ -1,11 +1,9 @@
 require 'test_helper'
-require 'design_system/hdi/form_builder'
-require 'design_system/registry'
-require_relative '../govuk/concerns/govuk_form_builder_testable'
+require 'design_system/govuk/test_helpers/form_builder_testable'
 
 module Hdi
   class FormBuilderTest < ActionView::TestCase
-    include GovukFormBuilderTestable
+    include DesignSystem::Govuk::TestHelpers::FormBuilderTestable
 
     def setup
       @brand = 'hdi'
