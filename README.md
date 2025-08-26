@@ -28,6 +28,17 @@ Or install it yourself as:
 $ gem install design_system-hdi
 ```
 
+Add the following to `app/javascript/controllers/index.js`, after `import { application } from './application'`:
+
+```javascript
+import { registerControllers } from 'design_system/controllers'
+registerControllers(application)
+```
+
+## Updating HDI Frontend
+
+Updating the HDI Frontend is currently a manual process.
+
 ## Contributing
 
 Contribution directions go here.
