@@ -17,7 +17,7 @@ module DesignSystem
             '/design_system/static/hdi-frontend-0.12.0',
             '/design_system/static/heroicons-2.1.5'
           ],
-          root: DesignSystem::Engine.root.join('public')
+          root: DesignSystem::Hdi::Engine.root.join('public')
         )
       end
     end

@@ -6,7 +6,7 @@ module DesignSystem
       # This class provides methods to render HDI tab.
       class Tab < ::DesignSystem::Generic::Builders::Tab
         def render_tabs
-          @tab = ::DesignSystem::Components::Tab.new
+          @tab = ::DesignSystem::Components::Tab.new(self)
 
           yield @tab
           content_tag(:div, class: "#{brand}-tabs", data: { controller: 'tabs' }) do

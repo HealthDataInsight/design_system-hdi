@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/HealthDataInsight/design_system
-  revision: 94dc9d4c8e64f781e65e698cc754f0a3c9864e64
+  revision: ee0db02f7c9e494819655b403d6c5822fa314545
   branch: feature/css-helper-fix
   specs:
     design_system (0.7.0)

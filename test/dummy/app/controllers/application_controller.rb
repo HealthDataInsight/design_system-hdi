@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   include DesignSystem::Branded
 
+  helper HdiHelper
+
   before_action :add_navigation, :set_service_name
   helper_method :brand
 
