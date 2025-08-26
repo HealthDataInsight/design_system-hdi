@@ -16,7 +16,7 @@ module DesignSystem
 
         test 'rendering hdi table' do
           @output_buffer = ds_tab do |tab|
-            tab.add_tab_panel('Test', 'test paragraph', 'test', sel: true)
+            tab.add_tab_panel('Test', 'test paragraph', 'test', selected: true)
             tab.add_tab_panel('Trial', 'trial paragraph', 'trial')
           end
 
