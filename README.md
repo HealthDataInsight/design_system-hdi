@@ -35,6 +35,18 @@ import { registerControllers } from 'design_system/controllers'
 registerControllers(application)
 ```
 
+Add the following to `app/controllers/application_controller.rb`:
+
+```ruby
+class ApplicationController < ActionController::Base
+  include DesignSystem::Branded
+
+  helper HdiHelper
+
+  # ...
+end
+```
+
 ## Updating HDI Frontend
 
 Updating the HDI Frontend is currently a manual process.
