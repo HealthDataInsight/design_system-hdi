@@ -57,23 +57,25 @@ module DesignSystem
 
         # Tailwind icons
         def next_icon
-          tag.svg(class: "#{brand}-icon", viewBox: '0 0 20 20', fill: 'currentColor',
-                  'aria-hidden': 'true', data: { slot: 'icon' }) do
-            tag(:path, nil, fill_rule: 'evenodd', clip_rule: 'evenodd',
-                            d: 'M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 ' \
-                               '3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 ' \
-                               '0 0 1 2 10Z')
-          end
+          %(
+            <svg class="#{brand}-icon" viewBox="0 0 20 20" fill="currentColor"
+            aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5
+              3.25a.75.750 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z"
+              clip-rule="evenodd" />
+            </svg>
+          )
         end
 
         def previous_icon
-          tag.svg(class: "#{brand}-icon", viewBox: '0 0 20 20', fill: 'currentColor',
-                  'aria-hidden': 'true', data: { slot: 'icon' }) do
-            tag(:path, nil, fill_rule: 'evenodd', clip_rule: 'evenodd',
-                            d: 'M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 ' \
-                               '1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 ' \
-                               '1.95h12.59A.75.75 0 0 1 18 10Z')
-          end
+          %(
+            <svg class="#{brand}-icon" viewBox="0 0 20 20" fill="currentColor"
+            aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02
+              1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z"
+              clip-rule="evenodd" />
+            </svg>
+          )
         end
       end
     end
