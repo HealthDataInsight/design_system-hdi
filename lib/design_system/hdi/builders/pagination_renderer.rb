@@ -9,20 +9,28 @@ module DesignSystem
           tag(:nav, html, class: "#{brand}-pagination")
         end
 
-        def previous_or_next_page(page, _text, classname)
+        def previous_or_next_page(page, _text, classname, aria_label = nil)
           if classname.include?('previous_page')
-            tag(:div, link_with_prev_title(page), class: "#{brand}-pagination-item--previous-container") if page
+            build_pagination_div(page, link_with_prev_title(page), "#{brand}-pagination-item--previous-container",
+                                 aria_label)
           elsif classname.include?('next_page')
-            tag(:div, link_with_next_title(page), class: "#{brand}-pagination-item--next-container") if page
+            build_pagination_div(page, link_with_next_title(page), "#{brand}-pagination-item--next-container",
+                                 aria_label)
           end
         end
 
         private
 
+        def build_pagination_div(page, link, css_class, aria_label)
+          return unless page
+
+          tag(:div, link, class: css_class, aria: { label: aria_label })
+        end
+
         def link_with_prev_title(target)
           title = tag(:span, 'Previous', class: "#{brand}-pagination-item-title")
           tag(:a,
-              icon('previous') + title,
+              previous_icon + title,
               href: url(target),
               class: "#{brand}-pagination-item #{brand}-pagination-item--previous")
         end
@@ -30,7 +38,7 @@ module DesignSystem
         def link_with_next_title(target)
           title = tag(:span, 'Next', class: "#{brand}-pagination-item-title")
           tag(:a,
-              title + icon('next'),
+              title + next_icon,
               href: url(target),
               class: "#{brand}-pagination-item #{brand}-pagination-item--next")
         end
@@ -48,24 +56,23 @@ module DesignSystem
         end
 
         # Tailwind icons
-        def icon(type)
-          case type
-          when 'previous'
-            %(
-            <svg class="#{brand}-icon" viewBox="0 0 20 20" fill="currentColor"
-            aria-hidden="true" data-slot="icon">
-              <path fill-rule="evenodd" d="M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75
-              0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 1.95h12.59A.75.75 0 0 1 18 10Z" clip-rule="evenodd" />
-            </svg>
-            )
-          when 'next'
-            %(
-            <svg class="#{brand}-icon" viewBox="0 0 20 20" fill="currentColor"
-            aria-hidden="true" data-slot="icon">
-              <path fill-rule="evenodd" d="M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75
-              0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 0 0 1 2 10Z" clip-rule="evenodd" />
-            </svg>
-            )
+        def next_icon
+          tag.svg(class: "#{brand}-icon", viewBox: '0 0 20 20', fill: 'currentColor',
+                  'aria-hidden': 'true', data: { slot: 'icon' }) do
+            tag(:path, nil, fill_rule: 'evenodd', clip_rule: 'evenodd',
+                            d: 'M2 10a.75.75 0 0 1 .75-.75h12.59l-2.1-1.95a.75.75 0 1 1 1.02-1.1l3.5 ' \
+                               '3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.1-1.95H2.75A.75.75 ' \
+                               '0 0 1 2 10Z')
+          end
+        end
+
+        def previous_icon
+          tag.svg(class: "#{brand}-icon", viewBox: '0 0 20 20', fill: 'currentColor',
+                  'aria-hidden': 'true', data: { slot: 'icon' }) do
+            tag(:path, nil, fill_rule: 'evenodd', clip_rule: 'evenodd',
+                            d: 'M18 10a.75.75 0 0 1-.75.75H4.66l2.1 1.95a.75.75 0 1 1-1.02 ' \
+                               '1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 1 1 1.02 1.1l-2.1 ' \
+                               '1.95h12.59A.75.75 0 0 1 18 10Z')
           end
         end
       end
