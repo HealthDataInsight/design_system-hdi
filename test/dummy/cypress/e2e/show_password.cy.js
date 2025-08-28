@@ -8,22 +8,24 @@ describe('Show Password', () => {
     cy.get('[data-ds--show-password-target="password"]')
       .should('have.attr', 'type', 'password')
     
-    cy.contains('button', 'Show password')
+    cy.get('button[aria-label="Show password"]').click()
 
-    cy.contains('button', 'Show password')
+    cy.get('button[aria-label="Show password"]').click()
       .click()
 
     cy.get('[data-ds--show-password-target="password"]')
       .should('have.attr', 'type', 'text')
     
-    cy.contains('button', 'Hide password')
+     // Hide Password functionality but here the button text isn't present rather icon
+     // so using same aria-label property to see toggle feature 
+    cy.get('button[aria-label="Show password"]').click()
 
-    cy.contains('button', 'Hide password')
+    cy.get('button[aria-label="Show password"]').click()
       .click()
 
     cy.get('[data-ds--show-password-target="password"]')
       .should('have.attr', 'type', 'password')
     
-    cy.contains('button', 'Show password')
+    cy.get('button[aria-label="Show password"]').should('exist')
   })
 })

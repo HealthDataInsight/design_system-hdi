@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def brand
-    session[:brand] ||= 'nhsuk'
+    session[:brand] ||= 'hdi'
     session[:brand] = params[:brand] if params[:brand]
     session[:brand]
   end
