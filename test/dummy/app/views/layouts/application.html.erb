@@ -1,0 +1,15 @@
+<% content_for :head do %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="description" content="">
+  <title>Dummy</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%#= stylesheet_link_tag "application" %>
+  <%= javascript_importmap_tags %>
+<% end %>
+
+<%= ds_render_template(local_assigns.fetch(:ds_layout, 'application')) %>

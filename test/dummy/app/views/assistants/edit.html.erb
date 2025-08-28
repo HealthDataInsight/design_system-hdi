@@ -1,0 +1,14 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Editing assistant'
+
+  # ds.form @assistant
+end
+%>
+
+<%= render "form", assistant: @assistant %>
+
+<div>
+  <%= link_to "Show this assistant", @assistant %> |
+  <%= link_to "Back to assistants", assistants_path %>
+</div>

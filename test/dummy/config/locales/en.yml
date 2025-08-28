@@ -1,0 +1,68 @@
+---
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+en:
+  activerecord:
+    attributes:
+      assistant:
+        age: What is your age?
+        colour: What is your favourite colour?
+        cv: Upload a file
+        date_of_birth: What is your date of birth?
+        department_id: What is your department?
+        description: Enter description
+        desired_filling: What do you want in your sandwich?
+        email: What is your email?
+        lunch_option: What do you want to have for lunch?
+        password: What is your password?
+        phone: What is your phone number?
+        role_id: What is your role?
+        terms_agreed: Do you agree to the terms?
+        title: Title
+        website: What is your website?
+    errors:
+      title: There is a problem
+  helpers:
+    fieldset:
+      legend: Fieldset heading
+    options:
+      assistant:
+        terms_agreed:
+          true: Yes, I agree
+  notices:
+    create:
+      success: "%{model} was successfully created."
+    update:
+      success: "%{model} was successfully updated."
+    destroy:
+      success: "%{model} was successfully destroyed."
+  will_paginate:
+    previous_aria_label: Previous Page
+    next_aria_label: Next Page
