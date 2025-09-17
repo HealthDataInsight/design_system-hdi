@@ -16,9 +16,6 @@ gem 'ndr_dev_support', '~> 7.3'
 gem 'rails', '~> 7.1.5.2'
 gem 'sqlite3', '~> 1.3'
 
-# FIXME: Completely remove this definition once the design_system rubygem has been updated
-gem 'design_system', git: 'https://github.com/HealthDataInsight/design_system', branch: 'feature/css-helper-fix'
-
 group :development, :test do
   gem 'cypress-rails'
 end
