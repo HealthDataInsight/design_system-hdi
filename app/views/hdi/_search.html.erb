@@ -1,0 +1,12 @@
+<% if @searchbar_url.present? %>
+  <form class="hdi-header__search-form" id="search" action="<%= @searchbar_url %>" method="get" role="search">
+    <label class="hdi-visually-hidden" for="search-field">Search the HDI website</label>
+    <input class="hdi-input hdi-search__input" id="search-field" name="search-field" type="search" placeholder="Search" autocomplete="off">
+    <button class="hdi-search__submit" type="submit">
+      <svg class="hdi-icon__search" stroke-width="2" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <span class="hdi-visually-hidden">Search</span>
+    </button>
+  </form>
+<% end %>
