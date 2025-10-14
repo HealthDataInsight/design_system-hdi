@@ -1,5 +1,5 @@
 <% if @searchbar_url.present? %>
-  <form class="hdi-header__search-form" id="search" action="<%= @searchbar_url %>" method="get" role="search">
+  <form class="hdi-search-form" id="search" action="<%= @searchbar_url %>" method="get" role="search">
     <label class="hdi-visually-hidden" for="search-field">Search the HDI website</label>
     <input class="hdi-input hdi-search__input" id="search-field" name="search-field" type="search" placeholder="Search" autocomplete="off">
     <button class="hdi-search__submit" type="submit">
