@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   helper HdiHelper
 
-  before_action :add_navigation, :set_service_name, :set_footer_links
+  before_action :add_navigation, :set_service_name, :set_footer_links, :searchbar_url
   helper_method :brand
 
   private
@@ -33,5 +33,9 @@ class ApplicationController < ActionController::Base
     add_footer_link('Custom Link', '#', target: '_blank', rel: 'noopener')
     add_footer_link('Another Link', '#')
     self.copyright_notice = 'Copyright © 2025 Health Data Insight CIC'
+  end
+
+  def searchbar_url
+    @searchbar_url = nil # Default is nil (hidden)
   end
 end
