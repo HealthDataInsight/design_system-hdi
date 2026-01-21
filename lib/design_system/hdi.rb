@@ -11,6 +11,7 @@ loader.setup
 
 require 'design_system/hdi/builders/button'
 require 'design_system/hdi/builders/callout'
+require 'design_system/hdi/builders/details'
 require 'design_system/hdi/builders/fixed_elements'
 require 'design_system/hdi/builders/heading'
 require 'design_system/hdi/builders/link'
