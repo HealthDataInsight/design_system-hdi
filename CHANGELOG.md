@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added the details component
 - Added an adapter for Health Data Insight (HDI)
 
 [unreleased]: https://github.com/HealthDataInsight/structured_store/compare/...HEAD
