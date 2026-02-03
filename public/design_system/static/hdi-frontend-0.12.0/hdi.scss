@@ -1628,6 +1628,22 @@
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
+  .link {
+    cursor: pointer;
+    text-decoration-line: underline;
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+      @media (forced-colors: active) {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+    }
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -2337,6 +2353,54 @@
     color: #99141C;
     background-color: #ffeef0;
   }
+}
+.hdi-action-link {
+  position: relative;
+  margin-bottom: calc(var(--spacing) * 6);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+}
+.hdi-action-link__text {
+  margin-top: calc(var(--spacing) * 0);
+  cursor: pointer;
+  text-decoration-line: underline;
+  &:focus {
+    --tw-outline-style: none;
+    outline-style: none;
+    @media (forced-colors: active) {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  font-size: var(--text-lg);
+  line-height: var(--tw-leading, var(--text-lg--line-height));
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  @media (hover: hover) {
+    &:hover {
+      color: color-mix(in oklab, var(--color-primary) 80%, #000);
+    }
+  }
+  text-decoration-line: none;
+  &:hover {
+    @media (hover: hover) {
+      text-decoration-line: underline;
+    }
+  }
+}
+.hdi-action-link .hdi-icon {
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+  flex-shrink: 0;
+  fill: var(--color-accent);
+  stroke: var(--color-white);
+  stroke-width: 2;
 }
 .banner {
   position: sticky;
