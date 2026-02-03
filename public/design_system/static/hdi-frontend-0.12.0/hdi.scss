@@ -2398,9 +2398,9 @@
   width: calc(var(--spacing) * 10);
   height: calc(var(--spacing) * 10);
   flex-shrink: 0;
-  fill: var(--color-accent);
   stroke: var(--color-white);
   stroke-width: 2;
+  fill: var(--color-success-dark);
 }
 .banner {
   position: sticky;
@@ -5987,6 +5987,7 @@ h1.hdi-heading-xl + .hdi-button, h2.hdi-heading-l + .hdi-button, h3.hdi-heading-
     --color-error-content-light: rgb(158 31 43);
     --color-error-icon-light: rgb(189 39 51);
     --color-warning-light: rgb(255, 249, 196);
+    --color-success-dark: rgb(1 127 58);
     --color-hdi-indigo: rgb(72 49 144);
   }
 }
@@ -6029,6 +6030,7 @@ h1.hdi-heading-xl + .hdi-button, h2.hdi-heading-l + .hdi-button, h3.hdi-heading-
       --color-error-content-light: #ffffff;
       --color-error-icon-light: rgb(255 226 226);
       --color-warning-light: rgb(255, 249, 196);
+      --color-success-dark: rgb(1 208 94);
       --color-hdi-indigo: rgb(72 49 144);
     }
   }
@@ -6071,6 +6073,7 @@ h1.hdi-heading-xl + .hdi-button, h2.hdi-heading-l + .hdi-button, h3.hdi-heading-
     --color-error-content-light: #ffffff;
     --color-error-icon-light: rgb(255 226 226);
     --color-warning-light: rgb(255, 249, 196);
+    --color-success-dark: rgb(1 208 94);
     --color-hdi-indigo: rgb(72 49 144);
   }
 }
