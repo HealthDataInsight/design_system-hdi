@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+module DesignSystem
+  module Hdi
+    module Builders
+      # This class provides HDI Action Link.
+      class ActionLink < ::DesignSystem::Nhsuk::Builders::ActionLink
+        private
+
+        # rubocop:disable Rails/OutputSafety, Layout/LineLength
+        def arrow_right_circle_icon
+          %(
+            <svg class="#{brand}-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          ).html_safe
+        end
+        # rubocop:enable Rails/OutputSafety, Layout/LineLength
+      end
+    end
+  end
+end
