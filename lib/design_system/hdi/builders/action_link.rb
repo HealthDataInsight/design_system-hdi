@@ -7,6 +7,7 @@ module DesignSystem
       class ActionLink < ::DesignSystem::Nhsuk::Builders::ActionLink
         private
 
+        # rubocop:disable Rails/OutputSafety, Layout/LineLength
         def arrow_right_circle_icon
           %(
             <svg class="#{brand}-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -14,6 +15,7 @@ module DesignSystem
             </svg>
           ).html_safe
         end
+        # rubocop:enable Rails/OutputSafety, Layout/LineLength
       end
     end
   end
