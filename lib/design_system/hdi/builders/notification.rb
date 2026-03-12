@@ -20,24 +20,26 @@ module DesignSystem
         SVG
         # rubocop:enable Rails/OutputSafety
 
-        def render_alert(msg)
+        def render_alert(msg = nil, &block)
+          content = block ? capture(&block) : msg
           buffer = ActiveSupport::SafeBuffer.new
 
           buffer.concat(
             content_tag(:div, class: "#{brand}-notification-banner #{brand}-notification-banner__alert",
                               role: 'alert') do
-              ALERT_SVG + text_alert_content(msg)
+              ALERT_SVG + text_alert_content(content)
             end
           )
           buffer
         end
 
-        def render_notice(msg)
+        def render_notice(msg = nil, header: nil, type: :information, &block)
+          content = block ? capture(&block) : msg
           buffer = ActiveSupport::SafeBuffer.new
 
           buffer.concat(
             content_tag(:div, class: "#{brand}-notification-banner") do
-              NOTICE_SVG + text_notice_content(msg)
+              NOTICE_SVG + text_notice_content(content)
             end
           )
 

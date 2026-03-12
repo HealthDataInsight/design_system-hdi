@@ -13,4 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the details component
 - Added an adapter for Health Data Insight (HDI)
 
+### Changed
+
+- Updated `design_system` dependency to `~> 0.13.0`
+- Updated `render_alert` and `render_notice` signatures to match `design_system` 0.11.0+ API, adding block support and keyword arguments
+
 [unreleased]: https://github.com/HealthDataInsight/structured_store/compare/...HEAD
