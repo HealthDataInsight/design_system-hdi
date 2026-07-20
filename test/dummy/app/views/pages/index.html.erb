@@ -8,9 +8,9 @@
 
 <%=
 ds_fixed_elements do |ds|
-  ds.main_heading 'Get started'
+  ds.main_heading 'HDI Design System'
 
-  ds.lead_paragraph 'This site is a living catalogue of everything the Design System gem can render. Browse it to find the markup you need, then copy it straight into your service.'
+  ds.lead_paragraph 'A living preview of everything the Design System gem renders in the HDI brand. Use the brand links in the sidebar to see the same helpers render in NHS and GOV.UK.'
 end
 %>
 
@@ -18,11 +18,8 @@ end
   <%= render partial: 'sidebar' %>
 <% end %>
 
-<%= ds_paragraph 'Today you build each NHS and GOVUK service by hand in HTML and Bootstrap, keeping branding and accessibility right yourself. This gem does that work for you: write a few Rails helpers and get accessible, compliant markup, rendered the same way every time.' %>
-<%= ds_paragraph 'One set of ds_ helpers serves every brand. Use the GOV.UK and NHS links in the header to see the same code render in each design system.' %>
-
 <%= ds_heading "What's included" %>
-<%= ds_paragraph "You are previewing the #{t("design_system.#{brand}.name")} design system. It is built on these versions:" %>
+<%= ds_paragraph "You are previewing the #{t("design_system.#{brand}.name")} design system, built on:" %>
 
 <%= ds_summary_list do |list|
   list.add_row('GOV.UK Frontend', "v#{frontend_version('govuk')}")
@@ -31,19 +28,12 @@ end
 end %>
 
 <%= ds_heading 'How this site is organised' %>
-<%= ds_paragraph 'Everything is grouped the same way the design systems group their own guidance, so you can find things the way you already think about them.' %>
-
 <%= ds_list(type: :bullet) do |list|
-  list.add_item { safe_join([ds_link_to('Styles', styles_path), ': the look every page shares, including layout and typography.']) }
-  list.add_item { safe_join([ds_link_to('Components', components_path), ': reusable interface pieces, grouped into form elements, content presentation and navigation.']) }
-  list.add_item { safe_join([ds_link_to('Utilities', utilities_path), ': JavaScript behaviours and helpers, such as Stimulus controllers and time ago.']) }
+  list.add_item { safe_join([ds_link_to('Styles', styles_path), ': the shared look — layout and typography.']) }
+  list.add_item { safe_join([ds_link_to('Components', components_path), ': reusable interface pieces.']) }
+  list.add_item { safe_join([ds_link_to('Utilities', utilities_path), ': JavaScript behaviours and helpers.']) }
 end %>
 
-<%= ds_heading 'See it all together', level: 3 %>
-<%= ds_inset_text 'This whole site is built with the gem. Every heading, form, table, link and footer you see is rendered by the same ds_ helpers you would use, in both brands.' %>
-<%= ds_paragraph do %>
-  <%= ds_link_to 'Manage assistants', assistants_path %> is a complete worked example: a multi-field form with validation, built entirely from ds_ helpers.
+<%= ds_inset_text do %>
+  <%= ds_link_to 'Manage assistants', assistants_path %> is a full worked example — a multi-field form with validation, built entirely from ds_ helpers.
 <% end %>
-
-<%= ds_heading 'How to use the examples' %>
-<%= ds_paragraph 'Open any page and each example shows the ERB you write, the rendered result, and the HTML it produces. Copy the ERB into your own views, and follow the documentation links through to the official GOV.UK and NHS guidance.' %>
