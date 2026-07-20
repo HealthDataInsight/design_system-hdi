@@ -1,0 +1,127 @@
+---
+# HDI-specific translations for the dummy app. The gem's en.yml only ships the
+# nhsuk/govuk brands, so the hdi brand's name and component-preview headings
+# live here (an HDI-owned file, untouched by the dummy sync).
+en:
+  design_system:
+    hdi:
+      name: HDI
+      component_previews:
+        action_link:
+          heading: Action link
+        action_link_text:
+          heading: Text link
+        action_link_button:
+          heading: Button link
+        back_link:
+          heading: Back link
+        breadcrumb:
+          heading: Breadcrumb
+        buttons_start:
+          heading: Start button
+        buttons_primary:
+          heading: Primary button
+        buttons_secondary:
+          heading: Secondary button
+        buttons_warning:
+          heading: Warning button
+        buttons_disabled:
+          heading: Disabled button
+        buttons_submit:
+          heading: Submit buttons (form)
+        character_count:
+          heading: Character count
+        checkboxes:
+          heading: Checkboxes
+        checkboxes_hint:
+          heading: Checkbox items with hints
+        checkboxes_small:
+          heading: Smaller checkboxes
+        date_input:
+          heading: Date input
+        details:
+          heading: Details
+        fieldset:
+          heading: Fieldset
+        file_upload:
+          heading: File upload
+        hint_text:
+          heading: Hint text
+        inset_text:
+          heading: Inset text
+        notification_banner_alert:
+          heading: Alert
+        notification_banner_notice:
+          heading: Notice
+        notification_banner_success:
+          heading: Success
+        notification_banner_alert_block:
+          heading: Alert with block
+        notification_banner_notice_block:
+          heading: Notice with block
+        pagination:
+          heading: Pagination
+        panel:
+          heading: Panel
+        password_input:
+          heading: Password input
+        radios:
+          heading: Collection radio buttons
+        radios_fieldset:
+          heading: Radio buttons fieldset
+        select:
+          heading: Collection select
+        select_options:
+          heading: Select (options_for_select)
+        summary_list:
+          heading: Summary list
+        table:
+          heading: Table
+        tabs:
+          heading: Tabs
+        text_input:
+          heading: Text input
+        text_input_phone:
+          heading: Phone number input
+        text_input_email:
+          heading: Email input
+        text_input_url:
+          heading: URL input
+        text_input_number:
+          heading: Number input
+        textarea:
+          heading: Textarea
+        warning_callout:
+          heading: Warning callout
+        grid_full_width:
+          heading: Full width
+        grid_one_half:
+          heading: One-half
+        grid_two_thirds:
+          heading: Two-thirds
+        grid_one_third:
+          heading: One-third
+        grid_three_quarters:
+          heading: Three-quarters
+        grid_one_quarter:
+          heading: One-quarter
+        grid_nested:
+          heading: Nested grids
+        headings:
+          heading: Headings
+        headings_levels:
+          heading: Heading levels
+        lists:
+          heading: Lists
+        lists_bullet:
+          heading: Bulleted lists
+        lists_number:
+          heading: Numbered lists
+        paragraphs:
+          heading: Body
+        paragraphs_lead:
+          heading: Lead paragraph
+        stimulus:
+          heading: Stimulus controller
+        timeago:
+          heading: Time ago
