@@ -1,34 +1,3 @@
 @use 'design_system/hdi';
 
 // Any project level style changes or additions can be made here (although not recommended).
-
-// Collapsible section rows reuse the .sidebar-item look (icon + label, like
-// "Manage Assistants") and add a chevron reflecting the <details> open state.
-.sidebar-group > summary {
-  align-items: center;
-  cursor: pointer;
-  list-style: none; // hide the default disclosure triangle
-  // Match the negative inline margin that .sidebar-items applies to flat rows
-  // (e.g. "Manage Assistants") so the summary aligns with them and its children.
-  margin-inline: calc(var(--spacing) * -2);
-}
-
-.sidebar-group > summary::-webkit-details-marker {
-  display: none;
-}
-
-// A CSS-only chevron, pushed to the right edge; points down when open.
-.sidebar-group > summary::after {
-  content: '';
-  margin-left: auto;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 0.15s ease;
-}
-
-.sidebar-group:not([open]) > summary::after {
-  transform: rotate(-45deg);
-}
