@@ -9,13 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added grouped HDI sidebar navigation: items with an `options[:group]` label are rendered under collapsible (`<details>`) section headings
+- Added the paragraph builder to mirror `design_system`'s `ds_paragraph`
+- Added the inset text builder, inheriting the NHS UK implementation
+- Added the grid builder, inheriting the generic implementation
+- Added the code builder, inheriting the generic implementation
 - Added the action link component
 - Added the details component
 - Added an adapter for Health Data Insight (HDI)
 
 ### Changed
 
-- Updated `design_system` dependency to `~> 0.13.2`
+- Migrated the HDI `panel`, `callout`, `details`, `heading`, and `action_link` adapters from PORO builders to ViewComponents, and added `list` and `start_button` components, to match `design_system` 0.14.0 (no API change)
+- Updated `design_system` dependency to `~> 0.14.0`
+- Updated `render_notice` to accept `content_heading:` (replacing `header:`) and render it, matching the `design_system` 0.14.0 notification API
 - Updated `render_alert` and `render_notice` signatures to match `design_system` 0.11.0+ API, adding block support and keyword arguments
 
 [unreleased]: https://github.com/HealthDataInsight/structured_store/compare/...HEAD
