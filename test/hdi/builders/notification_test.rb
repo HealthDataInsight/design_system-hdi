@@ -22,6 +22,15 @@ module DesignSystem
           end
         end
 
+        test 'rendering hdi notice with a content heading' do
+          @output_buffer = ds_notice('Important Notice', content_heading: { text: 'Please be aware', tag: :h3 })
+
+          assert_select 'div.hdi-notification-banner div.hdi-notification-banner__content' do
+            assert_select 'h3.hdi-notification-banner__heading', text: 'Please be aware'
+            assert_select 'span', 'Important Notice'
+          end
+        end
+
         test 'rendering hdi alert' do
           @output_buffer = ds_alert('Test alert!')
 
