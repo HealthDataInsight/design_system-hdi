@@ -9,5 +9,12 @@ Rails.application.routes.draw do
   root 'pages#index'
   post 'form-handler', to: 'pages#form_handler'
 
+  resources :styles, only: %i[index show], param: :style,
+                     constraints: { style: /[a-z0-9_-]+/ }
+  resources :components, only: %i[index show], param: :component,
+                         constraints: { component: /[a-z0-9_-]+/ }
+  resources :utilities, only: %i[index show], param: :utility,
+                        constraints: { utility: /[a-z0-9_-]+/ }
+
   resources :assistants
 end

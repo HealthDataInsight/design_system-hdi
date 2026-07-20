@@ -2,9 +2,9 @@ require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the hdi headings builder
-      class HeadingsTest < ActionView::TestCase
+    module Components
+      # This tests the hdi heading component
+      class HeadingTest < ActionView::TestCase
         include DesignSystemHelper
 
         setup do

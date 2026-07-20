@@ -33,13 +33,13 @@ module DesignSystem
           buffer
         end
 
-        def render_notice(msg = nil, header: nil, type: :information, &block)
+        def render_notice(msg = nil, type: :information, content_heading: { text: nil, tag: :h3 }, &block)
           content = block ? capture(&block) : msg
           buffer = ActiveSupport::SafeBuffer.new
 
           buffer.concat(
             content_tag(:div, class: "#{brand}-notification-banner") do
-              NOTICE_SVG + text_notice_content(content)
+              NOTICE_SVG + render_notice_block(content, content_heading)
             end
           )
 
@@ -47,6 +47,21 @@ module DesignSystem
         end
 
         private
+
+        # Heading and body share a content column beside the icon, so the heading
+        # sits on its own row above the body instead of inline next to it.
+        def render_notice_block(content, content_heading)
+          content_tag(:div, class: "#{brand}-notification-banner__content") do
+            render_content_heading(content_heading) + text_notice_content(content)
+          end
+        end
+
+        def render_content_heading(content_heading)
+          return ActiveSupport::SafeBuffer.new unless content_heading.is_a?(Hash) && content_heading[:text].present?
+
+          content_tag(content_heading[:tag] || :h3, content_heading[:text],
+                      class: "#{brand}-notification-banner__heading")
+        end
 
         def text_alert_content(msg)
           content_tag(:span, 'data-test': 'alert') do

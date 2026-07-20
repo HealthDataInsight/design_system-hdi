@@ -32,7 +32,8 @@ class AssistantsController < ApplicationController
   # PATCH/PUT /assistants/1
   def update
     if @assistant.update(assistant_params)
-      redirect_to @assistant, notice: t('notices.update.success', model: @assistant.model_name.human), status: :see_other
+      redirect_to @assistant, notice: t('notices.update.success', model: @assistant.model_name.human),
+                              status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +42,8 @@ class AssistantsController < ApplicationController
   # DELETE /assistants/1
   def destroy
     @assistant.destroy!
-    redirect_to assistants_url, notice: t('notices.destroy.success', model: @assistant.model_name.human), status: :see_other
+    redirect_to assistants_url, notice: t('notices.destroy.success', model: @assistant.model_name.human),
+                                status: :see_other
   end
 
   private

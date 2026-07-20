@@ -4,8 +4,8 @@ require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the hdi callout builder
+    module Components
+      # This tests the hdi callout component
       class CalloutTest < ActionView::TestCase
         include DesignSystemHelper
 

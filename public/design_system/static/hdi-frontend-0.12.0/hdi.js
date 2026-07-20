@@ -57955,6 +57955,11 @@ var code_highlight_controller_default = class extends Controller2 {
 // src/js/controllers/sidebar_controller.js
 import { Controller as Controller3 } from "@hotwired/stimulus";
 var sidebar_controller_default = class extends Controller3 {
+  // After a full page load, bring the active item into view so a long sidebar
+  // doesn't reset to the top and hide where you are.
+  connect() {
+    this.element.querySelectorAll(".sidebar-item--active").forEach((item) => item.scrollIntoView({ block: "nearest" }));
+  }
   // The show method is designed to display the menu by removing the
   // "hidden" class and adding "opacity-100".
   show(event) {

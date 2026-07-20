@@ -4,8 +4,8 @@ require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the hdi action link builder
+    module Components
+      # This tests the hdi action link component
       class ActionLinkTest < ActionView::TestCase
         include DesignSystemHelper
 

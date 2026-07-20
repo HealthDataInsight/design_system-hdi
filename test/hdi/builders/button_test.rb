@@ -14,11 +14,28 @@ module DesignSystem
           @controller.stubs(:brand).returns(@brand)
         end
 
-        test 'rendering hdi button' do
+        test 'rendering hdi primary button' do
           @output_buffer = ds_button_tag('Click', style: 'primary', 'data-id': 1)
 
-          assert_select('button.bg-indigo-600', text: 'Click')
+          assert_select('button.hdi-button', text: 'Click')
           assert_select 'button[data-id]', true, 'Expected button with passed data-attribute option'
+        end
+
+        test 'rendering hdi styled buttons' do
+          {
+            'secondary' => 'hdi-button--secondary',
+            'warning' => 'hdi-button--warning',
+            'reverse' => 'hdi-button--reverse'
+          }.each do |style, modifier|
+            @output_buffer = ds_button_tag('Go', style:)
+            assert_select("button.hdi-button.#{modifier}", text: 'Go')
+          end
+        end
+
+        test 'rendering hdi disabled button' do
+          @output_buffer = ds_button_tag('Reset', disabled: true)
+
+          assert_select('button.hdi-button.hdi-button--disabled[disabled]', text: 'Reset')
         end
       end
     end
