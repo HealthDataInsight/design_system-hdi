@@ -19,7 +19,9 @@ module DesignSystem
           end
 
           @output_buffer = @view_flow.get(:backlink)
-          assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Back')
+          assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Back') do
+            assert_select("svg.#{@brand}-icon")
+          end
         end
 
         test 'rendering hdi backlink only, with label' do
@@ -28,7 +30,9 @@ module DesignSystem
           end
 
           @output_buffer = @view_flow.get(:backlink)
-          assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Custom text')
+          assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Custom text') do
+            assert_select("svg.#{@brand}-icon")
+          end
         end
 
         test 'rendering hdi backlink with breadcrumbs raises error' do

@@ -2522,13 +2522,18 @@
     }
   }
 }
-.hdi-back-link::before {
-  content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border-bottom: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  transform: rotate(45deg);
+.hdi-back-link .hdi-icon {
+  width: calc(var(--spacing) * 5);
+  height: calc(var(--spacing) * 5);
+  flex-shrink: 0;
+  stroke: var(--color-base-content);
+  @supports (color: color-mix(in lab, red, red)) {
+    stroke: color-mix(in oklab, var(--color-base-content) 50%, transparent);
+  }
+  stroke-width: 2;
+}
+.hdi-back-link:hover .hdi-icon {
+  stroke: var(--color-primary);
 }
 .banner {
   position: sticky;
