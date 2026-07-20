@@ -8,15 +8,15 @@ en:
       name: HDI
       component_previews:
         action_link:
-          heading: Action link
+          heading: ''
         action_link_text:
           heading: Text link
         action_link_button:
           heading: Button link
         back_link:
-          heading: Back link
+          heading: ''
         breadcrumb:
-          heading: Breadcrumb
+          heading: ''
         buttons_start:
           heading: Start button
         buttons_primary:
@@ -30,41 +30,41 @@ en:
         buttons_submit:
           heading: Submit buttons (form)
         character_count:
-          heading: Character count
+          heading: ''
         checkboxes:
-          heading: Checkboxes
+          heading: ''
         checkboxes_hint:
           heading: Checkbox items with hints
-        checkboxes_small:
-          heading: Smaller checkboxes
+        # checkboxes_small:
+        #   heading: Smaller checkboxes
         date_input:
-          heading: Date input
+          heading: ''
         details:
-          heading: Details
+          heading: ''
         fieldset:
-          heading: Fieldset
+          heading: ''
         file_upload:
-          heading: File upload
+          heading: ''
         hint_text:
-          heading: Hint text
+          heading: ''
         inset_text:
-          heading: Inset text
+          heading: ''
         notification_banner_alert:
           heading: Alert
         notification_banner_notice:
           heading: Notice
-        notification_banner_success:
-          heading: Success
+        # notification_banner_success:
+        #   heading: Success
         notification_banner_alert_block:
           heading: Alert with block
         notification_banner_notice_block:
           heading: Notice with block
         pagination:
-          heading: Pagination
+          heading: ''
         panel:
-          heading: Panel
+          heading: ''
         password_input:
-          heading: Password input
+          heading: ''
         radios:
           heading: Collection radio buttons
         radios_fieldset:
@@ -74,13 +74,13 @@ en:
         select_options:
           heading: Select (options_for_select)
         summary_list:
-          heading: Summary list
+          heading: ''
         table:
-          heading: Table
+          heading: ''
         tabs:
-          heading: Tabs
+          heading: ''
         text_input:
-          heading: Text input
+          heading: ''
         text_input_phone:
           heading: Phone number input
         text_input_email:
@@ -90,9 +90,9 @@ en:
         text_input_number:
           heading: Number input
         textarea:
-          heading: Textarea
+          heading: ''
         warning_callout:
-          heading: Warning callout
+          heading: ''
         grid_full_width:
           heading: Full width
         grid_one_half:
@@ -108,11 +108,11 @@ en:
         grid_nested:
           heading: Nested grids
         headings:
-          heading: Headings
+          heading: ''
         headings_levels:
           heading: Heading levels
         lists:
-          heading: Lists
+          heading: ''
         lists_bullet:
           heading: Bulleted lists
         lists_number:
@@ -120,8 +120,8 @@ en:
         paragraphs:
           heading: Body
         paragraphs_lead:
-          heading: Lead paragraph
+          heading: ''
         stimulus:
-          heading: Stimulus controller
+          heading: ''
         timeago:
-          heading: Time ago
+          heading: ''

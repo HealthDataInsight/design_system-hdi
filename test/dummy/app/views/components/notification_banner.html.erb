@@ -19,9 +19,13 @@ end
 <%% end %>
 <% end %>
 
-<%= component_preview :notification_banner_success do %>
-<%%= ds_notice("I am a success notice", type: :success)%>
-<% end %>
+<%#
+  TODO: support success notification banners
+
+  component_preview :notification_banner_success do
+    ds_notice("I am a success notice", type: :success)
+  end
+%>
 
 <%= component_preview :notification_banner_alert_block do %>
 <%%= ds_alert do %>
