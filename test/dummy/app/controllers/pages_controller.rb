@@ -2,7 +2,7 @@
 
 # This is the pages controller
 class PagesController < ApplicationController
-  # layout 'two_column'
+  layout 'two_column'
 
   def index
     @assistants = demo_paginated_assistants

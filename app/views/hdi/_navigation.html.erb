@@ -1,12 +1,24 @@
-<% if controller.navigation_items.present? %>
+<% hdi_navigation_groups(controller.navigation_items).each do |group| %>
   <li>
-    <ul role="list" class="sidebar-items">
-      <%# Rails.application.routes.recognize_path() %>
-      <% controller.navigation_items.each do |item| %>
-        <li>
-          <%= hdi_sidebar_navigation_svg(item) %>
-        </li>
-      <% end %>
-    </ul>
+    <% if group[:heading].present? %>
+      <details class="sidebar-group" open>
+        <summary class="sidebar-item"><%= hdi_navigation_icon(group[:icon]) %><%= group[:heading] %></summary>
+        <ul role="list" class="sidebar-items">
+          <% group[:items].each do |item| %>
+            <li>
+              <%= hdi_sidebar_navigation_svg(item) %>
+            </li>
+          <% end %>
+        </ul>
+      </details>
+    <% else %>
+      <ul role="list" class="sidebar-items">
+        <% group[:items].each do |item| %>
+          <li>
+            <%= hdi_sidebar_navigation_svg(item) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </li>
 <% end %>
