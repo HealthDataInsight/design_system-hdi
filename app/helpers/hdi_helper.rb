@@ -24,16 +24,19 @@ module HdiHelper
     options[:class] << 'sidebar-item--active' if active
 
     link_to(path, **options) do
-      icon = hdi_navigation_icon(item.dig(:options, :icon))
+      icon = hdi_icon(item.dig(:options, :icon))
       icon ? icon + item[:label] : item[:label]
     end
   end
 
-  # Renders a heroicon <img> for a sidebar row, or nothing when no icon is set.
-  def hdi_navigation_icon(icon_name)
-    return if icon_name.blank?
+  # Renders a heroicon <img> by name (e.g. "users", "clipboard-document-list"),
+  # or nothing when no name is given. Single source of the static icon path,
+  # shared by helpers and builders (via the view context).
+  def hdi_icon(name, css_class: 'hdi-icon')
+    return if name.blank?
 
-    svg_path = "/design_system/static/heroicons-2.1.5/icon-#{icon_name}.svg"
-    content_tag(:img, nil, src: svg_path, class: 'hdi-icon', 'aria-hidden': 'true')
+    content_tag(:img, nil,
+                src: "/design_system/static/heroicons-2.1.5/icon-#{name}.svg",
+                class: css_class, 'aria-hidden': 'true')
   end
 end
