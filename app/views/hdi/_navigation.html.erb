@@ -2,7 +2,7 @@
   <li>
     <% if group[:heading].present? %>
       <details class="sidebar-group" open>
-        <summary class="sidebar-item"><%= hdi_navigation_icon(group[:icon]) %><%= group[:heading] %></summary>
+        <summary class="sidebar-item"><%= hdi_icon(group[:icon]) %><%= group[:heading] %></summary>
         <ul role="list" class="sidebar-items">
           <% group[:items].each do |item| %>
             <li>
