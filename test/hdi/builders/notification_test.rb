@@ -14,11 +14,27 @@ module DesignSystem
           @controller.stubs(:brand).returns(@brand)
         end
 
+        # Notices are inherited unchanged from the generic builder, so they use the shared
+        # notification-banner markup (header/title/content) and support the success type.
         test 'rendering hdi notice' do
           @output_buffer = ds_notice('Important Notice')
+
           assert_select 'div.hdi-notification-banner' do
-            assert_select 'svg.hdi-icon__information-circle'
-            assert_select 'span', 'Important Notice'
+            assert_select 'div.hdi-notification-banner__header' do
+              assert_select 'h2.hdi-notification-banner__title', 'Important'
+            end
+
+            assert_select 'div.hdi-notification-banner__content', text: 'Important Notice'
+          end
+        end
+
+        test 'rendering hdi notice with success type' do
+          @output_buffer = ds_notice('Test content', type: :success)
+
+          assert_select 'div.hdi-notification-banner.hdi-notification-banner--success[role="alert"]' \
+                        '[aria-labelledby="hdi-notification-banner-title"][data-module="hdi-notification-banner"]' do
+            assert_select 'h2.hdi-notification-banner__title', 'Success'
+            assert_select 'div.hdi-notification-banner__content', text: 'Test content'
           end
         end
 
@@ -27,16 +43,17 @@ module DesignSystem
 
           assert_select 'div.hdi-notification-banner div.hdi-notification-banner__content' do
             assert_select 'h3.hdi-notification-banner__heading', text: 'Please be aware'
-            assert_select 'span', 'Important Notice'
           end
         end
 
+        # Alerts stay HDI-specific (an icon-led banner rather than the generic error-summary)
+        # but reuse the shared header/content banner markup.
         test 'rendering hdi alert' do
           @output_buffer = ds_alert('Test alert!')
 
-          assert_select 'div.hdi-notification-banner.hdi-notification-banner__alert' do
-            assert_select 'svg.hdi-icon__exclamation-circle'
-            assert_select 'span', 'Test alert!'
+          assert_select 'div.hdi-notification-banner.hdi-notification-banner__alert[role="alert"]' do
+            assert_select 'div.hdi-notification-banner__header h2.hdi-notification-banner__title', 'Alert'
+            assert_select 'div.hdi-notification-banner__content span[data-test="alert"]', 'Test alert!'
           end
         end
 
@@ -44,8 +61,7 @@ module DesignSystem
           @output_buffer = ds_alert('<p>Test alert!</p>')
 
           assert_select 'div.hdi-notification-banner.hdi-notification-banner__alert' do
-            assert_select 'svg.hdi-icon__exclamation-circle'
-            assert_select 'span', text: 'Test alert!'
+            assert_select 'div.hdi-notification-banner__content span[data-test="alert"]', text: 'Test alert!'
           end
         end
       end

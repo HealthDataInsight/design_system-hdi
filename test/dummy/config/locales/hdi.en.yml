@@ -53,8 +53,8 @@ en:
           heading: Alert
         notification_banner_notice:
           heading: Notice
-        # notification_banner_success:
-        #   heading: Success
+        notification_banner_success:
+          heading: Success
         notification_banner_alert_block:
           heading: Alert with block
         notification_banner_notice_block:
