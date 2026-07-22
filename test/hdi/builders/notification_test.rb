@@ -51,8 +51,9 @@ module DesignSystem
         test 'rendering hdi alert' do
           @output_buffer = ds_alert('Test alert!')
 
-          assert_select 'div.hdi-notification-banner.hdi-notification-banner__alert[role="alert"]' do
-            assert_select 'div.hdi-notification-banner__header h2.hdi-notification-banner__title', 'Alert'
+          assert_select 'div.hdi-notification-banner.hdi-notification-banner__alert[role="alert"]' \
+                        '[aria-labelledby="hdi-notification-banner-alert-title"]' do
+            assert_select 'h2.hdi-notification-banner__title#hdi-notification-banner-alert-title', 'Alert'
             assert_select 'div.hdi-notification-banner__content span[data-test="alert"]', 'Test alert!'
           end
         end

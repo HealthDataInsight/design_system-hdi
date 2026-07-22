@@ -11,7 +11,7 @@ module DesignSystem
           content_tag(:div,
                       class: "#{brand}-notification-banner #{brand}-notification-banner__alert",
                       role: 'alert',
-                      'aria-labelledby': "#{brand}-notification-banner-alert") do
+                      'aria-labelledby': "#{brand}-notification-banner-alert-title") do
             alert_header + alert_content(content)
           end
         end
