@@ -8,8 +8,10 @@ module DesignSystem
         def render_alert(msg = nil, &block)
           content = block ? capture(&block) : msg
 
-          content_tag(:div, class: "#{brand}-notification-banner #{brand}-notification-banner__alert",
-                            role: 'alert') do
+          content_tag(:div,
+                      class: "#{brand}-notification-banner #{brand}-notification-banner__alert",
+                      role: 'alert',
+                      'aria-labelledby': "#{brand}-notification-banner-alert") do
             alert_header + alert_content(content)
           end
         end
@@ -18,7 +20,8 @@ module DesignSystem
 
         def alert_header
           content_tag(:div, class: "#{brand}-notification-banner__header") do
-            content_tag(:h2, 'Alert', class: "#{brand}-notification-banner__title")
+            content_tag(:h2, 'Alert', class: "#{brand}-notification-banner__title",
+                                      id: "#{brand}-notification-banner-alert-title")
           end
         end
 
