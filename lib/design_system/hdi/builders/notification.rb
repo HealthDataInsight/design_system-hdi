@@ -4,12 +4,6 @@ module DesignSystem
   module Hdi
     module Builders
       # This class provides HDI methods to display notifications.
-      #
-      # +render_notice+ (and its success variant) is inherited unchanged from the generic
-      # builder, so notices use the shared header/content banner markup and gain the
-      # +type: :success+ banner. +render_alert+ is overridden to reuse that same banner
-      # markup (a coloured header bar + content) rather than the generic error-summary; the
-      # HDI look is applied entirely through the +hdi-notification-banner+ styles.
       class Notification < ::DesignSystem::Generic::Builders::Notification
         def render_alert(msg = nil, &block)
           content = block ? capture(&block) : msg
