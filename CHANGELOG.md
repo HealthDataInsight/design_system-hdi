@@ -20,8 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Migrated remaining HDI PORO builders (`button`, `grid`, `paragraph`, `inset_text`, `link`, `notification`/`alert`, `summary_list`, `tab`, `table`, breadcrumbs) to ViewComponents to match `design_system` 0.15.0; empty subclasses inherit parent markup where HDI structure matches
+- Made `FixedElements` an empty NHS UK subclass (caption-m comes from GOV.UK headings)
+- Updated `design_system` dependency to `~> 0.15.0`
 - Migrated the HDI `panel`, `callout`, `details`, `heading`, and `action_link` adapters from PORO builders to ViewComponents, and added `list` and `start_button` components, to match `design_system` 0.14.0 (no API change)
-- Updated `design_system` dependency to `~> 0.14.0`
 - Updated `render_notice` to accept `content_heading:` (replacing `header:`) and render it, matching the `design_system` 0.14.0 notification API
 - Updated `render_alert` and `render_notice` signatures to match `design_system` 0.11.0+ API, adding block support and keyword arguments
 

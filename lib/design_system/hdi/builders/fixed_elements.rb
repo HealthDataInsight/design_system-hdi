@@ -3,10 +3,9 @@
 module DesignSystem
   module Hdi
     module Builders
-      # This class is used to provide HDI fixed elements builder.
-      class FixedElements < ::DesignSystem::Generic::Builders::FixedElements
-        include Elements::Breadcrumbs
-        include Elements::Headings
+      # HDI fixed elements. Inherits GOV.UK/NHS UK behaviour unchanged, including
+      # the caption-m class on main-heading captions.
+      class FixedElements < ::DesignSystem::Nhsuk::Builders::FixedElements
       end
     end
   end

@@ -23,7 +23,7 @@ module DesignSystem
           @output_buffer = @view_flow.get(:breadcrumbs)
 
           assert_select('nav', 'aria-label': 'Breadcrumb') do
-            assert_select('ol', role: 'listz') do
+            assert_select('ol[role=list]') do
               # Tests root_path
               assert_select('li.hdi-breadcrumbs__item:nth-child(1)') do
                 assert_select('div.hdi-breadcrumbs__link-wrapper--home') do

@@ -1,0 +1,31 @@
+<%= content_tag(:div, **container_options) do %>
+  <table class="<%= brand %>-table-responsive">
+    <% if table.caption %>
+      <caption class="<%= brand %>-table__caption">
+        <%= table.caption %>
+      </caption>
+    <% end %>
+    <thead class="<%= brand %>-table__head">
+      <tr class="<%= brand %>-table__row">
+        <% table.columns.each do |column| %>
+          <%= content_tag(:th, cell_content(column),
+                          **column[:options].merge(scope: 'col', class: "#{brand}-table__header")) %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody class="<%= brand %>-table__body">
+      <% table.rows.each do |row| %>
+        <tr class="<%= brand %>-table__row">
+          <% row.each_with_index do |cell, index| %>
+            <%= content_tag(:td, **cell[:options].merge(class: "#{brand}-table__cell")) do %>
+              <%= content_tag(:span, table.columns[index][:content],
+                              class: "#{brand}-table-responsive__heading") %>
+              <%= content_tag(:span, cell_content(cell),
+                              class: "#{brand}-table-responsive__cell-value") %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

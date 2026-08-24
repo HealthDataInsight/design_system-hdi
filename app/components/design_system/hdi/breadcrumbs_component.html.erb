@@ -1,0 +1,23 @@
+<nav aria-label="Breadcrumb" class="<%= brand %>-breadcrumbs">
+  <ol data-test="breadcrumb_list" class="<%= brand %>-breadcrumbs__list" role="list">
+    <% breadcrumbs.each do |breadcrumb| %>
+      <li class="<%= brand %>-breadcrumbs__item" data-test="breadcrumb_item">
+        <% if home_path?(breadcrumb[:path]) %>
+          <div class="<%= brand %>-breadcrumbs__link-wrapper--home">
+            <%= link_to breadcrumb[:path], class: "#{brand}-breadcrumbs__link--home" do %>
+              <%= DesignSystem::Hdi::BreadcrumbsComponent::BREADCRUMB_HOME_SVG %>
+              <span class="sr-only"><%= breadcrumb[:label] %></span>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="<%= brand %>-breadcrumbs__link-wrapper">
+            <%= DesignSystem::Hdi::BreadcrumbsComponent::BREADCRUMB_DIVIDER_SVG %>
+            <%= link_to breadcrumb[:label], breadcrumb[:path],
+                        class: "#{brand}-breadcrumbs__link",
+                        'aria-current': current_page_aria(breadcrumb) %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</nav>
