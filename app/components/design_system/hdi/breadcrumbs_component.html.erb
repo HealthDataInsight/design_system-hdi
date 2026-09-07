@@ -5,13 +5,11 @@
         <% if home_path?(breadcrumb[:path]) %>
           <div class="<%= brand %>-breadcrumbs__link-wrapper--home">
             <%= link_to breadcrumb[:path], class: "#{brand}-breadcrumbs__link--home" do %>
-              <%= DesignSystem::Hdi::BreadcrumbsComponent::BREADCRUMB_HOME_SVG %>
               <span class="sr-only"><%= breadcrumb[:label] %></span>
             <% end %>
           </div>
         <% else %>
           <div class="<%= brand %>-breadcrumbs__link-wrapper">
-            <%= DesignSystem::Hdi::BreadcrumbsComponent::BREADCRUMB_DIVIDER_SVG %>
             <%= link_to breadcrumb[:label], breadcrumb[:path],
                         class: "#{brand}-breadcrumbs__link",
                         'aria-current': current_page_aria(breadcrumb) %>
