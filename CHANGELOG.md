@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Moved HDI breadcrumb home/divider icons from inline SVG markup into `hdi-frontend` CSS (`::before`), matching GOV.UK/NHS separators and `.hdi-back-link`
-- Moved HDI pagination prev/next arrows from inline SVG into `hdi-frontend` CSS (`::before` / `::after`); markup structure stays HDI-specific
 - Migrated remaining HDI PORO builders (`button`, `grid`, `paragraph`, `inset_text`, `link`, `notification`/`alert`, `summary_list`, `tab`, `table`, breadcrumbs) to ViewComponents to match `design_system` 0.15.0; empty subclasses inherit parent markup where HDI structure matches
 - Made `FixedElements` an empty NHS UK subclass (caption-m comes from GOV.UK headings)
 - Updated `design_system` dependency to `~> 0.15.0`
