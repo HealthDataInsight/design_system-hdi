@@ -27,9 +27,11 @@ module DesignSystem
           @output_buffer = ds_pagination(@assistants)
 
           assert_select('nav.hdi-pagination') do
+            # Prev/next arrows are drawn via CSS (::before / ::after), not inline SVG.
             assert_select('div.hdi-pagination-item--next-container') do
               assert_select('a.hdi-pagination-item.hdi-pagination-item--next') do
-                'Next'
+                assert_select('span.hdi-pagination-item-title', text: 'Next')
+                assert_select('svg', false)
               end
             end
             assert_select('a.hdi-pagination-item.hdi-pagination-item--active') do
