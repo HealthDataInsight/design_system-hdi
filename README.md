@@ -4,9 +4,6 @@ DesignSystem is an extensible Ruby on Rails engine that enables consistent, comp
 
 The gem is a plugin for the Health Data Insight (HDI) design system.
 
-## Usage
-
-How to use the plugin.
 
 ## Installation
 
