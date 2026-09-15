@@ -1,0 +1,24 @@
+<div class="<%= brand %>-tabs" data-controller="tabs">
+  <% if tab.tabs.present? %>
+    <ul class="<%= brand %>-tabs__list" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+      <% tab.tabs.each do |name, _content, id, selected| %>
+        <li class="<%= brand %>-tabs__list-item" role="presentation">
+          <% style = selected ? "#{brand}-tabs__tab #{brand}-tabs__tab--selected" : "#{brand}-tabs__tab" %>
+          <button class="<%= style %>" id="<%= id %>-tab" type="button" role="tab"
+                  aria-selected="<%= selected %>" aria-controls="<%= id %>"
+                  data-tabs-target="tabButton" data-action="tabs#show"><%= name %></button>
+        </li>
+      <% end %>
+    </ul>
+
+    <div id="default-tab-content">
+      <% tab.tabs.each do |_name, content, id, selected| %>
+        <% style = selected ? "#{brand}-tabs__panel" : "#{brand}-tabs__panel #{brand}-tabs__panel--hidden" %>
+        <div class="<%= style %>" id="<%= id %>" role="tabpanel" aria-labelledby="<%= id %>-tab"
+             data-tabs-target="tabPanel">
+          <p class="<%= brand %>-tabs__panel-content"><%= content %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

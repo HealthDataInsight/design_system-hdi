@@ -35,7 +35,8 @@ module DesignSystem
         test 'rendering hdi disabled button' do
           @output_buffer = ds_button_tag('Reset', disabled: true)
 
-          assert_select('button.hdi-button.hdi-button--disabled[disabled]', text: 'Reset')
+          assert_select('button.hdi-button[disabled]', text: 'Reset')
+          assert_select('button[aria-disabled="true"]')
         end
       end
     end
