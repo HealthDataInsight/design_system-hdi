@@ -4,4 +4,4 @@ set -euo pipefail
 brew list mise &>/dev/null || brew install mise
 mise trust
 mise install
-bundle install
+mise exec -- bundle install
