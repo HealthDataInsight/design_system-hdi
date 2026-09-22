@@ -60,8 +60,8 @@
 
 <div id="news">
   <%= ds_card_grid heading: 'Latest',
-                   link_label: 'All news and publications',
-                   link_href: website_work_path,
+                   link_label: 'All news',
+                   link_href: website_news_path,
                    tone: :light,
                    items: @news.map { |item| news_card(item) } %>
 </div>

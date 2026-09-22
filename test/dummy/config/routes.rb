@@ -21,9 +21,14 @@ Rails.application.routes.draw do
   namespace :website do
     root to: 'pages#home'
     get 'about', to: 'pages#about'
+    get 'people', to: 'pages#people'
+    get 'internships', to: 'pages#internships'
     get 'trust', to: 'pages#trust'
     get 'contact', to: 'pages#contact'
     post 'contact', to: 'pages#submit_contact'
+    get 'news', to: 'pages#news'
+    get 'publications', to: 'pages#publications'
+    get 'privacy', to: 'pages#privacy'
     get 'what-we-do/:slug', to: 'services#show', as: :service
     get 'our-work', to: 'projects#index', as: :work
     get 'our-work/:slug', to: 'projects#show', as: :project

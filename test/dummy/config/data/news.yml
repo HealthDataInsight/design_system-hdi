@@ -16,3 +16,27 @@
   title: Looking for missed signs of pancreatic cancer on earlier scans
   summary: Post Imaging Pancreatic Cancer root cause analysis begins.
   image_label: News
+- slug: peugic-system
+  kind: News
+  date: 2026-03-25
+  title: Development of a national root cause analysis system for post-endoscopy upper GI cancer
+  summary: Making missed diagnoses after endoscopy visible enough to fix.
+  image_label: News
+- slug: stage-costs-research
+  kind: News
+  date: 2026-02-17
+  title: New research highlights how cancer stage at diagnosis impacts NHS hospital care costs
+  summary: A national retrospective cohort study using individual patient-level data.
+  image_label: Research
+- slug: endometrial-treatment-report
+  kind: Report
+  date: 2026-01-29
+  title: Endometrial Cancer Audit Pilot treatment report published
+  summary: The latest ECAP report on how endometrial cancer is treated across England.
+  image_label: Report
+- slug: design-system-gem
+  kind: News
+  date: 2025-10-21
+  title: Launching the new Design System Gem
+  summary: Sharing the HDI design system as a Ruby gem so other NHS and health-data products can use the same components.
+  image_label: News

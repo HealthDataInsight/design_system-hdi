@@ -11,9 +11,25 @@ module WebsiteHelper
           { label: service['name'], href: website_service_path(service['slug']) }
         end
       },
-      { label: 'Our work', href: website_work_path },
+      {
+        label: 'Our work',
+        href: website_work_path,
+        children: [
+          { label: 'All projects', href: website_work_path },
+          { label: 'Publications', href: website_publications_path }
+        ]
+      },
+      { label: 'News', href: website_news_path },
       { label: 'Trust & governance', href: website_trust_path },
-      { label: 'About', href: website_about_path }
+      {
+        label: 'About',
+        href: website_about_path,
+        children: [
+          { label: 'About HDI', href: website_about_path },
+          { label: 'People', href: website_people_path },
+          { label: 'Internships', href: website_internships_path }
+        ]
+      }
     ]
   end
 

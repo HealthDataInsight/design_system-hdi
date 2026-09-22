@@ -6,9 +6,43 @@
       ds.main_heading 'About HDI'
     end %>
 
-    <%= ds_paragraph 'We are a community interest company, and that is the point rather than a footnote. We exist to deliver for patients and the NHS, and what we earn goes back into doing that.' %>
-    <%= ds_paragraph 'Jem Rashbass and Hilary Wilderspin founded HDI in 2011 to make sure that innovative work with the most personal of health data was done ethically, and for the direct benefit of patients.' %>
-    <%= ds_paragraph 'Two principles have run through everything since: do the right thing, and get the job done quickly.' %>
-    <%= ds_action_link 'Talk to us', website_contact_path %>
+    <%= ds_paragraph 'We are a community interest company registered with the Regulator of Community Interest Companies. We exist to deliver for patients and the NHS, and what we earn goes back into doing that.' %>
+    <%= ds_paragraph 'Jem Rashbass and Hilary Wilderspin founded HDI in 2011 to make sure that innovative work with the most personal of health data was done ethically, and for the direct benefit of patients. Two principles have run through everything since: do the right thing, and get the job done quickly.' %>
+    <%= ds_paragraph 'Our team is health data analysts, data scientists, software and AI technologists, and project managers. We work remotely and from Cambridge on local and national problems, funded through collaborations with the NHS, charities, academia and industry.' %>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'Partnerships' %>
+    <div class="hdi-prose-measure">
+      <%= ds_paragraph 'We work with NHS teams, charities, academia, patient groups and industry. HDI holds a formal partnership agreement with the National Disease Registration Service (NDRS), part of NHS England — combining our delivery with their disease registration data.' %>
+    </div>
+    <ul class="hdi-governance-grid" style="margin-top: 2rem;">
+      <li>
+        <%= link_to website_people_path, class: 'hdi-governance-card' do %>
+          <h3 class="hdi-heading-m">People</h3>
+          <p>Directors and how the company is led.</p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to website_internships_path, class: 'hdi-governance-card' do %>
+          <h3 class="hdi-heading-m">Internships</h3>
+          <p>Our summer programme for early-career people.</p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to website_trust_path, class: 'hdi-governance-card' do %>
+          <h3 class="hdi-heading-m">Trust &amp; governance</h3>
+          <p>How we handle data, ethics and approvals.</p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to website_contact_path, class: 'hdi-governance-card' do %>
+          <h3 class="hdi-heading-m">Talk to us</h3>
+          <p>A paragraph about the problem is enough to start.</p>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </section>

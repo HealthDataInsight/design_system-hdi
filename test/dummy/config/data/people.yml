@@ -1,0 +1,20 @@
+directors:
+  - name: Jem Rashbass
+    role: Chief Executive Officer
+    summary: Co-founder. Clinical and data leadership across HDI’s NHS work.
+  - name: Hilary Wilderspin
+    role: Director
+    summary: Co-founder. Delivery, partnerships and how we organise the work.
+  - name: Kim Whittlestone
+    role: Chief Operating Officer
+    summary: Day-to-day running of the company and the programmes we deliver.
+  - name: Ev Brunton
+    role: Non-executive Director
+  - name: Lisa Franklin
+    role: Non-executive Director
+  - name: John Russell
+    role: Non-executive Director
+  - name: Richard Jeavons
+    role: Non-executive Director
+
+team_blurb: Our team is made of health data analysts, data scientists, software and AI technologists, and project managers. We work remotely and from Cambridge on local and national problems.

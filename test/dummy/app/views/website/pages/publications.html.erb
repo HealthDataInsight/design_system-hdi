@@ -1,0 +1,31 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Our work', website_work_path)
+      ds.breadcrumb('Publications', website_publications_path)
+      ds.main_heading 'Publications'
+    end %>
+
+    <div class="hdi-prose-measure">
+      <%= ds_paragraph 'Peer-reviewed papers, national reports and methods notes. Partnership outputs with NDRS are included where they sit under the formal agreement.' %>
+    </div>
+
+    <% Array(@publications).each do |group| %>
+      <div class="hdi-publication-year">
+        <%= ds_heading group['year'].to_s, level: 2 %>
+        <ul class="hdi-reason-list">
+          <% Array(group['items']).each do |item| %>
+            <li class="hdi-reason">
+              <h3 class="hdi-heading-m"><%= item['title'] %></h3>
+              <p class="hdi-body"><%= [item['kind'], item['authors']].compact.join(' · ') %></p>
+              <% if item['note'].present? %>
+                <p class="hdi-body"><%= item['note'] %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</section>

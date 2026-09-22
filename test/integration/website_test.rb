@@ -140,4 +140,27 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_select 'form'
   end
+
+  test 'news publications people and internships pages render' do
+    get website_news_path
+    assert_response :success
+    assert_select 'h1', text: 'News'
+
+    get website_publications_path
+    assert_response :success
+    assert_select 'h1', text: 'Publications'
+
+    get website_people_path
+    assert_response :success
+    assert_select 'h1', text: 'People'
+    assert_select '.hdi-person-card', minimum: 3
+
+    get website_internships_path
+    assert_response :success
+    assert_select 'h1', text: /Internships/
+
+    get website_privacy_path
+    assert_response :success
+    assert_select 'h1', text: /privacy/i
+  end
 end

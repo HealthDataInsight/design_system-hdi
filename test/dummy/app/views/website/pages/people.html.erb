@@ -1,0 +1,27 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('About', website_about_path)
+      ds.breadcrumb('People', website_people_path)
+      ds.main_heading 'People'
+    end %>
+
+    <div class="hdi-prose-measure">
+      <%= ds_paragraph @people['team_blurb'] %>
+    </div>
+
+    <%= ds_heading 'Directors', level: 2 %>
+    <ul class="hdi-people-grid">
+      <% Array(@people['directors']).each do |person| %>
+        <li class="hdi-person-card">
+          <h3 class="hdi-heading-m"><%= person['name'] %></h3>
+          <p class="hdi-person-card__role"><%= person['role'] %></p>
+          <% if person['summary'].present? %>
+            <p class="hdi-body"><%= person['summary'] %></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

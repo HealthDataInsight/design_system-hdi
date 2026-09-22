@@ -183,3 +183,89 @@
     - { label: Cancer, slug: cancer, facet: subject }
   summary: Colorectal cancer datasets from across the UK, linked into one resource researchers can use.
   related: [endometrial-cancer-audit, cas-explorer]
+- slug: peugic-root-cause-analysis
+  featured: true
+  title: Finding why upper GI cancers are still missed after endoscopy
+  name: PEUGIC Root Cause Analysis
+  partner: NHS England
+  partner_short: PEUGIC RCA
+  partner_logos: [NHS England]
+  primary_service: programme-and-delivery
+  secondary_services: [data-and-analytics]
+  status: Live and in use
+  image_label: Clinical audit
+  keywords:
+    - { label: Programme & Delivery, slug: programme-and-delivery, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Clinical audit, slug: clinical-audit, facet: method }
+  summary: A national root-cause analysis system for post-endoscopy upper gastrointestinal cancers, so missed diagnoses become visible and fixable.
+  challenge: About 15,800 people in the UK are diagnosed with oesophageal or stomach cancer each year. Some were scoped not long before — and the miss was never systematically investigated.
+  solution: A national RCA method and tooling, designed with clinicians who do the work.
+  related: [endometrial-cancer-audit, pipc]
+- slug: pipc
+  featured: false
+  title: Looking for missed signs of pancreatic cancer on earlier scans
+  name: Post Imaging Pancreatic Cancer
+  partner: NHS England
+  partner_short: PIPC
+  partner_logos: [NHS England]
+  primary_service: data-and-analytics
+  secondary_services: [programme-and-delivery]
+  status: Live and in use
+  image_label: Imaging audit
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Clinical audit, slug: clinical-audit, facet: method }
+  summary: Root-cause analysis of pancreatic cancers that were visible — or should have been — on earlier imaging.
+  related: [peugic-root-cause-analysis]
+- slug: cca-audit
+  featured: false
+  title: Mapping how bile duct cancer is treated across the UK
+  name: Cholangiocarcinoma Audit
+  partner: AMMF
+  partner_short: CCA Audit · AMMF
+  partner_logos: [AMMF]
+  primary_service: programme-and-delivery
+  secondary_services: [data-and-analytics]
+  status: Live and in use
+  image_label: National audit
+  keywords:
+    - { label: Programme & Delivery, slug: programme-and-delivery, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Clinical audit, slug: clinical-audit, facet: method }
+  summary: A national audit of cholangiocarcinoma care, from diagnosis through treatment, so variation can be seen and acted on.
+  related: [endometrial-cancer-audit, peugic-root-cause-analysis]
+- slug: kidney-cancer-qpi
+  featured: false
+  title: Quality indicators for kidney cancer care
+  name: Kidney Cancer QPIs
+  partner: Kidney Cancer UK
+  partner_short: Kidney Cancer QPIs
+  partner_logos: [Kidney Cancer UK]
+  primary_service: programme-and-delivery
+  secondary_services: [data-and-analytics]
+  status: Live and in use
+  image_label: Quality indicators
+  keywords:
+    - { label: Programme & Delivery, slug: programme-and-delivery, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+  summary: Quality performance indicators for kidney cancer, built so trusts can see how they compare and where to improve.
+  related: [endometrial-cancer-audit]
+- slug: cangene-canvar
+  featured: false
+  title: Centralising inherited cancer gene data for research and care
+  name: CanGene CanVar
+  partner: Institute of Cancer Research
+  partner_short: CanGene CanVar
+  partner_logos: [Institute of Cancer Research]
+  primary_service: data-and-analytics
+  secondary_services: [technology-and-solutions]
+  status: Live and in use
+  image_label: Genomics
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Data linkage, slug: data-linkage, facet: method }
+  summary: Contributing to CanGene CanVar — a multi-year programme to centralise inherited cancer gene variant data for research and clinical use.
+  related: [simulacrum-v2, corect-r]

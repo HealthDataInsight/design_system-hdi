@@ -55,6 +55,14 @@ module Website
         load_yaml('news')
       end
 
+      def publications
+        load_yaml('publications')
+      end
+
+      def people
+        load_yaml('people') || {}
+      end
+
       def partners
         load_yaml('partners') || {}
       end

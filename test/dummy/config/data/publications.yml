@@ -1,0 +1,28 @@
+- year: 2026
+  items:
+    - title: Real-world demographics and survival outcomes of patients in England with advanced or recurrent endometrial cancer by mismatch repair status
+      authors: Susana Banerjee, Ellie Hall, Kiera Heffernan, Qin Shen, Clare Pearson, Alvaro Ingles Russo Garces
+      kind: Journal article
+    - title: Influence of stage at cancer diagnosis on NHS hospital care costs in England
+      authors: Clare Pearson, David A Jones, Gavin Baily, Roger Cherry, Ewan Gray, Sara Hiom, Brian Rous, Katie Spencer, Sophie Jose
+      kind: Journal article
+    - title: Development of a national root cause analysis system for post-endoscopy upper gastrointestinal cancer
+      authors: HDI with clinical partners
+      kind: Methods paper
+- year: 2025
+  items:
+    - title: Synthetic data demonstrates major benefits for cancer research
+      authors: HDI with NDRS
+      kind: Journal article · BMJ
+    - title: Endometrial Cancer Audit Pilot — treatment report
+      authors: HDI with NHS England
+      kind: National report
+- year: 2024
+  items:
+    - title: Simulacrum v2 — methods and fidelity assessment
+      authors: HDI with NDRS
+      kind: Technical report
+    - title: HDI publications produced in association with NDRS
+      authors: HDI · NDRS partnership
+      kind: Collection
+      note: A curated list of partnership outputs sits on the live HDI site.

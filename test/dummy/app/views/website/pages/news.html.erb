@@ -1,0 +1,13 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('News', website_news_path)
+      ds.main_heading 'News'
+    end %>
+
+    <%= ds_paragraph 'Project launches, reports and research from across HDI.' %>
+  </div>
+
+  <%= ds_card_grid tone: :light, items: @news.map { |item| news_card(item) } %>
+</section>

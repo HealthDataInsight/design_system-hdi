@@ -1,0 +1,19 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner hdi-prose-measure">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('About', website_about_path)
+      ds.breadcrumb('Internships', website_internships_path)
+      ds.main_heading 'HDI Internships'
+    end %>
+
+    <%= ds_paragraph 'Our summer intern programme brings together early-career people with a mix of skills to work on a live problem from one of our healthcare partners.' %>
+    <%= ds_paragraph 'Some join for tech, data and analytics. Others take design, customer or business roles. Building a working team is as much of the challenge as the technical work — and we coach the group through an agile delivery rhythm with clinicians and in-house staff.' %>
+    <%= ds_paragraph 'Applications for 2026 are now closed. Previous cohorts have shipped tools such as PatientSight, TheatreCapture, e-Pathpots and Syndasera.' %>
+    <%= ds_action_link 'See internship projects in Our work', website_work_path %>
+  </div>
+</section>
+
+<%= ds_cta_band title: 'Interested in a future cohort?',
+                lede: 'Register interest via the contact form and tell us what you bring.',
+                primary: { label: 'Talk to us', href: website_contact_path } %>

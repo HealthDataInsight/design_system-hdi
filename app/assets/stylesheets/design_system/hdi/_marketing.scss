@@ -1232,3 +1232,45 @@ a.hdi-governance-card:focus-visible {
   max-width: 36em;
   color: color-mix(in oklab, var(--color-neutral-content) 82%, transparent);
 }
+
+.hdi-people-grid {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+  margin: calc(var(--spacing) * 6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 40rem) {
+  .hdi-people-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64rem) {
+  .hdi-people-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.hdi-person-card {
+  padding: calc(var(--spacing) * 5);
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 12%, transparent);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-base-100);
+}
+
+.hdi-person-card__role {
+  margin: 0 0 calc(var(--spacing) * 2);
+  color: color-mix(in oklab, var(--color-base-content) 65%, transparent);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.hdi-publication-year {
+  margin-top: calc(var(--spacing) * 10);
+}
+
+.hdi-publication-year:first-of-type {
+  margin-top: calc(var(--spacing) * 6);
+}

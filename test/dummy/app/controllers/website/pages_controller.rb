@@ -13,7 +13,30 @@ module Website
 
     def about; end
 
+    def people
+      @people = Website::Catalog.people
+      @page_title = 'People — Health Data Insight'
+    end
+
+    def internships
+      @page_title = 'Internships — Health Data Insight'
+    end
+
     def trust; end
+
+    def news
+      @news = Website::Catalog.news
+      @page_title = 'News — Health Data Insight'
+    end
+
+    def publications
+      @publications = Website::Catalog.publications
+      @page_title = 'Publications — Health Data Insight'
+    end
+
+    def privacy
+      @page_title = 'Privacy — Health Data Insight'
+    end
 
     def contact
       @enquiry = Website::Enquiry.new

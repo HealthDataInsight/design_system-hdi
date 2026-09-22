@@ -1,0 +1,15 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner hdi-prose-measure">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Privacy', website_privacy_path)
+      ds.main_heading 'Website privacy'
+    end %>
+
+    <%= ds_paragraph 'We collect personal information when you contact us through the enquiry form, email, phone or social channels, or when you register for an event or newsletter. As you use the site we may collect technical data through cookies — see the cookie notice in your browser for details.' %>
+    <%= ds_paragraph 'Articles may embed content from other sites (videos, images). That content behaves as if you visited the other site; their privacy practices apply.' %>
+    <%= ds_paragraph 'We use the information you give us to respond to enquiries and to run the website securely. We do not sell personal data.' %>
+    <%= ds_paragraph 'For questions about this notice, use the contact form.' %>
+    <%= ds_action_link 'Talk to us', website_contact_path %>
+  </div>
+</section>

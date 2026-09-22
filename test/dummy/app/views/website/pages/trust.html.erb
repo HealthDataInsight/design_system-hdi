@@ -6,9 +6,12 @@
       ds.main_heading 'Trust & governance'
     end %>
 
-    <%= ds_paragraph 'For a health data organisation this belongs in the navigation, not the footer.' %>
+    <div class="hdi-prose-measure">
+      <%= ds_paragraph 'We understand the NHS Information Governance Framework and we are focused on delivery. All data on HDI equipment is synthetic or meets ICO requirements. Data from public healthcare bodies arrives with Caldicott Guardian approval. Staff work under partner contracts, on approved environments, with mandatory IG and data-security training.' %>
+      <%= ds_paragraph 'Cyber Essentials certified. NHS Data Security and Protection Toolkit — standards met.' %>
+    </div>
 
-    <ul class="hdi-governance-grid">
+    <ul class="hdi-governance-grid" style="margin-top: 2rem;">
       <% governance_topics(detail: true).each do |topic| %>
         <li>
           <article id="<%= topic[:anchor] %>" class="hdi-governance-card">
