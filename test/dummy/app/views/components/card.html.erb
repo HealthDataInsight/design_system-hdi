@@ -1,0 +1,18 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Card', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'A media card for work, news and related items: image, eyebrow, result-led title and meta.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_card title: 'Synthetic cancer data that lets researchers work without touching a patient record',
+            eyebrow: 'Data & Analytics',
+            meta: 'Simulacrum v2 · NHS England NDRS',
+            href: '#',
+            image_label: 'Synthetic data' %>
+<% end %>

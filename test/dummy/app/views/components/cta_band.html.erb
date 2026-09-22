@@ -1,0 +1,16 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'CTA band', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'End-of-page call to action. Renders in page content above the established HDI site footer, not as footer chrome.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_cta_band title: 'Tell us your challenge',
+                lede: "You don't need a specification. A paragraph about the problem is enough to start.",
+                primary: { label: 'Start a conversation', href: '#' } %>
+<% end %>

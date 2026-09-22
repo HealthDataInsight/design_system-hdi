@@ -1,0 +1,18 @@
+<section class="<%= section_class %>">
+  <div class="hdi-section__inner">
+    <%= render DesignSystem::Hdi::HeadingComponent.new(title, level: 2) %>
+    <% if lede.present? %>
+      <p><%= lede %></p>
+    <% end %>
+    <% if primary.present? || secondary.present? %>
+      <div class="hdi-button-row">
+        <% if primary.present? %>
+          <%= render DesignSystem::Hdi::LinkComponent.new(primary[:label], primary[:href], { type: primary_type }) %>
+        <% end %>
+        <% if secondary.present? %>
+          <%= render DesignSystem::Hdi::LinkComponent.new(secondary[:label], secondary[:href], { type: secondary_type }) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

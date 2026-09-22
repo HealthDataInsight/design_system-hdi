@@ -1,0 +1,18 @@
+- slug: bile-duct-audit
+  kind: News
+  date: 2026-05-28
+  title: New national audit will map how bile duct cancer is treated across the UK
+  summary: The audit will follow cholangiocarcinoma (CCA) from diagnosis through treatment, so variation can be seen and acted on.
+  image_label: News
+- slug: endometrial-report-3
+  kind: Report
+  date: 2026-05-14
+  title: Third Endometrial Cancer Audit Pilot report published
+  summary: Covering diagnosis, tumour genomic testing and immunotherapy.
+  image_label: Report
+- slug: pancreatic-scans
+  kind: News
+  date: 2026-04-15
+  title: Looking for missed signs of pancreatic cancer on earlier scans
+  summary: Post Imaging Pancreatic Cancer root cause analysis begins.
+  image_label: News

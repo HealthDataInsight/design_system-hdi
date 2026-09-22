@@ -1,0 +1,28 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Steps', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'DaisyUI steps. Sequential timelines use progress: :through (default). Non-sequential peers (e.g. service pages) use progress: :current to highlight only the active step. Methodology steps use interactive: true so captions disclose on selection. The homepage “What we do” carousel uses ds_service_spine instead.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_steps [
+  { name: 'TRANSFORM', caption: 'Strategy & Transformation', content: '1' },
+  { name: 'CONNECT', caption: 'Data & Analytics', content: '2', current: true },
+  { name: 'BUILD', caption: 'Technology & Solutions', content: '3' },
+  { name: 'DELIVER', caption: 'Programme & Delivery', content: '4' }
+], progress: :current %>
+<% end %>
+
+<%= component_preview do %>
+<%%= ds_steps [
+  { name: 'Scope the question', caption: 'A conversation, not a procurement.', content: '1' },
+  { name: 'Test the options', caption: 'What the data can support, and what it cannot.', content: '2' },
+  { name: 'Make the case', caption: 'A written argument you can take to a board.', content: '3' },
+  { name: 'Hand over', caption: 'A plan your own team can run with.', content: '4' }
+], interactive: true %>
+<% end %>

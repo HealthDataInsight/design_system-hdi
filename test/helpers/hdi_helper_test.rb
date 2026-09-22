@@ -53,4 +53,9 @@ class HdiHelperTest < ActionView::TestCase
     assert_equal %w[Grid Headings], groups[1][:items].pluck(:label)
     assert_equal 'book-open', groups[1][:icon]
   end
+
+  test 'hdi_logo_tag reuses the app chrome wordmark' do
+    @output_buffer = ActionView::OutputBuffer.new(hdi_logo_tag)
+    assert_select 'img.sidebar-logo[src=?]', hdi_logo_src
+  end
 end

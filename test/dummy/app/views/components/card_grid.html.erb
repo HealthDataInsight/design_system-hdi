@@ -1,0 +1,21 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Card grid', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'A heading, optional link and a row of media cards. Used for work, news and related work.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_card_grid heading: 'Our work',
+                 link_label: 'All projects',
+                 link_href: '#',
+                 items: [
+                   { title: 'Synthetic cancer data that lets researchers work without touching a patient record', eyebrow: 'Data & Analytics', meta: 'Simulacrum v2', href: '#', image_label: 'Synthetic data' },
+                   { title: 'National brain tumour statistics, turned into something patients can actually use', eyebrow: 'Technology & Solutions', meta: 'Brain Tumour Data Dashboard', href: '#', image_label: 'Dashboard' },
+                   { title: 'Three national reports on how endometrial cancer is diagnosed and treated', eyebrow: 'Programme & Delivery', meta: 'Endometrial Cancer Audit Pilot', href: '#', image_label: 'Report' }
+                 ] %>
+<% end %>

@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="description" content="">
-  <title>Dummy</title>
+  <title><%= content_for?(:title) ? yield(:title) : 'Dummy' %></title>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>

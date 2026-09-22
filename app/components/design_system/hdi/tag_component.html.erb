@@ -1,0 +1,5 @@
+<% if href.present? %>
+  <%= link_to label, href, class: badge_class, aria: { current: (active? ? 'page' : nil) } %>
+<% else %>
+  <span class="<%= badge_class %>"<%= %( aria-current="page") if active? %>><%= label %></span>
+<% end %>

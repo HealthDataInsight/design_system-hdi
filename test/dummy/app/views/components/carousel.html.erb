@@ -1,0 +1,19 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Carousel', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'A horizontally scrolling row. The logos variant is the partner logo strip: continuous autoplay with faded prev/next controls (paused for prefers-reduced-motion).'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_carousel label: 'NHS partners', variant: :logos, items: [
+  { name: 'NHS England' },
+  { name: 'NDRS' },
+  { name: 'Cambridge University Hospitals' },
+  { name: 'HDR UK' }
+] %>
+<% end %>

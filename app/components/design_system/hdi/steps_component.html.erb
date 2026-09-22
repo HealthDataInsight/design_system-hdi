@@ -1,0 +1,33 @@
+<ul class="<%= steps_class %>"<% if interactive? %> role="radiogroup" aria-label="Steps"<% end %>>
+  <% items.each_with_index do |item, index| %>
+    <% item = item_hash(item) %>
+    <li class="<%= step_class(index) %>"<% if item[:content].present? %> data-content="<%= item[:content] %>"<% end %>>
+      <% if interactive? && item[:href].blank? %>
+        <% caption_id = item[:caption].present? ? "#{input_id(index)}-caption" : nil %>
+        <%= radio_button_tag group_name, index, selected?(item),
+              id: input_id(index),
+              class: 'hdi-steps__input',
+              **(caption_id ? { aria: { describedby: caption_id } } : {}) %>
+        <label class="hdi-steps__control" for="<%= input_id(index) %>">
+          <span class="hdi-steps__name"><%= item[:name] %></span>
+          <% if item[:caption].present? %>
+            <span class="hdi-steps__caption" id="<%= caption_id %>"><%= item[:caption] %></span>
+          <% end %>
+        </label>
+      <% else %>
+        <%# One grid item: vertical steps use 40px | 1fr; bare text+caption would split across columns. %>
+        <% body = tag.span(class: 'hdi-steps__copy') do %>
+          <%= item[:name] %>
+          <% if item[:caption].present? %>
+            <span class="hdi-steps__caption"><%= item[:caption] %></span>
+          <% end %>
+        <% end %>
+        <% if item[:href].present? %>
+          <%= link_to body, item[:href] %>
+        <% else %>
+          <%= body %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

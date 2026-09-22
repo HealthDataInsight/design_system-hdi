@@ -45,6 +45,22 @@ module DesignSystem
             end
           end
         end
+
+        test 'website_root_path is treated as the home crumb' do
+          ds_fixed_elements do |ds|
+            ds.breadcrumb('Home', website_root_path)
+            ds.breadcrumb('Our work', website_work_path)
+          end
+
+          @output_buffer = @view_flow.get(:breadcrumbs)
+
+          assert_select('nav', 'aria-label': 'Breadcrumb') do
+            assert_select('a.hdi-breadcrumbs__link--home', href: website_root_path) do
+              assert_select('span.sr-only', text: 'Home')
+            end
+            assert_select('a.hdi-breadcrumbs__link', href: website_work_path, text: 'Our work')
+          end
+        end
       end
     end
   end

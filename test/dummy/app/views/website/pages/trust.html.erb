@@ -1,0 +1,22 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Trust & governance', website_trust_path)
+      ds.main_heading 'Trust & governance'
+    end %>
+
+    <%= ds_paragraph 'For a health data organisation this belongs in the navigation, not the footer.' %>
+
+    <ul class="hdi-governance-grid">
+      <% governance_topics(detail: true).each do |topic| %>
+        <li>
+          <article id="<%= topic[:anchor] %>" class="hdi-governance-card">
+            <%= ds_heading topic[:title], level: 3 %>
+            <%= ds_paragraph topic[:body] %>
+          </article>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

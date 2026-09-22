@@ -1,0 +1,82 @@
+<% ds_fixed_elements do |ds|
+  ds.breadcrumb('Home', website_root_path)
+  ds.breadcrumb(@service['name'], website_service_path(@service['slug']))
+end %>
+
+<%= ds_hero title: @service['name'],
+            lede: @service['summary'],
+            primary: { label: 'Discuss a problem', href: website_contact_path },
+            secondary: { label: 'See the work', href: website_work_path(service: @service['slug']) },
+            media_label: @service['name'] %>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_steps service_step_items(@service['slug']), progress: :current %>
+  </div>
+</section>
+
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <div class="hdi-reasons">
+      <div class="hdi-reasons__intro">
+        <%= ds_heading 'You might be here because' %>
+      </div>
+      <ul class="hdi-reason-list">
+        <% Array(@service['reasons']).each do |reason| %>
+          <li class="hdi-reason">
+            <%= ds_heading reason['title'], level: 3 %>
+            <%= ds_paragraph reason['body'] %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'What we do' %>
+    <%= ds_paragraph 'Most projects draw on all of these, in this order.' %>
+
+    <%= ds_tab do |tab| %>
+      <% Array(@service['capability_groups']).each_with_index do |group, index| %>
+        <% tab.add_tab_panel(group['name'], nil, "#{@service['slug']}-#{group['name'].parameterize}", selected: index.zero?) do %>
+          <%= ds_paragraph group['intro'] %>
+          <% Array(group['items']).each do |item| %>
+            <%= ds_details(item['title']) { ds_paragraph item['body'] } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<%= ds_partner_grid heading: 'Who we work with on this',
+                    tags: Array(@service['audiences']),
+                    groups: @partners['rows'] %>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'How we work' %>
+
+    <%= ds_tab do |tab| %>
+      <% Array(@service['methods']).each_with_index do |method, index| %>
+        <% tab.add_tab_panel("#{method['name']} · #{method['duration']}", nil, "#{@service['slug']}-#{method['name'].parameterize}", selected: index.zero?) do %>
+          <%= ds_paragraph method['intro'] %>
+          <%= ds_steps(Array(method['steps']).each_with_index.map { |step, step_index|
+            step.merge('content' => (step_index + 1).to_s)
+          }, interactive: true) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<%= ds_card_grid heading: "#{@service['name']} in practice",
+                 link_label: "All #{@service['name']} work",
+                 link_href: website_work_path(service: @service['slug']),
+                 items: @projects.first(3).map { |project| project_card(project) } %>
+
+<%= ds_cta_band title: @service.dig('cta', 'title'),
+                lede: @service.dig('cta', 'body'),
+                primary: { label: 'Start a conversation', href: website_contact_path } %>

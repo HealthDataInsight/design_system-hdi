@@ -93,6 +93,20 @@ en:
           heading: ''
         warning_callout:
           heading: ''
+        card:
+          heading: ''
+        card_grid:
+          heading: ''
+        carousel:
+          heading: ''
+        partner_grid:
+          heading: ''
+        tag:
+          heading: ''
+        stats:
+          heading: ''
+        steps:
+          heading: ''
         grid_full_width:
           heading: Full width
         grid_one_half:

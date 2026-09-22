@@ -1,0 +1,12 @@
+<% content_for :title, @page_title || 'Health Data Insight' %>
+
+<% content_for :website_header do %>
+  <%= ds_navbar items: website_nav_items, cta: website_nav_cta, home_href: website_root_path %>
+<% end %>
+
+<%# Use the established HDI DS footer (.hdi-footer-container). CTA is in-page via ds_cta_band. %>
+<% content_for :website_footer do %>
+  <%= ds_site_footer %>
+<% end %>
+
+<%= render template: 'layouts/application', locals: { ds_layout: 'website' } %>

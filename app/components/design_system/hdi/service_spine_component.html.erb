@@ -1,0 +1,68 @@
+<div class="hdi-service-spine"
+     data-controller="service-spine"
+     data-service-spine-interval-value="<%= interval %>"
+     data-service-spine-index-value="<%= current_index %>">
+  <ul class="steps hdi-steps hdi-steps--interactive hdi-service-spine__steps"
+      role="radiogroup"
+      aria-label="<%= label %>"
+      data-service-spine-target="steps">
+    <% items.each_with_index do |raw, index| %>
+      <% item = item_hash(raw) %>
+      <li class="step" data-content="<%= item[:content].presence || (index + 1) %>">
+        <%= radio_button_tag group_name, index, selected?(index),
+              id: input_id(index),
+              class: 'hdi-steps__input',
+              data: {
+                service_spine_target: 'input',
+                action: 'change->service-spine#select'
+              },
+              aria: { controls: panel_id(index) } %>
+        <label class="hdi-steps__control" for="<%= input_id(index) %>">
+          <span class="hdi-steps__name"><%= item[:spine] || item[:name] %></span>
+          <% if item[:caption].present? || item[:name].present? %>
+            <span class="hdi-steps__caption"><%= item[:caption].presence || item[:name] %></span>
+          <% end %>
+        </label>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="hdi-service-spine__stage"
+       data-service-spine-target="stage"
+       data-action="pointerdown->service-spine#pointerDown pointerup->service-spine#pointerUp pointercancel->service-spine#pointerCancel pointerleave->service-spine#pointerCancel">
+    <% items.each_with_index do |raw, index| %>
+      <% item = item_hash(raw) %>
+      <div class="hdi-service-spine__panel<%= ' is-active' if selected?(index) %>"
+           id="<%= panel_id(index) %>"
+           role="region"
+           aria-labelledby="<%= input_id(index) %>"
+           data-service-spine-target="panel"
+           <%= 'hidden' unless selected?(index) %>>
+        <div class="hdi-service-spine__copy">
+          <p class="hdi-service-spine__eyebrow"><%= item[:spine] %></p>
+          <h3 class="hdi-service-spine__title"><%= item[:name] %></h3>
+          <% if item[:summary].present? %>
+            <p class="hdi-service-spine__summary"><%= item[:summary] %></p>
+          <% end %>
+          <% if Array(item[:offerings]).any? %>
+            <ul class="hdi-service-spine__offerings">
+              <% Array(item[:offerings]).each do |offering| %>
+                <li><%= offering %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <% if item[:href].present? %>
+            <p class="hdi-service-spine__action">
+              <%= link_to 'Explore', item[:href], class: 'hdi-button hdi-button--reverse' %>
+            </p>
+          <% end %>
+        </div>
+        <div class="hdi-service-spine__media">
+          <%= render DesignSystem::Hdi::MediaPlaceholderComponent.new(
+                label: item[:media_label].presence || item[:name]
+              ) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<%= ds_hero title: 'We make health data useful.',
+            lede: 'From strategy and data to technology and delivery, we help organisations turn health data into better decisions, better services and better outcomes.',
+            primary: { label: 'Tell us your challenge', href: website_contact_path },
+            secondary: { label: 'See our work', href: website_work_path },
+            background_image: '/website/hero/britain-rivers.png' %>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'Why we exist' %>
+    <div class="hdi-prose-measure">
+      <%= ds_paragraph 'We are a community interest company, and that is the point rather than a footnote. We exist to deliver for patients and the NHS, and what we earn goes back into doing that.' %>
+      <%= ds_paragraph 'Jem Rashbass and Hilary Wilderspin founded HDI in 2011 to make sure that innovative work with the most personal of health data was done ethically, and for the direct benefit of patients. Two principles have run through everything since: do the right thing, and get the job done quickly.' %>
+      <%= ds_action_link 'More about who we are', website_about_path %>
+    </div>
+  </div>
+</section>
+
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_stats @stats %>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'What we do' %>
+    <%= ds_paragraph 'Most work starts in one of these and runs through several. You can come in at any point — and leave with something that works.' %>
+    <%= ds_service_spine service_spine_items(@services) %>
+  </div>
+</section>
+
+<%= ds_card_grid heading: 'Our work',
+                 link_label: 'All projects and case studies',
+                 link_href: website_work_path,
+                 items: @featured_projects.map { |project| project_card(project) } %>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <div class="hdi-section-header">
+      <%= ds_heading 'How we handle data' %>
+      <%= ds_link_to 'Our governance in full', website_trust_path %>
+    </div>
+    <ul class="hdi-governance-grid">
+      <% governance_topics.each do |topic| %>
+        <li>
+          <%= link_to website_trust_path(anchor: topic[:anchor]), class: 'hdi-governance-card' do %>
+            <%= ds_heading topic[:title], level: 3 %>
+            <%= ds_paragraph topic[:body] %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+
+<%= ds_partner_grid heading: 'Who we work with',
+                    intro: 'We are usually the data, technology or delivery partner inside a much larger collaboration.',
+                    featured: @partners['featured'],
+                    groups: @partners['rows'] %>
+
+<div id="news">
+  <%= ds_card_grid heading: 'Latest',
+                   link_label: 'All news and publications',
+                   link_href: website_work_path,
+                   tone: :light,
+                   items: @news.map { |item| news_card(item) } %>
+</div>
+
+<%= ds_cta_band title: 'Tell us your challenge',
+                lede: "You don't need a specification. A paragraph about the problem is enough to start.",
+                primary: { label: 'Start a conversation', href: website_contact_path } %>

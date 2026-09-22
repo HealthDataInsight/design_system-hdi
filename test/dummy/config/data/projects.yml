@@ -1,0 +1,185 @@
+- slug: simulacrum-v2
+  featured: true
+  title: Synthetic cancer data that lets researchers work without touching a patient record
+  name: Simulacrum v2
+  partner: National Disease Registration Service, NHS England
+  partner_short: NHS England NDRS
+  partner_logos: [NHS England, NDRS]
+  primary_service: data-and-analytics
+  secondary_services: [technology-and-solutions]
+  status: Live and in use
+  running_since: 2018 — v2 released 2023
+  funded_by: NHS England
+  image_label: Synthetic data
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Synthetic data, slug: synthetic-data, facet: method }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Data privacy, slug: data-privacy, facet: method }
+    - { label: Real-world evidence, slug: real-world-evidence, facet: method }
+    - { label: Dataset, slug: dataset, facet: output }
+  summary: Simulacrum v2 is a collection of synthetic datasets built from confidential cancer patient data held by the National Disease Registration Service at NHS England — realistic enough to design a study against, with no real patient in it.
+  challenge: Getting approval to work with real cancer patient data takes months. Researchers were designing studies blind — not knowing whether the data could answer their question until they had already committed to it.
+  challenge_detail: The cancer registry holds around a thousand data items per patient. Nobody outside it could see the shape of that data, so proposals were written on assumption, applications failed late, and good research questions were abandoned for the wrong reasons.
+  research:
+    intro: Synthetic data is only useful if it behaves like the real thing, and only safe if it cannot be traced back to anyone. Those two goals pull against each other, and where you set the balance is a judgement, not a formula.
+    methods:
+      - Records generated from the statistical distribution of the national cancer dataset, not by copying rows.
+      - Re-identification risk tested against known attack models before release.
+      - Fidelity measured against the real distribution for the variables researchers actually use.
+      - Approach reviewed and approved under the NDRS partnership agreement.
+  solution: We built a synthetic twin of the national cancer dataset, then expanded it so it covers the treatment pathway, not just the diagnosis.
+  solution_points:
+    - title: More recent diagnoses
+      body: v2 extends beyond the original cohort so studies are designed against data that reflects current practice.
+    - title: A richer treatment picture
+      body: Chemotherapy, radiotherapy and molecular diagnostic testing, so pathway questions can be asked and not just incidence ones.
+    - title: Free and open to use
+      body: Available under an open licence, without an application to hold patient data.
+    - title: Built to be checked
+      body: Documentation, a data dictionary and the method published alongside the files.
+  impact:
+    - title: For researchers
+      value: 200+
+      description: research groups have used the Simulacrum to design or test a study before applying for real data.
+    - title: For patients
+      value: Zero
+      description: real patient records leave the registry. Research starts without anyone's confidentiality being at stake.
+    - title: For the system
+      value: 6 months
+      description: cut from the time between a research question and a defensible answer.
+  quote:
+    text: It meant we could design the study against data that behaved like the registry, without waiting half a year to find out we had asked the wrong question.
+    attribution: Programme lead, National Disease Registration Service
+  partner_blurb: Part of NHS England. HDI holds a formal partnership agreement with NDRS.
+  tech:
+    - Ruby
+    - PostgreSQL
+    - R
+    - Trusted research environment
+    - Statistical disclosure control
+  timeline:
+    - { dates: 2016–2018, name: 'Phase 1 — original Simulacrum', caption: 'First synthetic release covering diagnosis.' }
+    - { dates: 2019–2022, name: 'Phase 2 — treatment data', caption: 'Chemotherapy, radiotherapy and molecular testing added.' }
+    - { dates: '2023 · open now', name: 'Phase 3 — Simulacrum v2', caption: 'Extended cohort, current practice, open licence.', current: true }
+    - { dates: 2026–, name: 'Phase 4 — further disease areas', caption: 'The same approach, outside cancer.' }
+  outputs:
+    - { title: Download the dataset, detail: CSV · ~1.2 GB · Open Government Licence, icon: arrow-up-on-square, href: 'https://simulacrum.healthdatainsight.org.uk' }
+    - { title: Data dictionary and documentation, detail: Variables, methods and known limitations, icon: document-text, href: 'https://simulacrum.healthdatainsight.org.uk' }
+    - { title: Synthetic data demonstrates major benefits for cancer research, detail: 'Peer-reviewed publication · BMJ, 2024', icon: document-duplicate, href: '#' }
+    - { title: Project website, detail: simulacrum.healthdatainsight.org.uk, icon: inbox-stack, href: 'https://simulacrum.healthdatainsight.org.uk' }
+  related: [cas-explorer, real-world-standing-cohorts, brain-tumour-data-dashboard]
+- slug: brain-tumour-data-dashboard
+  featured: true
+  title: National brain tumour statistics, turned into something patients can actually use
+  name: Brain Tumour Data Dashboard
+  partner: brainstrust
+  partner_short: with the brainstrust
+  partner_logos: [brainstrust]
+  primary_service: technology-and-solutions
+  secondary_services: [data-and-analytics]
+  status: Live and in use
+  image_label: Dashboard
+  keywords:
+    - { label: Technology & Solutions, slug: technology-and-solutions, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Dashboard, slug: dashboard, facet: output }
+  summary: A public dashboard that takes national brain tumour statistics and presents them so patients and families can find a number they recognise.
+  challenge: National brain tumour statistics existed, but not in a form a patient could use.
+  solution: A public dashboard designed with brainstrust, sitting on top of the national registration data.
+  impact:
+    - { title: For patients, value: Public, description: statistics a family can actually read. }
+    - { title: For clinicians, value: Shared, description: picture of incidence and treatment, not a PDF. }
+    - { title: For the system, value: One, description: place to point people, instead of a spreadsheet. }
+  related: [simulacrum-v2, endometrial-cancer-audit]
+- slug: endometrial-cancer-audit
+  featured: true
+  title: Three national reports on how endometrial cancer is diagnosed and treated
+  name: Endometrial Cancer Audit Pilot
+  partner: NHS England
+  partner_short: Endometrial Cancer Audit Pilot
+  partner_logos: [NHS England]
+  primary_service: programme-and-delivery
+  secondary_services: [data-and-analytics]
+  status: Live and in use
+  image_label: National report
+  keywords:
+    - { label: Programme & Delivery, slug: programme-and-delivery, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Clinical audit, slug: clinical-audit, facet: method }
+    - { label: National report, slug: national-report, facet: output }
+  summary: A national audit of how endometrial cancer is diagnosed and treated, reported so clinicians can act on the variation.
+  challenge: Endometrial cancer care varies across the country, and nobody had a single picture of how it is diagnosed and treated.
+  solution: A national audit pilot, three reports, and a method that can be run again.
+  impact:
+    - { title: For clinicians, value: 3, description: national reports covering diagnosis, genomic testing and immunotherapy. }
+    - { title: For patients, value: Named, description: variation, so it can be closed. }
+    - { title: For the system, value: Repeatable, description: audit method, not a one-off snapshot. }
+  related: [corect-r, costs-of-cancer]
+- slug: cas-explorer
+  featured: false
+  title: Showing researchers what cancer data exists before they ask for it
+  name: CAS Explorer
+  partner: NHS England NDRS
+  partner_short: CAS Explorer
+  partner_logos: [NHS England, NDRS]
+  primary_service: data-and-analytics
+  secondary_services: []
+  status: Live and in use
+  image_label: Explorer
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Synthetic data, slug: synthetic-data, facet: method }
+    - { label: Cancer, slug: cancer, facet: subject }
+  summary: A way to see the shape of the cancer registration data before applying to use it.
+  related: [simulacrum-v2]
+- slug: real-world-standing-cohorts
+  featured: false
+  title: Using real-world data to answer what trials are too small to answer
+  name: Real-world Standing Cohorts
+  partner: NHS England
+  partner_short: Real-world Standing Cohorts
+  partner_logos: [NHS England]
+  primary_service: data-and-analytics
+  secondary_services: []
+  status: Live and in use
+  image_label: Cohorts
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Real-world evidence, slug: real-world-evidence, facet: method }
+    - { label: Cancer, slug: cancer, facet: subject }
+  summary: Standing cohorts built from routinely collected data, for questions randomised trials cannot reach.
+  related: [simulacrum-v2, costs-of-cancer]
+- slug: costs-of-cancer
+  featured: false
+  title: What late diagnosis actually costs the NHS, cancer by cancer
+  name: Costs of cancer by stage at diagnosis
+  partner: NHS England
+  partner_short: Costs of cancer by stage at diagnosis
+  partner_logos: [NHS England]
+  primary_service: data-and-analytics
+  secondary_services: [strategy-and-transformation]
+  status: Completed
+  image_label: Health economics
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Cancer, slug: cancer, facet: subject }
+    - { label: Health inequalities, slug: health-inequalities, facet: subject }
+  summary: The cost of diagnosing cancer late, estimated from real-world data, cancer by cancer.
+  related: [endometrial-cancer-audit]
+- slug: corect-r
+  featured: false
+  title: Linking colorectal cancer data across the UK into one resource
+  name: CORECT-R
+  partner: UK Colorectal Cancer Intelligence Hub
+  partner_short: CORECT-R · UK Colorectal Cancer Intelligence Hub
+  primary_service: data-and-analytics
+  secondary_services: []
+  status: Live and in use
+  image_label: Data linkage
+  keywords:
+    - { label: Data & Analytics, slug: data-and-analytics, facet: service }
+    - { label: Data linkage, slug: data-linkage, facet: method }
+    - { label: Cancer, slug: cancer, facet: subject }
+  summary: Colorectal cancer datasets from across the UK, linked into one resource researchers can use.
+  related: [endometrial-cancer-audit, cas-explorer]

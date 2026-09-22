@@ -1,0 +1,49 @@
+<header class="hdi-navbar">
+  <div class="hdi-navbar__inner">
+    <%= link_to home_href, class: 'hdi-navbar__brand', 'aria-label': 'Health Data Insight home' do %>
+      <%= helpers.hdi_logo_tag %>
+    <% end %>
+
+    <ul class="hdi-navbar__links">
+      <% items.each do |item| %>
+        <% item = item_hash(item) %>
+        <li>
+          <% if Array(item[:children]).any? %>
+            <details class="dropdown">
+              <summary class="hdi-navbar__summary"><%= item[:label] %></summary>
+              <ul class="dropdown-content menu hdi-navbar__dropdown">
+                <% Array(item[:children]).each do |child| %>
+                  <% child = item_hash(child) %>
+                  <li><%= link_to child[:label], child[:href] %></li>
+                <% end %>
+              </ul>
+            </details>
+          <% else %>
+            <%= link_to item[:label], item[:href], class: link_class(item[:href]) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if cta.present? %>
+      <%= helpers.ds_link_to cta[:label], cta[:href], type: :button %>
+    <% end %>
+
+    <details class="hdi-navbar__menu">
+      <summary>Menu</summary>
+      <div class="hdi-navbar__drawer">
+        <% items.each do |item| %>
+          <% item = item_hash(item) %>
+          <%= link_to item[:label], item[:href], class: 'hdi-navbar__link' if item[:href].present? %>
+          <% Array(item[:children]).each do |child| %>
+            <% child = item_hash(child) %>
+            <%= link_to child[:label], child[:href], class: 'hdi-navbar__link' %>
+          <% end %>
+        <% end %>
+        <% if cta.present? %>
+          <%= helpers.ds_link_to cta[:label], cta[:href], type: :button %>
+        <% end %>
+      </div>
+    </details>
+  </div>
+</header>

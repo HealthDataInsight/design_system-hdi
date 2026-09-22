@@ -1,0 +1,175 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <% ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Our work', website_work_path)
+      ds.breadcrumb(@project['name'], website_project_path(@project['slug']))
+    end %>
+
+    <div class="hdi-split-grid">
+      <div>
+        <%= ds_heading @project['title'], level: 1 %>
+        <p class="hdi-hero__lede hdi-body-l"><%= @project['summary'] %></p>
+        <div class="hdi-tag-list">
+          <% Array(@project['keywords']).each do |tag| %>
+            <%= ds_tag tag['label'], tag_href(tag), facet: tag['facet'] %>
+          <% end %>
+        </div>
+      </div>
+      <aside class="hdi-glance">
+        <%= ds_heading 'At a glance', level: 3 %>
+        <%= ds_summary_list do |list|
+          list.add_row('Service', @service&.fetch('name', nil))
+          if Array(@project['secondary_services']).any?
+            also = Array(@project['secondary_services']).filter_map { |slug| Website::Catalog.service(slug)&.fetch('name', nil) }.join(', ')
+            list.add_row('Also involved', also)
+          end
+          list.add_row('Partner', @project['partner'])
+          list.add_row('Status', @project['status'])
+          list.add_row('Running since', @project['running_since']) if @project['running_since']
+          list.add_row('Funded by', @project['funded_by']) if @project['funded_by']
+        end %>
+        <% if @project['outputs'].present? %>
+          <%= ds_link_to 'Get the dataset', Array(@project['outputs']).first['href'], type: :button %>
+        <% end %>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner hdi-prose-measure">
+    <%= ds_heading 'The challenge' %>
+    <%= ds_paragraph @project['challenge'] %>
+    <%= ds_paragraph @project['challenge_detail'] if @project['challenge_detail'] %>
+  </div>
+</section>
+
+<% if @project['research'] %>
+  <section class="hdi-section">
+    <div class="hdi-section__inner hdi-prose-measure">
+      <%= ds_heading 'What we had to work out first' %>
+      <%= ds_paragraph @project['research']['intro'] %>
+      <%= ds_heading 'Method, in one line each', level: 3 %>
+      <%= ds_list(type: :bullet) do |list|
+        Array(@project['research']['methods']).each { |line| list.add_item(line) }
+      end %>
+    </div>
+  </section>
+<% end %>
+
+<% if @project['solution'] %>
+  <section class="hdi-section hdi-section--tint">
+    <div class="hdi-section__inner">
+      <div class="hdi-split-grid">
+        <div>
+          <%= ds_heading 'What we did' %>
+          <%= ds_paragraph @project['solution'] %>
+          <% Array(@project['solution_points']).each do |point| %>
+            <%= ds_heading point['title'], level: 3 %>
+            <%= ds_paragraph point['body'] %>
+          <% end %>
+        </div>
+        <%= ds_media_placeholder label: 'Diagram or screenshot' %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<% if Array(@project['impact']).any? %>
+  <section class="hdi-section">
+    <div class="hdi-section__inner">
+      <%= ds_heading 'The impact' %>
+      <%= ds_stats @project['impact'] %>
+    </div>
+  </section>
+<% end %>
+
+<% if @project['quote'] %>
+  <section class="hdi-section hdi-section--tint">
+    <div class="hdi-section__inner">
+      <div class="hdi-split-grid">
+        <blockquote class="hdi-quote">
+          <p><%= @project['quote']['text'] %></p>
+          <footer><%= @project['quote']['attribution'] %></footer>
+        </blockquote>
+        <div>
+          <%= ds_heading 'Delivered with', level: 3 %>
+          <% partner_logos = project_partner_logos(@project) %>
+          <% if partner_logos.any? %>
+            <% partner_logos.each do |item| %>
+              <% item = item.symbolize_keys %>
+              <% if item[:src].present? %>
+                <span class="hdi-logo hdi-logo--featured">
+                  <%= image_tag item[:src], alt: (item[:alt] || item[:name]).to_s %>
+                </span>
+              <% else %>
+                <span class="hdi-logo-mark"><%= item[:name] || @project['partner_short'] %></span>
+              <% end %>
+            <% end %>
+          <% else %>
+            <span class="hdi-logo-mark"><%= @project['partner_short'] %></span>
+          <% end %>
+          <%= ds_paragraph @project['partner_blurb'] if @project['partner_blurb'] %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<% if Array(@project['tech']).any? %>
+  <section class="hdi-section">
+    <div class="hdi-section__inner">
+      <%= ds_heading 'How it was built' %>
+      <div class="hdi-tag-list">
+        <% Array(@project['tech']).each do |item| %>
+          <%= ds_tag item, nil, facet: :method %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<% if Array(@project['timeline']).any? %>
+  <section class="hdi-section hdi-section--tint">
+    <div class="hdi-section__inner">
+      <%= ds_heading 'Timeline' %>
+      <%= ds_steps Array(@project['timeline']).map { |phase|
+        { name: phase['name'], caption: [phase['dates'], phase['caption']].compact.join(' — '), current: phase['current'] }
+      }, orientation: :vertical %>
+    </div>
+  </section>
+<% end %>
+
+<% if Array(@project['outputs']).any? %>
+  <section class="hdi-section">
+    <div class="hdi-section__inner">
+      <%= ds_heading 'Outputs and publications' %>
+      <ul class="hdi-output-list">
+        <% Array(@project['outputs']).each do |output| %>
+          <li>
+            <%= link_to output['href'] do %>
+              <%= hdi_icon(output['icon']) %>
+              <span>
+                <strong><%= output['title'] %></strong>
+                <br>
+                <%= output['detail'] %>
+              </span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+<% end %>
+
+<% if @related.any? %>
+  <%= ds_card_grid heading: 'Related work',
+                   link_label: 'More tagged work',
+                   link_href: website_work_path(keyword: Array(@project['keywords']).find { |tag| tag['facet'] == 'method' }&.fetch('slug', nil)),
+                   items: @related.map { |project| project_card(project) } %>
+<% end %>
+
+<%= ds_cta_band title: 'Working on something similar?',
+                lede: "We've done this with health data and we're doing it now in other disease areas. If you have a dataset you can't share and a question that needs answering, that's a conversation worth having.",
+                primary: { label: 'Start a conversation', href: website_contact_path } %>

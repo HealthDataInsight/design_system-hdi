@@ -1,0 +1,32 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Talk to us', website_contact_path)
+      ds.main_heading 'Tell us your challenge'
+    end %>
+
+    <div class="hdi-split-grid">
+      <div>
+        <%= ds_paragraph "You don't need a specification. A paragraph about the problem is enough to start." %>
+        <%= ds_paragraph 'We reply within 3 working days.' %>
+        <%= ds_inset_text do %>
+          <%= ds_paragraph 'hello@healthdatainsight.org.uk' %>
+          <%= ds_paragraph 'Camlife 4, Capital Park, Cambridge Road, Fulbourn, Cambridge CB21 5XE' %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= ds_form_with model: @enquiry, url: website_contact_path, method: :post do |form| %>
+          <%= form.ds_error_summary if @enquiry.errors.any? %>
+          <%= form.ds_select :topic, options_for_select(Website::Enquiry::TOPICS, @enquiry.topic),
+                             prompt: 'What is this about?', label: { text: 'What is this about?' } %>
+          <%= form.ds_text_field :name, label: { text: 'Your name' } %>
+          <%= form.ds_text_field :organisation, label: { text: 'Organisation' } %>
+          <%= form.ds_text_area :message, label: { text: 'What are you trying to do?' } %>
+          <%= form.ds_submit 'Send' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<footer role="contentinfo" class="relative z-30">
+  <div class="hdi-footer-container">
+    <div class="hdi-width-container">
+      <h2 class="hdi-visually-hidden">Support links</h2>
+      <div class="hdi-footer">
+        <ul class="hdi-footer__list">
+          <% links.each do |link| %>
+            <% link = link_hash(link) %>
+            <li class="hdi-footer__list-item">
+              <%= link_to link[:name],
+                  link[:href],
+                  { class: 'hdi-footer__list-item-link' }.merge(link[:options] || {}) %>
+            </li>
+          <% end %>
+        </ul>
+        <div>
+          <% if copyright.present? %>
+            <p class="hdi-footer__copyright">
+              <%= copyright %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

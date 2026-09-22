@@ -1,0 +1,19 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('Our work', website_work_path)
+      ds.main_heading work_index_heading(service_slug: @filter_service, keyword: @filter_keyword)
+    end %>
+
+    <div class="hdi-chip-row" role="list" aria-label="Filter work">
+      <% work_filter_chips(services: @services, service_slug: @filter_service, keyword: @filter_keyword).each do |chip| %>
+        <div role="listitem">
+          <%= ds_tag chip[:label], chip[:href], facet: chip[:facet], active: chip[:active] %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= ds_card_grid items: @projects.map { |project| project_card(project) } %>

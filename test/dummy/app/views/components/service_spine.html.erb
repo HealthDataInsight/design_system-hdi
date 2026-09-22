@@ -1,0 +1,27 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Service spine', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'Homepage “What we do” pattern: step markers stay visible while one full-width indigo panel shows the selected service. Click a step, swipe the panel, or let it auto-advance every 5 seconds (paused when prefers-reduced-motion is set). Distinct from methodology Steps with interactive: true.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_service_spine [
+  { spine: 'TRANSFORM', name: 'Strategy & Transformation', summary: 'Work out what to change, and make the case for it.',
+    offerings: ['Health data strategy', 'Service & pathway design', 'Discovery & user research'],
+    href: '#', content: '1', current: true },
+  { spine: 'CONNECT', name: 'Data & Analytics', summary: 'Turning complex real-world health data into trusted evidence.',
+    offerings: ['Acquisition & linkage', 'Analysis & modelling', 'Synthetic data'],
+    href: '#', content: '2' },
+  { spine: 'BUILD', name: 'Technology & Solutions', summary: 'Build the thing that makes the data usable day to day.',
+    offerings: ['Bespoke software & platforms', 'EHR integration', 'Digital pathology'],
+    href: '#', content: '3' },
+  { spine: 'DELIVER', name: 'Programme & Project Delivery', summary: 'Run it, land it, and prove it worked.',
+    offerings: ['Programme management', 'Clinical audit delivery', 'Evaluation & reporting'],
+    href: '#', content: '4' }
+] %>
+<% end %>

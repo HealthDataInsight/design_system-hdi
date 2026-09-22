@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   private
 
   def add_navigation
+    add_navigation_item('HDI website', website_root_path, icon: 'home')
     add_navigation_item('Manage Assistants', assistants_path, icon: 'users')
 
     add_navigation_item('GOV.UK', url_for(brand: 'govuk'), icon: 'ellipsis-horizontal-circle')

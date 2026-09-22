@@ -1,0 +1,22 @@
+<% content_for :body do %>
+  <div class="hdi-page">
+    <%= content_for?(:website_header) ? yield(:website_header) : ds_navbar %>
+
+    <% if content_for?(:breadcrumbs) %>
+      <div class="hdi-page__breadcrumbs">
+        <div class="hdi-section__inner">
+          <%= yield :breadcrumbs %>
+        </div>
+      </div>
+    <% end %>
+
+    <main class="hdi-page__main">
+      <%= render 'layouts/alert_and_notice' %>
+      <%= yield %>
+    </main>
+
+    <%= content_for?(:website_footer) ? yield(:website_footer) : ds_site_footer %>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/hdi/full_page' %>

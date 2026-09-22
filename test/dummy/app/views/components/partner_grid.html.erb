@@ -1,0 +1,20 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Partner grid', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'Featured marks, then unlabeled logo carousels grouped by type — constrained to the section content width, with continuous autoplay and faded arrow controls.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_partner_grid heading: 'Who we work with',
+                    intro: 'We are usually the data, technology or delivery partner inside a much larger collaboration.',
+                    featured: [{ name: 'NHS England' }, { name: 'NDRS' }],
+                    groups: [
+                      { logos: [{ name: 'brainstrust' }, { name: 'Cancer Research UK' }, { name: 'Macmillan' }] },
+                      { logos: [{ name: 'University of Cambridge' }, { name: 'University of Leeds' }] }
+                    ] %>
+<% end %>

@@ -1,0 +1,24 @@
+<article class="card card-border hdi-media-card">
+  <figure class="hdi-media-card__figure">
+    <% if image_src.present? %>
+      <%= image_tag image_src, alt: image_alt.to_s %>
+    <% else %>
+      <%= render DesignSystem::Hdi::MediaPlaceholderComponent.new(label: image_label) %>
+    <% end %>
+  </figure>
+  <div class="card-body">
+    <% if eyebrow.present? %>
+      <p class="hdi-media-card__eyebrow"><%= eyebrow %></p>
+    <% end %>
+    <h3 class="card-title hdi-media-card__title">
+      <% if href.present? %>
+        <%= link_to title, href %>
+      <% else %>
+        <%= title %>
+      <% end %>
+    </h3>
+    <% if meta.present? %>
+      <p class="hdi-media-card__meta"><%= meta %></p>
+    <% end %>
+  </div>
+</article>

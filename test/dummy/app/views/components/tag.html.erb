@@ -1,0 +1,16 @@
+<%=
+ds_fixed_elements do |ds|
+  ds.main_heading 'Tag', caption: 'Content presentation'
+
+  ds.breadcrumb('Home', root_path)
+  ds.breadcrumb('Components', components_path)
+
+  ds.lead_paragraph 'DaisyUI badges used as tags. The service facet is outline; other facets are soft. Tags link to a filtered listing when given an href.'
+end
+%>
+
+<%= component_preview do %>
+<%%= ds_tag 'Data & Analytics', '#', facet: :service %>
+<%%= ds_tag 'Synthetic data', '#', facet: :method %>
+<%%= ds_tag 'Cancer', '#', facet: :subject %>
+<% end %>

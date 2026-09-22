@@ -1,0 +1,60 @@
+<% region_label = label.presence || 'Carousel' %>
+<div class="<%= carousel_class %>"
+     role="region"
+     aria-label="<%= region_label %>"
+     <% if logos? %>
+     data-controller="carousel"
+     <% end %>>
+  <% if logos? %>
+    <button type="button"
+            class="hdi-carousel__control hdi-carousel__control--prev"
+            data-action="carousel#previous"
+            aria-label="Previous <%= region_label.downcase %>"
+            hidden
+            disabled>
+      <span class="hdi-carousel__control-icon" aria-hidden="true"></span>
+    </button>
+  <% end %>
+
+  <div class="hdi-carousel__track"<% if logos? %> data-carousel-target="track"<% end %>>
+    <% if content.present? %>
+      <%= content %>
+    <% else %>
+      <% items.each do |item| %>
+        <% item = item.symbolize_keys %>
+        <div class="hdi-carousel__item">
+          <% if variant == :logos %>
+            <% name = item[:name] || item[:alt] %>
+            <% if item[:src].present? %>
+              <% logo = image_tag(item[:src], alt: (item[:alt] || name).to_s, loading: 'lazy') %>
+              <% if item[:href].present? %>
+                <%= link_to item[:href], class: 'hdi-logo' do %><%= logo %><% end %>
+              <% else %>
+                <span class="hdi-logo"><%= logo %></span>
+              <% end %>
+            <% elsif item[:href].present? %>
+              <%= link_to name, item[:href], class: 'hdi-logo-mark' %>
+            <% else %>
+              <span class="hdi-logo-mark"><%= name %></span>
+            <% end %>
+          <% elsif item[:src].present? %>
+            <%= image_tag item[:src], alt: item[:alt].to_s %>
+          <% else %>
+            <%= render DesignSystem::Hdi::MediaPlaceholderComponent.new(label: item[:label]) %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if logos? %>
+    <button type="button"
+            class="hdi-carousel__control hdi-carousel__control--next"
+            data-action="carousel#next"
+            aria-label="Next <%= region_label.downcase %>"
+            hidden
+            disabled>
+      <span class="hdi-carousel__control-icon" aria-hidden="true"></span>
+    </button>
+  <% end %>
+</div>

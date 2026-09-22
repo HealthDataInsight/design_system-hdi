@@ -1,0 +1,245 @@
+featured:
+  - name: NHS England
+    src: /website/partners/NHS-E-logo.png
+    alt: NHS England
+    services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+  - name: NDRS
+    src: /website/partners/NDRS-logo.png
+    alt: National Disease Registration Service
+    services: [data-and-analytics, technology-and-solutions]
+
+rows:
+  - label: NHS organisations
+    logos:
+      - name: NHS Scotland
+        src: /website/partners/NHS-Scotland_Logo_Large.png
+        alt: NHS Scotland
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Public Health Wales
+        src: /website/partners/Public-Health-Wales-logo.png
+        alt: Public Health Wales
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: University Hospitals Birmingham
+        src: /website/partners/UHB_left_aligned_singleline.png
+        alt: University Hospitals Birmingham
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Barts Health
+        src: /website/partners/Barts-Health.png
+        alt: Barts Health NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Leeds Teaching Hospitals
+        src: /website/partners/The-Leeds-Teaching-Hospitals-NHS-Trust-logo.png
+        alt: The Leeds Teaching Hospitals NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Newcastle upon Tyne Hospitals
+        src: /website/partners/The-Newcastle-upon-Tyne-Hospitals-NHS-Foundation-Trust-full-colour-300x62-1.jpg
+        alt: The Newcastle upon Tyne Hospitals NHS Foundation Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Birmingham Women's and Children's
+        src: /website/partners/Birmingham-Womens-and-Childrens-Hospital.png
+        alt: Birmingham Women's and Children's NHS Foundation Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: University Hospitals Coventry and Warwickshire
+        src: /website/partners/UHCW-NHS-Trust-BLUE.jpg
+        alt: University Hospitals Coventry and Warwickshire
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Gloucestershire Hospitals
+        src: /website/partners/Gloucestershire-Hospitals.png
+        alt: Gloucestershire Hospitals NHS Foundation Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: St George's University Hospitals
+        src: /website/partners/sguh-left-aligned.png
+        alt: St George's University Hospitals NHS Foundation Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Sandwell and West Birmingham
+        src: /website/partners/Sandwell-and-West-Birmingham.png
+        alt: Sandwell and West Birmingham NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Portsmouth Hospitals
+        src: /website/partners/Portsmouth-Hospitals_logo.png
+        alt: Portsmouth Hospitals University NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Barking, Havering and Redbridge
+        src: /website/partners/Barking_Havering_and_Redbridge_University_Hospitals_NHS_Trust_logo.png
+        alt: Barking, Havering and Redbridge University Hospitals NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Mid Yorkshire Teaching NHS Trust
+        src: /website/partners/Mid-Yorkshire-Teaching-NHS-Trust.png
+        alt: Mid Yorkshire Teaching NHS Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+      - name: Airedale NHS Foundation Trust
+        src: /website/partners/Airedale_NHS_logo_bg.jpg
+        alt: Airedale NHS Foundation Trust
+        services: [data-and-analytics, technology-and-solutions, programme-and-delivery]
+  - label: Charities
+    logos:
+      - name: Cancer Research UK
+        src: /website/partners/cruk-logo.png
+        alt: Cancer Research UK
+        services: [data-and-analytics]
+      - name: Macmillan
+        src: /website/partners/Macmillan.png
+        alt: Macmillan Cancer Support
+        services: [programme-and-delivery]
+      - name: brainstrust
+        src: /website/partners/brainstrust-logo.jpg
+        alt: brainstrust
+        services: [technology-and-solutions, data-and-analytics]
+      - name: Pancreatic Cancer UK
+        src: /website/partners/Pancreatic-Cancer-logo.png
+        alt: Pancreatic Cancer UK
+        services: [data-and-analytics]
+      - name: The Eve Appeal
+        src: /website/partners/The_Eve_Appeal_logo_Digital-500.png
+        alt: The Eve Appeal
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Target Ovarian Cancer
+        src: /website/partners/target-ovarian-cancer_logo_square.png
+        alt: Target Ovarian Cancer
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Ovarian Cancer Action
+        src: /website/partners/Ovarian-Cancer-Action.png
+        alt: Ovarian Cancer Action
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Bowel Cancer UK
+        src: /website/partners/bowelcanceruk.png
+        alt: Bowel Cancer UK
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Heartburn Cancer UK
+        src: /website/partners/Heartburn-Cancer-UK.png
+        alt: Heartburn Cancer UK
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Kidney Cancer UK
+        src: /website/partners/Kidney-cancer-UK-slider-image.jpg
+        alt: Kidney Cancer UK
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Peaches Womb Cancer Trust
+        src: /website/partners/Peaches-womb-cancer-trust.png
+        alt: Peaches Womb Cancer Trust
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Childhood Eye Cancer Trust
+        src: /website/partners/Childhood-Eye-Cancer-Trust.png
+        alt: Childhood Eye Cancer Trust
+        services: [data-and-analytics, technology-and-solutions]
+      - name: AMMF
+        src: /website/partners/ammf-logo.jpg
+        alt: AMMF The Cholangiocarcinoma Charity
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Cholangiocarcinoma
+        src: /website/partners/cholangiocarcinoma-150.png
+        alt: Cholangiocarcinoma
+        services: [data-and-analytics, technology-and-solutions]
+  - label: Universities
+    logos:
+      - name: University of Cambridge
+        src: /website/partners/cambridge_university2.png
+        alt: University of Cambridge
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: University of Oxford
+        src: /website/partners/Oxford-University-s.png
+        alt: University of Oxford
+        services: [data-and-analytics]
+      - name: King's College London
+        src: /website/partners/1200px-Kings_College_London_logo.svg_.png
+        alt: King's College London
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: University of Edinburgh
+        src: /website/partners/University-of-Edinburgh.png
+        alt: University of Edinburgh
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: University of Manchester
+        src: /website/partners/Manchester-University.gif
+        alt: The University of Manchester
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: University of Leeds
+        src: /website/partners/University-of-Leeds-1-300x300-1.png
+        alt: University of Leeds
+        services: [data-and-analytics]
+      - name: University of Birmingham
+        src: /website/partners/uob-logo.png
+        alt: University of Birmingham
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: University of Southampton
+        src: /website/partners/university-of-southampton-vector-logo-2022-small.png
+        alt: University of Southampton
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: Newcastle University
+        src: /website/partners/newcastle-university.png
+        alt: Newcastle University
+        services: [data-and-analytics, strategy-and-transformation]
+      - name: Institute of Cancer Research
+        src: /website/partners/icr_logo.png
+        alt: The Institute of Cancer Research
+        services: [data-and-analytics, strategy-and-transformation]
+  - label: Professional bodies
+    logos:
+      - name: Royal College of Physicians
+        src: /website/partners/rcp-logo.png
+        alt: Royal College of Physicians
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: Royal College of Surgeons of England
+        src: /website/partners/royal-college-of-surgeons-of-england-logo-v2-transparent.png
+        alt: Royal College of Surgeons of England
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: Royal College of General Practitioners
+        src: /website/partners/Royal-College-of-GPs.png
+        alt: Royal College of General Practitioners
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: Royal College of Pathologists
+        src: /website/partners/Royal-College-of-Pathologists.png
+        alt: The Royal College of Pathologists
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: JAG
+        src: /website/partners/JAG-Logo.jpg
+        alt: Joint Advisory Group on GI Endoscopy
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: British Society of Gastroenterology
+        src: /website/partners/BSG.png
+        alt: British Society of Gastroenterology
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: BASL
+        src: /website/partners/BASL.png
+        alt: British Association for the Study of the Liver
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: British Gynaecological Cancer Society
+        src: /website/partners/british-gynaecological-cancer-society-logo.png
+        alt: British Gynaecological Cancer Society
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: British Association of Gynaecological Pathologists
+        src: /website/partners/The-British-Association-of-Gynaecological-Pathologists.png
+        alt: The British Association of Gynaecological Pathologists
+        services: [strategy-and-transformation, programme-and-delivery]
+      - name: Association of Breast Surgery
+        src: /website/partners/Association-of-Breast-Surgery.png
+        alt: Association of Breast Surgery
+        services: [strategy-and-transformation, programme-and-delivery]
+  - label: Industry
+    logos:
+      - name: AstraZeneca
+        src: /website/partners/AstraZeneca.png
+        alt: AstraZeneca
+        services: [data-and-analytics]
+      - name: GSK
+        src: /website/partners/gsk.png
+        alt: GSK
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Novartis
+        src: /website/partners/novartis-logo-transparent.webp
+        alt: Novartis
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Janssen
+        src: /website/partners/janssen.png
+        alt: Janssen
+        services: [data-and-analytics, technology-and-solutions]
+      - name: Merck
+        src: /website/partners/Logo_Merck_KGaA_2015.png
+        alt: Merck
+        services: [data-and-analytics, technology-and-solutions]
+      - name: IQVIA
+        src: /website/partners/iqvia-logo.png
+        alt: IQVIA
+        services: [technology-and-solutions]
+      - name: GRAIL
+        src: /website/partners/GRAIL-logox200.png
+        alt: GRAIL
+        services: [data-and-analytics, technology-and-solutions]

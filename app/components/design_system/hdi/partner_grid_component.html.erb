@@ -1,0 +1,54 @@
+<section class="hdi-section hdi-partner-grid">
+  <div class="hdi-section__inner">
+    <% if heading.present? %>
+      <div class="hdi-section-header">
+        <div class="hdi-section-header__intro">
+          <%= render DesignSystem::Hdi::HeadingComponent.new(heading, level: 2) %>
+          <% if intro.present? %>
+            <%= render DesignSystem::Hdi::ParagraphComponent.new(text: intro) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if tags.any? %>
+      <div class="hdi-chip-row">
+        <% tags.each do |tag| %>
+          <%= render DesignSystem::Hdi::TagComponent.new(tag.to_s, nil, facet: :subject) %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if featured.any? %>
+      <div class="hdi-partner-featured">
+        <% featured.each do |item| %>
+          <% item = item.symbolize_keys %>
+          <span class="hdi-logo hdi-logo--featured">
+            <% if item[:src].present? %>
+              <%= image_tag item[:src], alt: (item[:alt] || item[:name]).to_s %>
+            <% else %>
+              <span class="hdi-logo-mark"><%= item[:name] %></span>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if groups.any? %>
+      <div class="hdi-partner-grid__rows<%= ' hdi-partner-grid__rows--after-featured' if featured.any? %>">
+        <% groups.each do |group| %>
+          <% group = group.symbolize_keys %>
+          <% logos = Array(group[:logos]) %>
+          <% next if logos.empty? %>
+          <div class="hdi-partner-row">
+            <%= render DesignSystem::Hdi::CarouselComponent.new(
+              label: group[:label].presence || 'Partners',
+              variant: :logos,
+              items: logos
+            ) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

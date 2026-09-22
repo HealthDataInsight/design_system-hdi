@@ -1,0 +1,22 @@
+<section class="<%= section_class %>">
+  <div class="hdi-section__inner">
+    <% if heading.present? || link_label.present? %>
+      <div class="hdi-section-header">
+        <% if heading.present? %>
+          <%= render DesignSystem::Hdi::HeadingComponent.new(heading, level: 2) %>
+        <% end %>
+        <% if link_label.present? && link_href.present? %>
+          <%= helpers.ds_link_to link_label, link_href %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="hdi-card-grid__items">
+      <% items.each do |item| %>
+        <%= render DesignSystem::Hdi::CardComponent.new(**item.symbolize_keys.slice(
+          :title, :eyebrow, :meta, :href, :image_label, :image_src, :image_alt
+        )) %>
+      <% end %>
+    </div>
+  </div>
+</section>

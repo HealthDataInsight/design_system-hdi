@@ -1,0 +1,308 @@
+- slug: strategy-and-transformation
+  name: Strategy & Transformation
+  spine: TRANSFORM
+  spine_caption: Work out what to change, and make the case for it.
+  outcome: Work out what to change first.
+  summary: Work out what to change, and make the case for it.
+  lede: We help organisations decide what to change, and make a case that stands up to scrutiny.
+  offerings:
+    - Health data strategy
+    - Service & pathway design
+    - Discovery & user research
+    - Information governance
+  audiences:
+    - Service improvement leads
+    - Programme partners
+    - Government and civil service teams
+  reasons:
+    - title: You know something needs to change, but not what.
+      body: We work out the question, the users, and the case for doing it — before anyone writes a specification.
+    - title: The business case keeps bouncing.
+      body: We build the evidence, the governance story and the delivery plan as one argument.
+    - title: Pathways look different in every organisation.
+      body: Discovery and user research so the service you design is the one people will actually use.
+  capability_groups:
+    - name: Direction
+      intro: Setting the question and the constraints before anyone builds.
+      items:
+        - title: Health data strategy
+          body: A plan for what data you need, what you already have, and what it would take to close the gap.
+        - title: Information governance
+          body: How data is approved, handled and destroyed, written so a reviewer can follow it.
+    - name: Design
+      intro: Shaping the service around the people who will use it.
+      items:
+        - title: Service and pathway design
+          body: Mapping how work actually happens, then designing the change.
+        - title: Discovery and user research
+          body: Talking to the people who hold the problem before anyone writes a specification.
+    - name: Case for change
+      intro: Evidence that stands up in a board paper.
+      items:
+        - title: Options appraisal
+          body: What you could do, what it would cost, and what you would be trading off.
+        - title: Benefits and evaluation
+          body: How you will know it worked, agreed before delivery starts.
+  methods:
+    - name: Short engagements
+      duration: 6–12 weeks
+      intro: A feasibility question, an insight project, a prototype. One question, one answer, a fixed price.
+      steps:
+        - name: Scope the question
+          caption: A conversation, not a procurement.
+        - name: Test the options
+          caption: What the data can support, and what it cannot.
+        - name: Make the case
+          caption: A written argument you can take to a board.
+        - name: Hand over
+          caption: A plan your own team can run with.
+    - name: Long programmes
+      duration: 1–5 years
+      intro: National change that has to land in more than one organisation.
+      steps:
+        - name: Discover
+          caption: Users, data and the real constraints.
+        - name: Design
+          caption: The service, the governance and the delivery plan.
+        - name: Mobilise
+          caption: Standing up the team and the first sites.
+        - name: Evaluate
+          caption: Evidence that it did what it said it would.
+  cta:
+    title: Need a strategy you can stand behind?
+    body: Tell us the decision you need to make. We will tell you whether the evidence exists, and what it would take to get it.
+- slug: data-and-analytics
+  name: Data & Analytics
+  spine: CONNECT
+  spine_caption: Get to the data, join it up, and find out what it says.
+  outcome: Get to the data and find out what it says.
+  summary: Turning complex real-world health data into trusted evidence, insight and better decisions.
+  lede: We help organisations acquire, connect, manage and analyse complex health data to answer important questions and improve outcomes — including data nobody else can easily reach.
+  offerings:
+    - Acquisition & linkage
+    - Analysis & modelling
+    - Synthetic data
+    - Real-world evidence
+  audiences:
+    - Academic and pharma researchers
+    - NHS clinicians running audits
+    - Charities and patient advocacy groups
+    - Funded research consortia
+    - Government and civil service teams
+  reasons:
+    - title: You have a question the national statistics can't answer.
+      body: We find the data that can, work out whether it is fit to answer it, and tell you honestly if it isn't.
+    - title: Your data sits in three systems that don't talk to each other.
+      body: We extract, link and quality-assure it so the analysis you get is one you can defend.
+    - title: You need to work with patient data without holding patient data.
+      body: Synthetic datasets and secure environments let research start before access is granted.
+  capability_groups:
+    - name: Data foundations
+      intro: Getting to the data and making it trustworthy. The part most people underestimate, and the part that decides whether the analysis holds up.
+      items:
+        - title: Data acquisition & extraction
+          body: Getting data out of clinical systems, registries, research databases and applications — including sources that need a negotiated agreement before anyone can touch them.
+        - title: Data engineering & integration
+          body: Pipelines that keep running after we leave, documented so your own team can maintain them.
+        - title: Data linkage
+          body: Joining datasets that were never designed to be joined, with the match rates and their limitations stated openly.
+        - title: Curation & preparation
+          body: Structuring, labelling and enriching so the data can answer the question actually being asked of it.
+        - title: Data quality & assurance
+          body: Validation and integrity checks, written down so a reviewer or regulator can follow exactly what was done.
+        - title: Secure data environments
+          body: Working inside trusted research environments to the Five Safes, so identifiable data never has to move.
+    - name: Analysis & modelling
+      intro: Finding out what the data says, and being honest about the limits of that answer.
+      items:
+        - title: Statistical analysis
+          body: Descriptive, inferential and longitudinal analysis written so a non-statistician can follow the argument.
+        - title: Epidemiology
+          body: Incidence, pathways and outcomes at population scale.
+        - title: Health economics
+          body: What late diagnosis, treatment variation or an intervention actually costs.
+        - title: AI and machine learning
+          body: Models that are tested against the messy data they will meet in production, not only the tidy set they were trained on.
+    - name: Insight & evidence
+      intro: Turning the analysis into something a decision-maker can use.
+      items:
+        - title: Real-world evidence
+          body: Using routinely collected data to answer questions trials are too small or too narrow to answer.
+        - title: Synthetic data
+          body: Datasets that behave like the real thing so research can start before access is granted.
+        - title: Reporting and visualisation
+          body: Numbers in a form the people who need them will actually open.
+  methods:
+    - name: Short engagements
+      duration: 6–12 weeks
+      intro: A feasibility question, an insight project, a prototype. One question, one answer, a fixed price.
+      steps:
+        - name: Scope the question
+          caption: A conversation, not a procurement. We tell you whether data exists that can answer it.
+        - name: Check feasibility
+          caption: Often against the Simulacrum, so we can test the approach before any access is granted.
+        - name: Analyse
+          caption: Extraction, linkage and analysis, with the method written down as we go.
+        - name: Hand over
+          caption: A report or dashboard you own, plus a straight answer on what it does and doesn't show.
+    - name: Long programmes
+      duration: 1–5 years
+      intro: National audits, standing cohorts and data resources that have to keep running.
+      steps:
+        - name: Design the resource
+          caption: What it must contain, who it is for, and the governance it sits under.
+        - name: Build and link
+          caption: Pipelines, quality checks and the first extracts.
+        - name: Operate
+          caption: Refreshing the data and supporting the people who use it.
+        - name: Evaluate
+          caption: Whether it is answering the questions it was built for.
+  cta:
+    title: Got a data question you can't answer yet?
+    body: Tell us what you're trying to find out. We'll tell you whether the data exists, what it would take, and whether we're the right people — before anyone writes a proposal.
+- slug: technology-and-solutions
+  name: Technology & Solutions
+  spine: BUILD
+  spine_caption: Build the thing that makes the data usable day to day.
+  outcome: Make the analysis into a tool people use.
+  summary: Build the thing that makes the data usable day to day.
+  lede: We design and build software, platforms and integrations so health data can be used by the people who need it, not only the team that analysed it.
+  offerings:
+    - Bespoke software & platforms
+    - EHR integration
+    - Digital pathology
+    - AI-assisted automation
+  audiences:
+    - NHS clinicians running audits
+    - Programme partners
+    - Industry and independent providers
+  reasons:
+    - title: The analysis lives in a spreadsheet no one else can run.
+      body: We turn it into a tool the people who need it will actually open.
+    - title: The data is in the EHR, and nowhere else can see it.
+      body: Integration that respects the clinical system rather than fighting it.
+    - title: A national dataset is useless if patients cannot read it.
+      body: Dashboards and products designed with the people who will use them.
+  capability_groups:
+    - name: Products
+      intro: Things people use, not slideware.
+      items:
+        - title: Bespoke software and platforms
+          body: Systems built for a specific workflow, documented so they can be handed on.
+        - title: Dashboards and reporting tools
+          body: National statistics turned into something a patient, clinician or commissioner can use.
+    - name: Integration
+      intro: Getting data in and out of the systems that already exist.
+      items:
+        - title: EHR integration
+          body: Connecting to clinical systems without asking the ward to change how it works.
+        - title: Digital pathology
+          body: Imaging and reporting workflows that sit alongside the laboratory, not on top of it.
+    - name: Automation
+      intro: Taking repetitive work off people who have better things to do.
+      items:
+        - title: AI-assisted automation
+          body: Models in production, with the failure modes written down.
+        - title: Operational tooling
+          body: The unglamorous systems that keep a national programme moving.
+  methods:
+    - name: Short engagements
+      duration: 6–12 weeks
+      intro: A prototype or a thin slice of a product, to prove the idea before anyone commits to a platform.
+      steps:
+        - name: Frame the job
+          caption: Who will use it, and what “working” looks like.
+        - name: Prototype
+          caption: A slice that can be put in front of users.
+        - name: Test
+          caption: Does it answer the job, and can it be operated.
+        - name: Decide
+          caption: Build it out, stop, or change the question.
+    - name: Long programmes
+      duration: 1–5 years
+      intro: Platforms and national products that have to keep running after we leave.
+      steps:
+        - name: Discover
+          caption: Users, systems and the operational constraints.
+        - name: Build
+          caption: Iterations in production, not a big-bang launch.
+        - name: Operate
+          caption: Support, monitoring and the handover to your team.
+        - name: Evolve
+          caption: New users and new data, without starting again.
+  cta:
+    title: Need the analysis to become a tool people use?
+    body: Tell us who needs to see the data, and in what form. We will tell you whether a product is the right answer.
+- slug: programme-and-delivery
+  name: Programme & Project Delivery
+  spine: DELIVER
+  spine_caption: Run it, land it, and prove it worked.
+  outcome: Run it at national scale.
+  summary: Run it, land it, and prove it worked.
+  lede: We run programmes and projects so they land — on time, with the evidence that they did what they said they would.
+  offerings:
+    - Programme management
+    - Clinical audit delivery
+    - Implementation & mobilisation
+    - Evaluation & reporting
+  audiences:
+    - NHS clinicians running audits
+    - Programme partners
+    - Government and civil service teams
+  reasons:
+    - title: The programme is national, and the sites are all different.
+      body: Implementation that deals with the variation rather than pretending it isn't there.
+    - title: You need an audit that clinicians will actually complete.
+      body: Delivery designed around the people doing the work, not only the dataset at the end.
+    - title: Funders will ask whether it worked.
+      body: Evaluation designed in from the start, not bolted on after the report is due.
+  capability_groups:
+    - name: Running the work
+      intro: Keeping a programme honest about time, scope and evidence.
+      items:
+        - title: Programme management
+          body: Planning, risks and decisions written down so they can be followed later.
+        - title: Clinical audit delivery
+          body: National audits that collect the data, produce the reports and still have clinicians on side.
+    - name: Landing it
+      intro: Getting from a design to something that is actually in use.
+      items:
+        - title: Implementation and mobilisation
+          body: Standing up sites, training and the operational rhythm.
+        - title: Change support
+          body: The conversations that decide whether a new way of working sticks.
+    - name: Proving it
+      intro: Evidence for the people who funded it and the people who use it.
+      items:
+        - title: Evaluation and reporting
+          body: What changed, for whom, and what you would do differently.
+        - title: National reporting
+          body: Findings that a clinician, a commissioner and a patient can all read.
+  methods:
+    - name: Short engagements
+      duration: 6–12 weeks
+      intro: A mobilisation, an evaluation or a recovery plan. A defined piece of delivery with a defined end.
+      steps:
+        - name: Take stock
+          caption: What is actually happening, not what the plan said.
+        - name: Reset
+          caption: Scope, sequence and the evidence you still need.
+        - name: Deliver
+          caption: The next increment, with the risks visible.
+        - name: Report
+          caption: What moved, and what is still in the way.
+    - name: Long programmes
+      duration: 1–5 years
+      intro: Multi-year national programmes, including clinical audits.
+      steps:
+        - name: Set up
+          caption: Governance, sites and the first data.
+        - name: Deliver
+          caption: Cycles of collection, analysis and reporting.
+        - name: Improve
+          caption: Acting on what the last cycle showed.
+        - name: Hand on
+          caption: A programme your own team can keep running.
+  cta:
+    title: Need a programme that actually lands?
+    body: Tell us what you are trying to deliver, and where it is stuck. We will tell you what it would take to finish it.
