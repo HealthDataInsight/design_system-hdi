@@ -11,17 +11,22 @@
       <%= ds_paragraph @people['team_blurb'] %>
     </div>
 
-    <%= ds_heading 'Directors', level: 2 %>
-    <ul class="hdi-people-grid">
-      <% Array(@people['directors']).each do |person| %>
-        <li class="hdi-person-card">
-          <h3 class="hdi-heading-m"><%= person['name'] %></h3>
-          <p class="hdi-person-card__role"><%= person['role'] %></p>
-          <% if person['summary'].present? %>
-            <p class="hdi-body"><%= person['summary'] %></p>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <% [
+      ['Directors', @people['directors']],
+      ['Team', @people['team']],
+      ['Associates', @people['associates']]
+    ].each do |section_title, people| %>
+      <% people = Array(people) %>
+      <% next if people.empty? %>
+
+      <%= ds_heading section_title, level: 2 %>
+      <ul class="hdi-people-grid">
+        <% people.each do |person| %>
+          <li>
+            <%= render 'website/pages/person_card', person: person, variant: :light %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </section>

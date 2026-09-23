@@ -22,10 +22,12 @@ module DesignSystem
           )
 
           assert_select 'section.hdi-cta-band.hdi-cta-band--contrast' do
-            assert_select 'h2', text: 'Tell us your challenge'
-            assert_select 'p', text: 'A paragraph about the problem is enough to start.'
-            assert_select 'a.hdi-button.hdi-button--reverse[href="/website/contact"]',
-                          text: 'Start a conversation'
+            assert_select '.hdi-cta-band__panel' do
+              assert_select 'h2', text: 'Tell us your challenge'
+              assert_select 'p', text: 'A paragraph about the problem is enough to start.'
+              assert_select 'a.hdi-button.hdi-button--reverse[href="/website/contact"]',
+                            text: 'Start a conversation'
+            end
           end
         end
 
@@ -36,7 +38,7 @@ module DesignSystem
             secondary: { label: 'See our work', href: '/work' }
           )
 
-          assert_select '.hdi-button-row' do
+          assert_select '.hdi-cta-band__panel .hdi-cta-band__actions' do
             assert_select 'a[href="/contact"]', text: 'Start a conversation'
             assert_select 'a[href="/work"]', text: 'See our work'
           end

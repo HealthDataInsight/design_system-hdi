@@ -2,13 +2,15 @@
   <% items.each do |item| %>
     <% item = item.symbolize_keys %>
     <div class="stat">
-      <% if item[:icon].present? %>
-        <div class="stat-figure"><%= helpers.hdi_icon(item[:icon]) %></div>
-      <% end %>
       <% if item[:title].present? %>
         <div class="stat-title"><%= item[:title] %></div>
       <% end %>
-      <div class="stat-value"><%= item[:value] %></div>
+      <div class="stat-value">
+        <% if item[:icon].present? %>
+          <span class="stat-figure"><%= helpers.hdi_icon(item[:icon]) %></span>
+        <% end %>
+        <%= item[:value] %>
+      </div>
       <% if item[:description].present? %>
         <div class="stat-desc"><%= item[:description] %></div>
       <% end %>

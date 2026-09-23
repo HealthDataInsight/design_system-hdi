@@ -1,0 +1,37 @@
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_fixed_elements do |ds|
+      ds.breadcrumb('Home', website_root_path)
+      ds.breadcrumb('About', website_about_path)
+      ds.breadcrumb('People', website_people_path)
+      ds.breadcrumb(@person['name'], website_person_path(@person['slug']))
+      ds.main_heading @person['name']
+    end %>
+
+    <p class="hdi-body-l"><%= @person['role'] %></p>
+
+    <figure class="hdi-person-profile__photo">
+      <% if @person['image'].present? %>
+        <%= image_tag @person['image'], alt: @person['name'].to_s %>
+      <% else %>
+        <%= render DesignSystem::Hdi::MediaPlaceholderComponent.new(
+              label: 'Photo',
+              variant: :portrait
+            ) %>
+      <% end %>
+    </figure>
+
+    <%= ds_heading 'Projects', level: 2 %>
+    <% if @projects.any? %>
+      <ul class="hdi-card-grid__items">
+        <% @projects.each do |project| %>
+          <li>
+            <%= ds_card(**project_card(project)) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="hdi-body">Project links for this person will appear here.</p>
+    <% end %>
+  </div>
+</section>

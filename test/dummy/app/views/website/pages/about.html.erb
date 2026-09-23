@@ -1,48 +1,154 @@
-<section class="hdi-section">
-  <div class="hdi-section__inner hdi-prose-measure">
-    <%= ds_fixed_elements do |ds|
-      ds.breadcrumb('Home', website_root_path)
-      ds.breadcrumb('About', website_about_path)
-      ds.main_heading 'About HDI'
-    end %>
-
-    <%= ds_paragraph 'We are a community interest company registered with the Regulator of Community Interest Companies. We exist to deliver for patients and the NHS, and what we earn goes back into doing that.' %>
-    <%= ds_paragraph 'Jem Rashbass and Hilary Wilderspin founded HDI in 2011 to make sure that innovative work with the most personal of health data was done ethically, and for the direct benefit of patients. Two principles have run through everything since: do the right thing, and get the job done quickly.' %>
-    <%= ds_paragraph 'Our team is health data analysts, data scientists, software and AI technologists, and project managers. We work remotely and from Cambridge on local and national problems, funded through collaborations with the NHS, charities, academia and industry.' %>
+<section class="hdi-section hdi-about-hero hdi-about-hero--image"
+         style="--hdi-about-hero-image: url(/website/about/team.jpg);"
+         data-controller="hero-reveal"
+         data-hero-reveal-var-value="--hdi-about-hero-image">
+  <div class="hdi-section__inner">
+    <div class="hdi-about-hero__content">
+      <%= ds_fixed_elements do |ds|
+        ds.breadcrumb('Home', website_root_path)
+        ds.breadcrumb('About', website_about_path)
+        ds.main_heading 'We are not a consultancy. We are a community interest company.'
+      end %>
+      <p class="hdi-body hdi-about-hero__lede">
+        HDI is registered with the Regulator of Community Interest Companies.
+        We exist to deliver for patients and the NHS — and what we earn goes back into doing that.
+      </p>
+    </div>
   </div>
 </section>
 
 <section class="hdi-section hdi-section--tint">
   <div class="hdi-section__inner">
-    <%= ds_heading 'Partnerships' %>
+    <%= ds_heading 'Why we exist', level: 2 %>
     <div class="hdi-prose-measure">
-      <%= ds_paragraph 'We work with NHS teams, charities, academia, patient groups and industry. HDI holds a formal partnership agreement with the National Disease Registration Service (NDRS), part of NHS England — combining our delivery with their disease registration data.' %>
+      <%= ds_paragraph 'Jem Rashbass and Hilary Wilderspin founded HDI in 2011 to make sure that innovative work with the most personal of health data was done ethically, and for the direct benefit of patients. Two principles have run through everything since.' %>
     </div>
-    <ul class="hdi-governance-grid" style="margin-top: 2rem;">
-      <li>
-        <%= link_to website_people_path, class: 'hdi-governance-card' do %>
-          <h3 class="hdi-heading-m">People</h3>
-          <p>Directors and how the company is led.</p>
-        <% end %>
+    <ul class="hdi-about-principles">
+      <li class="hdi-about-principle">
+        <h3 class="hdi-about-principle__title">Do the right thing</h3>
+        <p class="hdi-about-principle__body">
+          Patient benefit and honest handling of data come before commercial convenience.
+          If a project cannot meet that bar, we do not do it.
+        </p>
       </li>
-      <li>
-        <%= link_to website_internships_path, class: 'hdi-governance-card' do %>
-          <h3 class="hdi-heading-m">Internships</h3>
-          <p>Our summer programme for early-career people.</p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to website_trust_path, class: 'hdi-governance-card' do %>
-          <h3 class="hdi-heading-m">Trust &amp; governance</h3>
-          <p>How we handle data, ethics and approvals.</p>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to website_contact_path, class: 'hdi-governance-card' do %>
-          <h3 class="hdi-heading-m">Talk to us</h3>
-          <p>A paragraph about the problem is enough to start.</p>
-        <% end %>
+      <li class="hdi-about-principle">
+        <h3 class="hdi-about-principle__title">Get the job done quickly</h3>
+        <p class="hdi-about-principle__body">
+          Care does not wait for perfect process. We ship useful things, then improve them
+          in the open with the people who use them.
+        </p>
       </li>
     </ul>
   </div>
 </section>
+
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <%= ds_heading 'What makes us different', level: 2 %>
+    <ul class="hdi-about-diff">
+      <li class="hdi-about-diff__card">
+        <h3 class="hdi-about-diff__title">Surplus stays in the mission</h3>
+        <p class="hdi-about-diff__body">
+          As a CIC, profit is not extracted for shareholders. Earnings fund the next
+          piece of public-interest work.
+        </p>
+      </li>
+      <li class="hdi-about-diff__card">
+        <h3 class="hdi-about-diff__title">One team, four disciplines</h3>
+        <p class="hdi-about-diff__body">
+          Analysts, data scientists, software and AI technologists, and project managers
+          work as one delivery team — not a chain of hand-offs.
+        </p>
+      </li>
+      <li class="hdi-about-diff__card">
+        <h3 class="hdi-about-diff__title">Inside national data</h3>
+        <p class="hdi-about-diff__body">
+          A formal partnership with the National Disease Registration Service means we
+          build against real national datasets, with the governance that requires.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint">
+  <div class="hdi-section__inner">
+    <% team = Website::Catalog.all_people %>
+    <div class="hdi-about-people">
+      <div class="hdi-about-people__header">
+        <div class="hdi-about-people__intro">
+          <%= ds_heading 'The people', level: 2 %>
+          <p class="hdi-about-people__count">
+            <%= team.size %> specialists working from Cambridge and remotely.
+          </p>
+        </div>
+        <div class="hdi-about-people__actions">
+          <%= ds_link_to 'Meet the whole team →', website_people_path %>
+        </div>
+      </div>
+
+      <div class="hdi-carousel hdi-carousel--people"
+           role="region"
+           aria-label="The people"
+           data-controller="carousel">
+        <button type="button"
+                class="hdi-carousel__control hdi-carousel__control--prev"
+                data-action="carousel#previous"
+                aria-label="Previous people"
+                hidden
+                disabled>
+          <span class="hdi-carousel__control-icon" aria-hidden="true"></span>
+        </button>
+
+        <div class="hdi-carousel__track" data-carousel-target="track">
+          <% team.each do |person| %>
+            <div class="hdi-carousel__item">
+              <%= render 'website/pages/person_card', person: person, variant: :light %>
+            </div>
+          <% end %>
+        </div>
+
+        <button type="button"
+                class="hdi-carousel__control hdi-carousel__control--next"
+                data-action="carousel#next"
+                aria-label="Next people"
+                hidden
+                disabled>
+          <span class="hdi-carousel__control-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hdi-section">
+  <div class="hdi-section__inner">
+    <div class="hdi-about-internships">
+      <div>
+        <%= ds_heading 'Summer internships', level: 2 %>
+        <p class="hdi-body">
+          Each summer we take early-career people into real project work — not shadowing.
+          Applications for 2026 are closed; leave your details and we’ll tell you when the
+          next cohort opens.
+        </p>
+      </div>
+      <div>
+        <%= ds_inset_text do %>
+          Applications closed for 2026
+        <% end %>
+        <div class="hdi-about-internships__actions hdi-button-row">
+          <%= ds_link_to 'Notify me when it opens',
+                         website_contact_path(topic: 'Summer internships'),
+                         type: :button %>
+          <%= ds_link_to 'See past intern projects',
+                         website_internships_path,
+                         type: :secondary_button %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= ds_cta_band title: 'Working on something that needs this kind of team?',
+                lede: 'A paragraph about the problem is enough to start.',
+                primary: { label: 'Talk to us', href: website_contact_path } %>

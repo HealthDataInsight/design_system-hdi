@@ -68,6 +68,13 @@
     - { title: Data dictionary and documentation, detail: Variables, methods and known limitations, icon: document-text, href: 'https://simulacrum.healthdatainsight.org.uk' }
     - { title: Synthetic data demonstrates major benefits for cancer research, detail: 'Peer-reviewed publication · BMJ, 2024', icon: document-duplicate, href: '#' }
     - { title: Project website, detail: simulacrum.healthdatainsight.org.uk, icon: inbox-stack, href: 'https://simulacrum.healthdatainsight.org.uk' }
+  participants:
+    - jem-rashbass
+    - tim-gentry
+    - sophie-jose
+    - craig-knott
+    - tameera-rahman
+    - shilpi-goel
   related: [cas-explorer, real-world-standing-cohorts, brain-tumour-data-dashboard]
 - slug: brain-tumour-data-dashboard
   featured: true

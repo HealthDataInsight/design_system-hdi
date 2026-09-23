@@ -6,12 +6,89 @@
       ds.main_heading 'Trust & governance'
     end %>
 
-    <div class="hdi-prose-measure">
-      <%= ds_paragraph 'We understand the NHS Information Governance Framework and we are focused on delivery. All data on HDI equipment is synthetic or meets ICO requirements. Data from public healthcare bodies arrives with Caldicott Guardian approval. Staff work under partner contracts, on approved environments, with mandatory IG and data-security training.' %>
-      <%= ds_paragraph 'Cyber Essentials certified. NHS Data Security and Protection Toolkit — standards met.' %>
-    </div>
+    <div class="hdi-trust-layout">
+      <div class="hdi-trust-copy">
+        <p class="hdi-body">
+          We understand and have extensive experience of using the
+          <%= link_to 'NHS Information Governance Framework',
+                      'https://www.england.nhs.uk/ig/',
+                      class: 'hdi-trust-term' %>
+          but we are focused on delivery and will be more responsive and less
+          bureaucratic than many internal NHS structures.
+        </p>
+        <p class="hdi-body">
+          All data used on HDI equipment is either synthetic or meets the
+          <%= link_to 'Information Commissioners’ Office',
+                      'https://ico.org.uk/',
+                      class: 'hdi-trust-term' %>
+          requirements on data handling and use. All the data we receive from
+          public sector healthcare bodies has the approval of the organisation’s
+          <%= link_to 'Caldicott Guardian',
+                      'https://www.gov.uk/government/groups/uk-caldicott-guardian-council',
+                      class: 'hdi-trust-term' %>.
+        </p>
+        <p class="hdi-body">
+          Where HDI staff work on projects in partnership with others, they do so
+          under appropriate contracts and on equipment and in environments approved
+          by the partner. All HDI staff undertake Information Governance and Data
+          Security training as part of their mandatory training programme.
+        </p>
 
-    <ul class="hdi-governance-grid" style="margin-top: 2rem;">
+        <%= ds_list(type: :bullet) do |list|
+              list.add_item('Cyber Essentials certified')
+              list.add_item do
+                safe_join([
+                  link_to('NHS Data Security and Protection Toolkit',
+                          'https://www.dsptoolkit.nhs.uk/',
+                          class: 'hdi-trust-term'),
+                  ' — standards met'
+                ])
+              end
+              list.add_item do
+                safe_join([
+                  'UK Gov. Dynamic Purchasing System: ',
+                  link_to('AI appointed supplier',
+                          'https://www.crowncommercial.gov.uk/',
+                          class: 'hdi-trust-term')
+                ])
+              end
+            end %>
+      </div>
+
+      <aside class="hdi-trust-badges" aria-label="Certifications and accreditations">
+        <% trust_credentials.each do |credential| %>
+          <figure class="hdi-credential-card<%= ' hdi-credential-card--reserved' if credential[:reserved] %>">
+            <div class="hdi-credential-card__mark" aria-hidden="true">
+              <% if credential[:mark] == :shield %>
+                <span class="hdi-credential-card__shield"></span>
+              <% elsif credential[:mark] == :certificate %>
+                <span class="hdi-credential-card__seal"></span>
+              <% else %>
+                <span class="hdi-credential-card__slot"></span>
+              <% end %>
+            </div>
+            <figcaption class="hdi-credential-card__caption">
+              <span class="hdi-credential-card__title"><%= credential[:title] %></span>
+              <% if credential[:status].present? %>
+                <span class="hdi-credential-card__status"><%= credential[:status] %></span>
+              <% end %>
+              <% if credential[:meta].present? %>
+                <span class="hdi-credential-card__meta"><%= credential[:meta] %></span>
+              <% end %>
+            </figcaption>
+          </figure>
+        <% end %>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="hdi-section hdi-section--tint" id="how-we-handle-data">
+  <div class="hdi-section__inner">
+    <div class="hdi-section-header">
+      <%= ds_heading 'How we handle data in practice', level: 2 %>
+    </div>
+    <ul class="hdi-governance-grid">
       <% governance_topics(detail: true).each do |topic| %>
         <li>
           <article id="<%= topic[:anchor] %>" class="hdi-governance-card">
@@ -23,3 +100,7 @@
     </ul>
   </div>
 </section>
+
+<%= ds_cta_band title: 'Questions about how we handle data?',
+                lede: 'Ask us about a specific project, approval, or assurance requirement.',
+                primary: { label: 'Talk to us', href: website_contact_path } %>

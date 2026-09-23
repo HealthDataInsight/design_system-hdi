@@ -32,7 +32,8 @@
 <%= ds_card_grid heading: 'Our work',
                  link_label: 'All projects and case studies',
                  link_href: website_work_path,
-                 items: @featured_projects.map { |project| project_card(project) } %>
+                 tone: :dark,
+                 items: @featured_projects.first(3).map { |project| project_card(project) } %>
 
 <section class="hdi-section hdi-section--tint">
   <div class="hdi-section__inner">
@@ -63,7 +64,7 @@
                    link_label: 'All news',
                    link_href: website_news_path,
                    tone: :light,
-                   items: @news.map { |item| news_card(item) } %>
+                   items: @news.first(3).map { |item| news_card(item) } %>
 </div>
 
 <%= ds_cta_band title: 'Tell us your challenge',

@@ -1,19 +1,184 @@
 <section class="hdi-section">
   <div class="hdi-section__inner">
-    <%= ds_fixed_elements do |ds|
-      ds.breadcrumb('Home', website_root_path)
-      ds.breadcrumb('Our work', website_work_path)
-      ds.main_heading work_index_heading(service_slug: @filter_service, keyword: @filter_keyword)
-    end %>
+    <div class="hdi-work-index-hero">
+      <div class="hdi-work-index-hero__copy">
+        <%= ds_fixed_elements do |ds|
+          ds.breadcrumb('Home', website_root_path)
+          ds.breadcrumb('Our work', website_work_path)
+          ds.main_heading 'Our work'
+        end %>
+        <p class="hdi-body hdi-work-index-hero__lede">
+          Projects delivered with the NHS, charities and academic partners — from synthetic
+          data and national audits to tools patients and clinicians can use.
+        </p>
+      </div>
+      <div class="hdi-work-index-hero__stats">
+        <%= ds_stats work_stats_items %>
+      </div>
+    </div>
 
-    <div class="hdi-chip-row" role="list" aria-label="Filter work">
-      <% work_filter_chips(services: @services, service_slug: @filter_service, keyword: @filter_keyword).each do |chip| %>
-        <div role="listitem">
-          <%= ds_tag chip[:label], chip[:href], facet: chip[:facet], active: chip[:active] %>
+    <div class="hdi-work-index">
+      <aside class="hdi-work-index__sidebar" aria-label="Filter work">
+        <h2 class="hdi-work-index__filter-heading">Filter</h2>
+
+        <%= form_with url: website_work_path, method: :get, local: true,
+                      html: { class: 'hdi-work-index__filter-form', id: 'work-filters' } do %>
+          <% work_hidden_filter_fields(except: %i[service subject method status]).each do |name, value| %>
+            <% Array(value).each do |entry| %>
+              <%= hidden_field_tag name, entry if entry.present? %>
+            <% end %>
+          <% end %>
+
+          <fieldset class="hdi-work-index__facet">
+            <legend class="hdi-work-index__facet-legend">Service</legend>
+            <div class="hdi-checkboxes">
+              <% @services.each do |service| %>
+                <div class="hdi-checkboxes__item">
+                  <%= check_box_tag 'service[]', service['slug'], Array(@services_filter).include?(service['slug']),
+                                    id: "work-service-#{service['slug']}",
+                                    class: 'hdi-checkboxes__input',
+                                    onchange: 'this.form.requestSubmit()' %>
+                  <label class="hdi-checkboxes__label" for="work-service-<%= service['slug'] %>">
+                    <%= service['name'] %>
+                    <span class="hdi-work-index__facet-count"><%= @service_counts[service['slug']].to_i %></span>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          </fieldset>
+
+          <% if @subject_tags.any? %>
+            <fieldset class="hdi-work-index__facet">
+              <legend class="hdi-work-index__facet-legend">Subject area</legend>
+              <div class="hdi-checkboxes">
+                <% @subject_tags.each do |tag| %>
+                  <div class="hdi-checkboxes__item">
+                    <%= check_box_tag 'subject[]', tag['slug'], Array(@subjects).include?(tag['slug']),
+                                      id: "work-subject-#{tag['slug']}",
+                                      class: 'hdi-checkboxes__input',
+                                      onchange: 'this.form.requestSubmit()' %>
+                    <label class="hdi-checkboxes__label" for="work-subject-<%= tag['slug'] %>">
+                      <%= tag['label'] %>
+                      <span class="hdi-work-index__facet-count"><%= @subject_counts[tag['slug']].to_i %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+            </fieldset>
+          <% end %>
+
+          <% if @method_tags.any? %>
+            <div class="hdi-work-index__facet">
+              <h3 class="hdi-work-index__facet-legend">Method</h3>
+              <div class="hdi-chip-row" role="list" aria-label="Filter by method">
+                <% @method_tags.each do |tag| %>
+                  <% toggle = work_method_toggle(tag) %>
+                  <div role="listitem">
+                    <%= ds_tag toggle[:label], toggle[:href], facet: :method, active: toggle[:active] %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+          <% if @status_counts.any? %>
+            <fieldset class="hdi-work-index__facet">
+              <legend class="hdi-work-index__facet-legend">Status</legend>
+              <div class="hdi-checkboxes">
+                <% %w[Live Completed].each do |status| %>
+                  <% next if @status_counts[status].to_i.zero? %>
+                  <div class="hdi-checkboxes__item">
+                    <%= check_box_tag 'status[]', status, Array(@statuses).include?(status),
+                                      id: "work-status-#{status.parameterize}",
+                                      class: 'hdi-checkboxes__input',
+                                      onchange: 'this.form.requestSubmit()' %>
+                    <label class="hdi-checkboxes__label" for="work-status-<%= status.parameterize %>">
+                      <%= status %>
+                      <span class="hdi-work-index__facet-count"><%= @status_counts[status].to_i %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+            </fieldset>
+          <% end %>
+        <% end %>
+      </aside>
+
+      <div class="hdi-work-index__main">
+        <div class="hdi-work-index__toolbar">
+          <div class="hdi-work-index__search">
+            <%= render 'hdi/searchbar',
+                       url: website_work_path,
+                       param: 'q',
+                       value: @q,
+                       id: 'work-search',
+                       placeholder: 'Search titles, partners and keywords',
+                       label: 'Search work',
+                       hidden: work_hidden_filter_fields(except: [:q]) %>
+          </div>
+
+          <%= form_with url: website_work_path, method: :get, local: true,
+                        html: { class: 'hdi-work-index__sort', id: 'work-sort' } do %>
+            <% work_hidden_filter_fields(except: [:sort]).each do |name, value| %>
+              <% Array(value).each do |entry| %>
+                <%= hidden_field_tag name, entry if entry.present? %>
+              <% end %>
+            <% end %>
+            <label class="hdi-visually-hidden" for="work-sort-select">Sort work</label>
+            <%= select_tag :sort,
+                           options_for_select(work_sort_options, @sort),
+                           id: 'work-sort-select',
+                           class: 'select hdi-work-index__sort-select',
+                           onchange: 'this.form.requestSubmit()' %>
+          <% end %>
         </div>
-      <% end %>
+
+        <div class="hdi-work-index__applied" aria-live="polite">
+          <p class="hdi-work-index__count">
+            Showing <strong><%= @projects_filtered_count %></strong> of
+            <strong><%= @projects_total %></strong>
+          </p>
+          <% if work_filters_active? %>
+            <ul class="hdi-work-index__chips">
+              <% work_applied_filter_chips.each do |chip| %>
+                <li>
+                  <%= link_to chip[:href], class: 'hdi-work-index__chip' do %>
+                    <%= chip[:label] %>
+                    <span aria-hidden="true">×</span>
+                    <span class="hdi-visually-hidden">Remove filter</span>
+                  <% end %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to 'Clear all', work_clear_filters_path, class: 'hdi-work-index__clear' %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+
+        <% if @projects.any? %>
+          <div class="hdi-work-index__results">
+            <div class="hdi-card-grid__items">
+              <% @projects.each do |project| %>
+                <%= ds_card(**project_card(project, include_tags: true)) %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="hdi-work-index__pagination">
+            <%= ds_pagination @projects, params: request.query_parameters.except('page') %>
+          </div>
+        <% else %>
+          <p class="hdi-body hdi-work-index__empty">
+            No projects matched<%= @q.present? ? " “#{@q}”" : '' %>.
+            Try clearing filters or a different search term.
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
 
-<%= ds_card_grid items: @projects.map { |project| project_card(project) } %>
+<%= ds_cta_band title: 'Not seeing your problem here?',
+                lede: 'Most of our work starts as a question nobody has answered yet. Tell us yours.',
+                primary: { label: 'Start a conversation', href: website_contact_path } %>

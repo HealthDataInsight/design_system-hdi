@@ -1,28 +1,222 @@
+# Structured publication rows for the dummy website listing.
+# Types: Journal article | National report | Methods paper | Preprint
+# Subjects: Cancer | Synthetic data | Genomics | Screening & early diagnosis | Health inequalities
 - year: 2026
   items:
     - title: Real-world demographics and survival outcomes of patients in England with advanced or recurrent endometrial cancer by mismatch repair status
       authors: Susana Banerjee, Ellie Hall, Kiera Heffernan, Qin Shen, Clare Pearson, Alvaro Ingles Russo Garces
-      kind: Journal article
+      type: Journal article
+      journal: BMJ Open
+      subjects: [Cancer, Genomics]
+      open_access: true
+      with_ndrs: true
+      project: { name: Endometrial Cancer Audit Pilot, href: /website/our-work/endometrial-cancer-audit }
+      doi: '#'
+      pdf: '#'
     - title: Influence of stage at cancer diagnosis on NHS hospital care costs in England
       authors: Clare Pearson, David A Jones, Gavin Baily, Roger Cherry, Ewan Gray, Sara Hiom, Brian Rous, Katie Spencer, Sophie Jose
-      kind: Journal article
+      type: Journal article
+      subjects: [Cancer, Health inequalities]
+      open_access: true
+      with_ndrs: true
+      project: { name: Costs of cancer by stage at diagnosis, href: /website/our-work/costs-of-cancer }
+      doi: '#'
     - title: Development of a national root cause analysis system for post-endoscopy upper gastrointestinal cancer
-      authors: HDI with clinical partners
-      kind: Methods paper
+      authors: Amar Srinivasa, Rebeca Fiadeiro, Tim Gentry, Shilpi Goel, Tameera Rahman, Karen Clements
+      type: Methods paper
+      subjects: [Cancer, Screening & early diagnosis]
+      open_access: true
+      with_ndrs: false
+      project: { name: PEUGIC Root Cause Analysis, href: /website/our-work/peugic-root-cause-analysis }
+      doi: '#'
+    - title: First-line treatment patterns and overall survival in patients diagnosed with metastatic Merkel cell carcinoma in England
+      authors: Mahmoudpour SH, Knott C, Nobes J, et al.
+      type: Journal article
+      journal: British Journal of Dermatology
+      subjects: [Cancer]
+      open_access: false
+      with_ndrs: true
+      doi: '#'
+      pdf: '#'
 - year: 2025
   items:
     - title: Synthetic data demonstrates major benefits for cancer research
-      authors: HDI with NDRS
-      kind: Journal article · BMJ
+      authors: HDI with the National Disease Registration Service, NHS England
+      type: Journal article
+      journal: BMJ
+      subjects: [Cancer, Synthetic data]
+      open_access: true
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+      pdf: '#'
     - title: Endometrial Cancer Audit Pilot — treatment report
       authors: HDI with NHS England
-      kind: National report
+      type: National report
+      subjects: [Cancer]
+      open_access: true
+      with_ndrs: true
+      project: { name: Endometrial Cancer Audit Pilot, href: /website/our-work/endometrial-cancer-audit }
+      pdf: '#'
+    - title: A review of synthetic data terminology for privacy preserving use cases
+      authors: Frayling L, Suarj Bharat S, Pattinson E, Stock J, Lugg-Widger F, Gordon E, Oliver E
+      type: Journal article
+      subjects: [Synthetic data]
+      open_access: true
+      with_ndrs: false
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+    - title: Long-term health outcomes of bilateral salpingo-oophorectomy in BRCA1 and BRCA2 pathogenic variant carriers
+      authors: Hassan H, Allen I, Rahman T, et al.
+      type: Journal article
+      journal: Lancet Oncology
+      subjects: [Cancer, Genomics]
+      open_access: true
+      with_ndrs: false
+      project: { name: CanGene CanVar, href: /website/our-work/cangene-canvar }
+      doi: '#'
+    - title: Leveraging synthetic data to facilitate research
+      authors: Kafatos G, Levy J, Jose S, et al.
+      type: Journal article
+      journal: Ther Innov Regul Sci
+      subjects: [Synthetic data, Cancer]
+      open_access: false
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+    - title: The causes of post endoscopy upper gastrointestinal cancer in patients undergoing surveillance endoscopy
+      authors: Srinivasa A, Fiadeiro R, Clements K, Gentry T, Rahman T, Goel S
+      type: National report
+      subjects: [Cancer, Screening & early diagnosis]
+      open_access: true
+      with_ndrs: false
+      project: { name: PEUGIC Root Cause Analysis, href: /website/our-work/peugic-root-cause-analysis }
+      pdf: '#'
+    - title: Organisational factors and Post Endoscopy Upper Gastrointestinal Cancer
+      authors: Srinivasa A, Fiadeiro R, Rahman T, Clements K, Burr N, Banks M
+      type: Methods paper
+      subjects: [Cancer, Screening & early diagnosis]
+      open_access: true
+      with_ndrs: false
+      project: { name: PEUGIC Root Cause Analysis, href: /website/our-work/peugic-root-cause-analysis }
+      doi: '#'
 - year: 2024
   items:
     - title: Simulacrum v2 — methods and fidelity assessment
       authors: HDI with NDRS
-      kind: Technical report
-    - title: HDI publications produced in association with NDRS
-      authors: HDI · NDRS partnership
-      kind: Collection
-      note: A curated list of partnership outputs sits on the live HDI site.
+      type: Methods paper
+      subjects: [Synthetic data, Cancer]
+      open_access: true
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+      pdf: '#'
+    - title: CancerStats2 platform — national indicators refresh
+      authors: HDI with NHS England NDRS
+      type: National report
+      subjects: [Cancer]
+      open_access: true
+      with_ndrs: true
+      doi: '#'
+    - title: Routes to diagnosis update for solid tumours
+      authors: Clare Pearson, Sophie Jose, Brian Rous
+      type: Methods paper
+      subjects: [Cancer, Screening & early diagnosis]
+      open_access: true
+      with_ndrs: true
+      doi: '#'
+    - title: Population-level treatment patterns in early breast cancer
+      authors: HDI with clinical partners
+      type: Journal article
+      subjects: [Cancer, Health inequalities]
+      open_access: false
+      with_ndrs: true
+      doi: '#'
+    - title: Preprint — estimating stage shift from earlier diagnosis pathways
+      authors: HDI analytics team
+      type: Preprint
+      subjects: [Cancer, Screening & early diagnosis]
+      open_access: true
+      with_ndrs: false
+      doi: '#'
+- year: 2023
+  items:
+    - title: Simulacrum v1 — synthetic cancer registry for research access
+      authors: HDI with NDRS
+      type: Methods paper
+      subjects: [Synthetic data, Cancer]
+      open_access: true
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      pdf: '#'
+    - title: COVID-19 impact on cancer pathways in England
+      authors: HDI with NHS England
+      type: National report
+      subjects: [Cancer, Health inequalities]
+      open_access: true
+      with_ndrs: true
+      pdf: '#'
+    - title: Data linkage methods for multi-source cancer follow-up
+      authors: Tameera Rahman, Craig Knott, Sophie Jose
+      type: Methods paper
+      subjects: [Cancer, Genomics]
+      open_access: true
+      with_ndrs: true
+      doi: '#'
+    - title: Equity of access to systemic anti-cancer therapy
+      authors: HDI with academic partners
+      type: Journal article
+      subjects: [Cancer, Health inequalities]
+      open_access: true
+      with_ndrs: false
+      doi: '#'
+- year: 2022
+  items:
+    - title: Secondary care utilisation after cancer diagnosis
+      authors: Clare Pearson, Ewan Gray, Katie Spencer
+      type: Journal article
+      subjects: [Cancer]
+      open_access: false
+      with_ndrs: true
+      doi: '#'
+    - title: Building trustworthy synthetic health datasets
+      authors: HDI research team
+      type: Methods paper
+      subjects: [Synthetic data]
+      open_access: true
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+    - title: Preprint — geospatial variation in screening uptake
+      authors: HDI with academic partners
+      type: Preprint
+      subjects: [Screening & early diagnosis, Health inequalities]
+      open_access: true
+      with_ndrs: false
+      doi: '#'
+- year: 2019
+  items:
+    - title: National cancer registration outputs for research planning
+      authors: HDI · NDRS
+      type: National report
+      subjects: [Cancer]
+      open_access: true
+      with_ndrs: true
+      pdf: '#'
+    - title: Early methods for synthetic cancer cohorts
+      authors: HDI research team
+      type: Methods paper
+      subjects: [Synthetic data, Cancer]
+      open_access: true
+      with_ndrs: true
+      project: { name: Simulacrum v2, href: /website/our-work/simulacrum-v2 }
+      doi: '#'
+- year: 2012
+  items:
+    - title: Establishing partnership approaches to national cancer data
+      authors: HDI with NCRS
+      type: National report
+      subjects: [Cancer]
+      open_access: true
+      with_ndrs: true
+      pdf: '#'

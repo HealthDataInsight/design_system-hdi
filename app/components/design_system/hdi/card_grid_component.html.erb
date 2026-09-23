@@ -14,7 +14,7 @@
     <div class="hdi-card-grid__items">
       <% items.each do |item| %>
         <%= render DesignSystem::Hdi::CardComponent.new(**item.symbolize_keys.slice(
-          :title, :eyebrow, :meta, :href, :image_label, :image_src, :image_alt
+          :title, :eyebrow, :meta, :href, :image_label, :image_src, :image_alt, :tags
         )) %>
       <% end %>
     </div>

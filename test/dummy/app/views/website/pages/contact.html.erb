@@ -3,30 +3,85 @@
     <%= ds_fixed_elements do |ds|
       ds.breadcrumb('Home', website_root_path)
       ds.breadcrumb('Talk to us', website_contact_path)
-      ds.main_heading 'Tell us your challenge'
+      ds.main_heading 'Tell us your challenge.'
     end %>
+    <p class="hdi-body hdi-work-index-hero__lede">
+      You don’t need a specification. A paragraph about the problem is enough to start —
+      and we’ll be honest if we’re not the right fit.
+    </p>
 
-    <div class="hdi-split-grid">
-      <div>
-        <%= ds_paragraph "You don't need a specification. A paragraph about the problem is enough to start." %>
-        <%= ds_paragraph 'We reply within 3 working days.' %>
-        <%= ds_inset_text do %>
-          <%= ds_paragraph 'hello@healthdatainsight.org.uk' %>
-          <%= ds_paragraph 'Camlife 4, Capital Park, Cambridge Road, Fulbourn, Cambridge CB21 5XE' %>
-        <% end %>
-      </div>
-
-      <div>
+    <div class="hdi-contact-layout">
+      <div class="hdi-contact-layout__form">
         <%= ds_form_with model: @enquiry, url: website_contact_path, method: :post do |form| %>
           <%= form.ds_error_summary if @enquiry.errors.any? %>
+
           <%= form.ds_select :topic, options_for_select(Website::Enquiry::TOPICS, @enquiry.topic),
                              prompt: 'What is this about?', label: { text: 'What is this about?' } %>
-          <%= form.ds_text_field :name, label: { text: 'Your name' } %>
-          <%= form.ds_text_field :organisation, label: { text: 'Organisation' } %>
-          <%= form.ds_text_area :message, label: { text: 'What are you trying to do?' } %>
-          <%= form.ds_submit 'Send' %>
+
+          <div class="hdi-contact-layout__form-row">
+            <%= form.ds_text_field :name, label: { text: 'Your name' } %>
+            <%= form.ds_email_field :email, label: { text: 'Email' } %>
+          </div>
+
+          <div class="hdi-contact-layout__form-row">
+            <%= form.ds_text_field :organisation, label: { text: 'Organisation' } %>
+            <%= form.ds_select :timescale, options_for_select(Website::Enquiry::TIMESCALES, @enquiry.timescale),
+                               prompt: 'Choose a timescale', label: { text: 'Timescale' } %>
+          </div>
+
+          <%= form.ds_text_area :message,
+                               label: { text: 'What are you trying to find out or change?' } %>
+
+          <%= form.ds_check_boxes_fieldset :privacy, multiple: false,
+                                          legend: { text: 'Privacy', size: 's' } do %>
+            <%= form.ds_check_box :privacy,
+                                 {
+                                   multiple: false,
+                                   link_errors: true,
+                                   hint: 'I agree to HDI storing this enquiry so we can reply. See our privacy notice.'
+                                 },
+                                 '1', '0' %>
+          <% end %>
+
+          <%= form.ds_submit 'Send enquiry' %>
         <% end %>
       </div>
+
+      <aside class="hdi-contact-sidebar" aria-label="Contact details">
+        <h2 class="hdi-heading-m hdi-contact-sidebar__heading">Reach us directly</h2>
+        <ul class="hdi-contact-sidebar__list">
+          <li>
+            <span class="hdi-contact-sidebar__label">General</span>
+            <%= mail_to 'hello@healthdatainsight.org.uk' %>
+          </li>
+          <li>
+            <span class="hdi-contact-sidebar__label">Press</span>
+            <%= mail_to 'press@healthdatainsight.org.uk' %>
+          </li>
+        </ul>
+
+        <%= ds_inset_text do %>
+          <%= ds_paragraph 'We reply within 3 working days. A named person, not an autoresponder.' %>
+        <% end %>
+
+        <p class="hdi-body">
+          Camlife 4, Capital Park,<br>
+          Cambridge Road, Fulbourn,<br>
+          Cambridge CB21 5XE
+        </p>
+        <p class="hdi-body">
+          <%= link_to 'Directions', '#' %>
+        </p>
+      </aside>
+    </div>
+
+    <div class="hdi-contact-next">
+      <h2 class="hdi-heading-l hdi-contact-next__heading">What happens next</h2>
+      <%= ds_steps [
+            { name: 'A named person reads it', caption: 'Not a ticket queue — someone on the team opens your note.' },
+            { name: 'A conversation, not a pitch', caption: 'We ask enough to understand the problem before proposing anything.' },
+            { name: 'A straight answer', caption: 'Including if we are not the right people for it.' }
+          ], progress: :through %>
     </div>
   </div>
 </section>

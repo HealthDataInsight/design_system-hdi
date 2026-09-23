@@ -1,31 +1,219 @@
 <section class="hdi-section">
   <div class="hdi-section__inner">
-    <%= ds_fixed_elements do |ds|
-      ds.breadcrumb('Home', website_root_path)
-      ds.breadcrumb('Our work', website_work_path)
-      ds.breadcrumb('Publications', website_publications_path)
-      ds.main_heading 'Publications'
-    end %>
-
-    <div class="hdi-prose-measure">
-      <%= ds_paragraph 'Peer-reviewed papers, national reports and methods notes. Partnership outputs with NDRS are included where they sit under the formal agreement.' %>
+    <div class="hdi-publications-hero">
+      <div class="hdi-publications-hero__copy">
+        <%= ds_fixed_elements do |ds|
+          ds.breadcrumb('Home', website_root_path)
+          ds.breadcrumb('Our work', website_work_path)
+          ds.breadcrumb('Publications', website_publications_path)
+          ds.main_heading 'Publications'
+        end %>
+        <p class="hdi-body hdi-publications-hero__lede">
+          Peer-reviewed papers, methods papers and national reports from our work with the NHS,
+          charities and academic partners. Most are open access.
+        </p>
+      </div>
+      <div class="hdi-publications-hero__stats">
+        <%= ds_stats publication_stats_items %>
+      </div>
     </div>
 
-    <% Array(@publications).each do |group| %>
-      <div class="hdi-publication-year">
-        <%= ds_heading group['year'].to_s, level: 2 %>
-        <ul class="hdi-reason-list">
-          <% Array(group['items']).each do |item| %>
-            <li class="hdi-reason">
-              <h3 class="hdi-heading-m"><%= item['title'] %></h3>
-              <p class="hdi-body"><%= [item['kind'], item['authors']].compact.join(' · ') %></p>
-              <% if item['note'].present? %>
-                <p class="hdi-body"><%= item['note'] %></p>
-              <% end %>
-            </li>
+    <div class="hdi-publications">
+      <aside class="hdi-publications__sidebar" aria-label="Filter publications">
+        <h2 class="hdi-publications__filter-heading">Filter</h2>
+
+        <%= form_with url: website_publications_path, method: :get, local: true,
+                      html: { class: 'hdi-publications__filter-form', id: 'publications-filters' } do %>
+          <% publication_hidden_filter_fields(except: %i[type subject with_ndrs open_access]).each do |name, value| %>
+            <% Array(value).each do |entry| %>
+              <%= hidden_field_tag name, entry if entry.present? %>
+            <% end %>
           <% end %>
-        </ul>
+
+          <fieldset class="hdi-publications__facet">
+            <legend class="hdi-publications__facet-legend">Type</legend>
+            <div class="hdi-checkboxes">
+              <% Website::Catalog::PUBLICATION_TYPES.each do |type| %>
+                <div class="hdi-checkboxes__item">
+                  <%= check_box_tag 'type[]', type, Array(@types).include?(type),
+                                    id: "pub-type-#{type.parameterize}",
+                                    class: 'hdi-checkboxes__input',
+                                    onchange: 'this.form.requestSubmit()' %>
+                  <label class="hdi-checkboxes__label" for="pub-type-<%= type.parameterize %>">
+                    <%= type %>
+                    <span class="hdi-publications__facet-count"><%= @type_counts[type].to_i %></span>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          </fieldset>
+
+          <fieldset class="hdi-publications__facet">
+            <legend class="hdi-publications__facet-legend">Subject area</legend>
+            <div class="hdi-checkboxes">
+              <% Website::Catalog::PUBLICATION_SUBJECTS.each do |subject| %>
+                <div class="hdi-checkboxes__item">
+                  <%= check_box_tag 'subject[]', subject, Array(@subjects).include?(subject),
+                                    id: "pub-subject-#{subject.parameterize}",
+                                    class: 'hdi-checkboxes__input',
+                                    onchange: 'this.form.requestSubmit()' %>
+                  <label class="hdi-checkboxes__label" for="pub-subject-<%= subject.parameterize %>">
+                    <%= subject %>
+                    <span class="hdi-publications__facet-count"><%= @subject_counts[subject].to_i %></span>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          </fieldset>
+
+          <div class="hdi-publications__facet">
+            <h3 class="hdi-publications__facet-legend">Year</h3>
+            <div class="hdi-publications__year-grid" role="list">
+              <% publication_year_toggles.each do |toggle| %>
+                <div role="listitem">
+                  <%= link_to toggle[:label], toggle[:href],
+                              class: ['hdi-publications__year-btn', ('is-active' if toggle[:active])].compact.join(' '),
+                              aria: { current: (toggle[:active] ? 'true' : nil) } %>
+                </div>
+              <% end %>
+            </div>
+            <% if @year.present? %>
+              <p class="hdi-publications__year-clear">
+                <%= link_to 'All years', publication_path_with(year: nil), class: 'hdi-publications__year-clear-link' %>
+              </p>
+            <% end %>
+          </div>
+
+          <fieldset class="hdi-publications__facet">
+            <legend class="hdi-publications__facet-legend">Partner</legend>
+            <div class="hdi-checkboxes">
+              <div class="hdi-checkboxes__item">
+                <%= check_box_tag 'with_ndrs', '1', @with_ndrs,
+                                  id: 'pub-with-ndrs',
+                                  class: 'hdi-checkboxes__input',
+                                  onchange: 'this.form.requestSubmit()' %>
+                <label class="hdi-checkboxes__label" for="pub-with-ndrs">
+                  With NDRS
+                  <span class="hdi-publications__facet-count"><%= @partner_counts[:with_ndrs].to_i %></span>
+                </label>
+              </div>
+              <div class="hdi-checkboxes__item">
+                <%= check_box_tag 'open_access', '1', @open_access,
+                                  id: 'pub-open-access',
+                                  class: 'hdi-checkboxes__input',
+                                  onchange: 'this.form.requestSubmit()' %>
+                <label class="hdi-checkboxes__label" for="pub-open-access">
+                  Open access only
+                  <span class="hdi-publications__facet-count"><%= @partner_counts[:open_access].to_i %></span>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
+      </aside>
+
+      <div class="hdi-publications__main">
+        <div class="hdi-publications__toolbar">
+          <div class="hdi-publications__search">
+            <%= render 'hdi/searchbar',
+                       url: website_publications_path,
+                       param: 'q',
+                       value: @q,
+                       id: 'publications-search',
+                       placeholder: 'Search titles, authors and journals',
+                       label: 'Search publications',
+                       hidden: publication_hidden_filter_fields(except: [:q]) %>
+          </div>
+
+          <%= form_with url: website_publications_path, method: :get, local: true,
+                        html: { class: 'hdi-publications__sort', id: 'publications-sort' } do %>
+            <% publication_hidden_filter_fields(except: [:sort]).each do |name, value| %>
+              <% Array(value).each do |entry| %>
+                <%= hidden_field_tag name, entry if entry.present? %>
+              <% end %>
+            <% end %>
+            <label class="hdi-visually-hidden" for="publications-sort-select">Sort publications</label>
+            <%= select_tag :sort,
+                           options_for_select(publication_sort_options, @sort),
+                           id: 'publications-sort-select',
+                           class: 'select hdi-publications__sort-select',
+                           onchange: 'this.form.requestSubmit()' %>
+          <% end %>
+        </div>
+
+        <div class="hdi-publications__applied" aria-live="polite">
+          <p class="hdi-publications__count">
+            Showing <strong><%= @publications_filtered_count %></strong> of
+            <strong><%= @publications_total %></strong>
+          </p>
+          <% if publication_filters_active? %>
+            <ul class="hdi-publications__chips">
+              <% publication_applied_filter_chips.each do |chip| %>
+                <li>
+                  <%= link_to chip[:href], class: 'hdi-publications__chip' do %>
+                    <%= chip[:label] %>
+                    <span aria-hidden="true">×</span>
+                    <span class="hdi-visually-hidden">Remove filter</span>
+                  <% end %>
+                </li>
+              <% end %>
+              <li>
+                <%= link_to 'Clear all', publication_clear_filters_path, class: 'hdi-publications__clear' %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+
+        <% if @publications.any? %>
+          <ul class="hdi-publications__list">
+            <% @publications.each do |item| %>
+              <li class="hdi-publications__item">
+                <div class="hdi-publications__badges">
+                  <% if item['type'].present? %>
+                    <span class="badge badge-soft"><%= item['type'] %></span>
+                  <% end %>
+                  <% if item['open_access'] %>
+                    <span class="badge badge-success">Open access</span>
+                  <% end %>
+                </div>
+                <p class="hdi-publications__meta">
+                  <%= [item['year'], item['journal']].compact.join(' · ') %>
+                </p>
+                <h2 class="hdi-publications__title">
+                  <%= link_to item['title'], publication_result_href(item) %>
+                </h2>
+                <% if item['authors'].present? %>
+                  <p class="hdi-publications__authors"><%= item['authors'] %></p>
+                <% end %>
+                <p class="hdi-publications__footer">
+                  <% links = [] %>
+                  <% if item['project'].present? %>
+                    <% project = item['project'] %>
+                    <% links << link_to("From the project: #{project['name']} →", project['href'] || '#') %>
+                  <% end %>
+                  <% links << link_to('DOI', item['doi']) if item['doi'].present? %>
+                  <% links << link_to('PDF', item['pdf']) if item['pdf'].present? %>
+                  <% links << link_to('Cite', '#') %>
+                  <%= safe_join(links, ' · ') %>
+                </p>
+              </li>
+            <% end %>
+          </ul>
+
+          <div class="hdi-publications__pagination">
+            <%= ds_pagination @publications, params: request.query_parameters.except('page') %>
+          </div>
+        <% else %>
+          <p class="hdi-body hdi-publications__empty">
+            No publications matched<%= @q.present? ? " “#{@q}”" : '' %>.
+            Try clearing filters or a different search term.
+          </p>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </section>
+
+<%= ds_cta_band title: 'Planning a study that needs this kind of data?',
+                lede: 'You can test your approach against the Simulacrum before applying for access to real records. Tell us the question and we\'ll tell you whether the data can answer it.',
+                primary: { label: 'Start a conversation', href: website_contact_path } %>

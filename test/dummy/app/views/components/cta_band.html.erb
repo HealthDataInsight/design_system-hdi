@@ -5,12 +5,12 @@ ds_fixed_elements do |ds|
   ds.breadcrumb('Home', root_path)
   ds.breadcrumb('Components', components_path)
 
-  ds.lead_paragraph 'End-of-page call to action. Renders in page content above the established HDI site footer, not as footer chrome.'
+  ds.lead_paragraph 'Closing CTA as a contained indigo panel (wireframe P11) — not full-bleed, not footer chrome.'
 end
 %>
 
 <%= component_preview do %>
-<%%= ds_cta_band title: 'Tell us your challenge',
-                lede: "You don't need a specification. A paragraph about the problem is enough to start.",
-                primary: { label: 'Start a conversation', href: '#' } %>
+<%%= ds_cta_band title: 'Working on something similar?',
+                 lede: "We've done this with health data and we're doing it now in other disease areas.",
+                 primary: { label: 'Start a conversation', href: '/website/contact' } %>
 <% end %>

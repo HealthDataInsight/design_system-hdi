@@ -1,4 +1,4 @@
-<section class="<%= hero_classes %>"<% if hero_style %> style="<%= hero_style %>"<% end %>>
+<section class="<%= hero_classes %>"<% if hero_style %> style="<%= hero_style %>"<% end %><% if image_hero? %> data-controller="hero-reveal"<% end %>>
   <div class="hdi-section__inner">
     <% if image_hero? %>
       <div class="hdi-hero__content">
@@ -10,10 +10,12 @@
         <% if primary.present? || secondary.present? %>
           <div class="hdi-button-row">
             <% if primary.present? %>
-              <%= helpers.ds_link_to primary[:label], primary[:href], type: :button %>
+              <%= helpers.ds_link_to primary[:label], primary[:href],
+                                     type: (primary[:type] || :reverse_button) %>
             <% end %>
             <% if secondary.present? %>
-              <%= helpers.ds_link_to secondary[:label], secondary[:href], type: :secondary_button %>
+              <%= helpers.ds_link_to secondary[:label], secondary[:href],
+                                     type: (secondary[:type] || :secondary_button) %>
             <% end %>
           </div>
         <% end %>

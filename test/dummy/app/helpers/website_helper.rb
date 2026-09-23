@@ -64,15 +64,56 @@ module WebsiteHelper
     ]
   end
 
-  def project_card(project)
+  # Trust page credential rail: held badges first, then reserved slots for
+  # certificates we display once assets / wording are confirmed.
+  def trust_credentials
+    [
+      {
+        title: 'Cyber Essentials',
+        status: 'Certified',
+        mark: :shield,
+        reserved: false
+      },
+      {
+        title: 'NHS Data Security and Protection Toolkit',
+        status: 'Standards met',
+        meta: '2025–26 · valid to 30 June 2027',
+        mark: :certificate,
+        reserved: false
+      },
+      {
+        title: 'Epic Analyst',
+        status: 'Certificate reserved',
+        mark: :slot,
+        reserved: true
+      },
+      {
+        title: 'CE marking',
+        status: 'Certificate reserved',
+        mark: :slot,
+        reserved: true
+      }
+    ]
+  end
+
+  def project_card(project, include_tags: false)
     service = Website::Catalog.service(project['primary_service'])
-    {
+    status = project['status_bucket'] || Website::Catalog.project_status_bucket(project['status'])
+    meta_parts = [project['name'], project['partner_short'], status].compact
+    card = {
       title: project['title'],
       eyebrow: service&.fetch('name', nil),
-      meta: [project['name'], project['partner_short']].compact.join(' · '),
+      meta: meta_parts.join(' · '),
       href: website_project_path(project['slug']),
       image_label: project['image_label']
     }
+    return card unless include_tags
+
+    tags = Array(project['keywords']).reject { |tag| tag['facet'].to_s == 'service' }.first(3)
+    card[:tags] = tags.map { |tag|
+      { label: tag['label'], href: tag_href(tag), facet: tag['facet'] }
+    }
+    card
   end
 
   # Logos for the project “Delivered with” sidebar. Falls back to partner_short
@@ -139,6 +180,244 @@ module WebsiteHelper
     else
       'Our work'
     end
+  end
+
+  def work_stats_items(stats = @project_stats)
+    stats ||= Website::Catalog.project_stats
+    [
+      { value: stats[:total], description: 'projects' },
+      { value: stats[:live], description: 'live' },
+      { value: stats[:partners], description: 'partners' }
+    ]
+  end
+
+  # Query hash for the current Our work filters (no page).
+  def work_filter_query(overrides = {})
+    query = {}
+    query[:q] = @q if @q.present?
+    query[:service] = @services_filter if Array(@services_filter).any?
+    query[:subject] = @subjects if Array(@subjects).any?
+    query[:method] = @methods if Array(@methods).any?
+    query[:status] = @statuses if Array(@statuses).any?
+    query[:sort] = @sort if @sort.present? && @sort != 'newest'
+
+    merged = query.merge(overrides)
+    merged.delete_if do |_key, value|
+      value.nil? || (value.respond_to?(:empty?) && value.empty?) || value == false
+    end
+  end
+
+  def work_path_with(**overrides)
+    website_work_path(work_filter_query(overrides))
+  end
+
+  def work_clear_filters_path
+    website_work_path
+  end
+
+  def work_sort_options
+    [
+      ['Newest first', 'newest'],
+      ['Title A–Z', 'title']
+    ]
+  end
+
+  def work_applied_filter_chips
+    chips = []
+
+    Array(@services_filter).each do |slug|
+      service = Website::Catalog.service(slug)
+      chips << {
+        label: service&.fetch('name', nil) || slug.tr('-', ' '),
+        href: work_path_with(service: Array(@services_filter) - [slug])
+      }
+    end
+
+    Array(@subjects).each do |slug|
+      tag = Website::Catalog.keyword(slug)
+      chips << {
+        label: tag&.fetch('label', nil) || slug.tr('-', ' '),
+        href: work_path_with(subject: Array(@subjects) - [slug])
+      }
+    end
+
+    Array(@methods).each do |slug|
+      tag = Website::Catalog.keyword(slug)
+      chips << {
+        label: tag&.fetch('label', nil) || slug.tr('-', ' '),
+        href: work_path_with(method: Array(@methods) - [slug])
+      }
+    end
+
+    Array(@statuses).each do |status|
+      chips << {
+        label: status,
+        href: work_path_with(status: Array(@statuses) - [status])
+      }
+    end
+
+    if @q.present?
+      chips << { label: "“#{@q}”", href: work_path_with(q: nil) }
+    end
+
+    chips
+  end
+
+  def work_filters_active?
+    work_applied_filter_chips.any?
+  end
+
+  # Hidden fields so search/sort forms preserve sidebar filters.
+  def work_hidden_filter_fields(except: [])
+    except = Array(except).map(&:to_sym)
+    fields = {}
+    fields['service[]'] = @services_filter if Array(@services_filter).any? && !except.include?(:service)
+    fields['subject[]'] = @subjects if Array(@subjects).any? && !except.include?(:subject)
+    fields['method[]'] = @methods if Array(@methods).any? && !except.include?(:method)
+    fields['status[]'] = @statuses if Array(@statuses).any? && !except.include?(:status)
+    fields[:sort] = @sort if @sort.present? && @sort != 'newest' && !except.include?(:sort)
+    fields[:q] = @q if @q.present? && !except.include?(:q)
+    fields
+  end
+
+  def work_method_toggle(tag)
+    slug = tag['slug']
+    active = Array(@methods).include?(slug)
+    next_methods = active ? Array(@methods) - [slug] : Array(@methods) + [slug]
+    {
+      label: tag['label'],
+      href: work_path_with(method: next_methods),
+      active: active
+    }
+  end
+
+  # Query hash for the current publications filters (no page).
+  def publication_filter_query(overrides = {})
+    query = {}
+    query[:q] = @q if @q.present?
+    query[:year] = @year if @year.present?
+    query[:type] = @types if Array(@types).any?
+    query[:subject] = @subjects if Array(@subjects).any?
+    query[:with_ndrs] = '1' if @with_ndrs
+    query[:open_access] = '1' if @open_access
+    query[:sort] = @sort if @sort.present? && @sort != 'newest'
+
+    merged = query.merge(overrides)
+    merged.delete_if do |_key, value|
+      value.nil? || (value.respond_to?(:empty?) && value.empty?) || value == false
+    end
+  end
+
+  def publication_path_with(**overrides)
+    website_publications_path(publication_filter_query(overrides))
+  end
+
+  def publication_clear_filters_path
+    website_publications_path
+  end
+
+  # Year toggle buttons: recent years + optional Earlier. Nil year clears the filter.
+  def publication_year_toggles(toggles: nil, selected_year: nil)
+    toggles ||= @publication_year_toggles || Website::Catalog.publication_year_toggles
+    selected = selected_year.nil? ? @year : selected_year
+
+    buttons = Array(toggles[:years]).map do |year|
+      {
+        label: year.to_s,
+        href: publication_path_with(year: year),
+        active: selected.to_s == year.to_s
+      }
+    end
+
+    if toggles[:earlier]
+      buttons << {
+        label: 'Earlier',
+        href: publication_path_with(year: 'earlier'),
+        active: selected.to_s.downcase == 'earlier'
+      }
+    end
+
+    buttons
+  end
+
+  def publication_sort_options
+    [
+      ['Newest first', 'newest'],
+      ['Oldest first', 'oldest'],
+      ['Title A–Z', 'title']
+    ]
+  end
+
+  # Removable chips for active filters on the results column.
+  def publication_applied_filter_chips
+    chips = []
+
+    Array(@types).each do |type|
+      chips << {
+        label: type,
+        href: publication_path_with(type: Array(@types) - [type])
+      }
+    end
+
+    Array(@subjects).each do |subject|
+      chips << {
+        label: subject,
+        href: publication_path_with(subject: Array(@subjects) - [subject])
+      }
+    end
+
+    if @year.present?
+      chips << {
+        label: @year.to_s.downcase == 'earlier' ? 'Earlier' : @year.to_s,
+        href: publication_path_with(year: nil)
+      }
+    end
+
+    if @with_ndrs
+      chips << { label: 'With NDRS', href: publication_path_with(with_ndrs: nil) }
+    end
+
+    if @open_access
+      chips << { label: 'Open access', href: publication_path_with(open_access: nil) }
+    end
+
+    if @q.present?
+      chips << { label: "“#{@q}”", href: publication_path_with(q: nil) }
+    end
+
+    chips
+  end
+
+  def publication_filters_active?
+    publication_applied_filter_chips.any?
+  end
+
+  # Hidden fields so search/sort forms preserve sidebar filters.
+  # Array keys use `type[]` / `subject[]` so Rails parses them as arrays.
+  def publication_hidden_filter_fields(except: [])
+    except = Array(except).map(&:to_sym)
+    fields = {}
+    fields[:year] = @year if @year.present? && !except.include?(:year)
+    fields['type[]'] = @types if Array(@types).any? && !except.include?(:type)
+    fields['subject[]'] = @subjects if Array(@subjects).any? && !except.include?(:subject)
+    fields[:with_ndrs] = '1' if @with_ndrs && !except.include?(:with_ndrs)
+    fields[:open_access] = '1' if @open_access && !except.include?(:open_access)
+    fields[:sort] = @sort if @sort.present? && @sort != 'newest' && !except.include?(:sort)
+    fields[:q] = @q if @q.present? && !except.include?(:q)
+    fields
+  end
+
+  def publication_result_href(item)
+    item['doi'].presence || item['pdf'].presence || '#'
+  end
+
+  def publication_stats_items(stats = @publication_stats)
+    stats ||= Website::Catalog.publication_stats
+    [
+      { value: stats[:total], description: 'publications' },
+      { value: stats[:with_ndrs], description: 'with NDRS' },
+      { value: stats[:earliest], description: 'earliest' }
+    ]
   end
 
   # Filter chips for the Our work listing: All, each service, plus any

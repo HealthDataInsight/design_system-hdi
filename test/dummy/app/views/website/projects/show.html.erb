@@ -15,6 +15,30 @@
             <%= ds_tag tag['label'], tag_href(tag), facet: tag['facet'] %>
           <% end %>
         </div>
+        <% if Array(@participants).any? %>
+          <div class="hdi-project-participants" aria-label="Participants">
+            <p class="hdi-project-participants__label">Team</p>
+            <ul class="hdi-project-participants__list">
+              <% @participants.each do |person| %>
+                <li>
+                  <%= link_to website_person_path(person['slug']),
+                              class: 'hdi-thumbnail hdi-thumbnail--s hdi-thumbnail--circle',
+                              title: person['name'] do %>
+                    <div>
+                      <% if person['image'].present? %>
+                        <%= image_tag person['image'], alt: person['name'].to_s %>
+                      <% else %>
+                        <span class="hdi-thumbnail-placeholder" aria-hidden="true">
+                          <%= person['name'].to_s.split.map { |part| part[0] }.join.first(2) %>
+                        </span>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       </div>
       <aside class="hdi-glance">
         <%= ds_heading 'At a glance', level: 3 %>

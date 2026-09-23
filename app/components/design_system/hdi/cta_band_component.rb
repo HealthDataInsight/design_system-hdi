@@ -2,10 +2,9 @@
 
 module DesignSystem
   module Hdi
-    # End-of-page call-to-action band. Lives in page content (inside <main>),
-    # not in the site footer — title, lede, and one or two actions on a
-    # contrasting indigo strip with a purple border above the real DS footer.
-
+    # Closing CTA as an in-page panel (wireframe P11): contained indigo card
+    # with rounded corners inside the content measure — not a full-bleed band
+    # and not footer chrome. Title + lede on the left, action on the right.
     class CtaBandComponent < DesignSystem::BaseComponent
       TONES = %i[contrast].freeze
 
@@ -22,7 +21,7 @@ module DesignSystem
       attr_reader :title, :lede, :primary, :secondary, :tone
 
       def section_class
-        classes = %w[hdi-cta-band]
+        classes = %w[hdi-section hdi-cta-band]
         classes << "hdi-cta-band--#{tone}"
         classes.join(' ')
       end

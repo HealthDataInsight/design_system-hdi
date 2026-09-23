@@ -98,8 +98,8 @@ module HdiHelper
     render(component) { capture(&block) }
   end
 
-  def ds_navbar(items: [], cta: nil, home_href: '/')
-    render DesignSystem::Hdi::NavbarComponent.new(items:, cta:, home_href:)
+  def ds_navbar(items: [], cta: nil, home_href: '/', search_href: nil)
+    render DesignSystem::Hdi::NavbarComponent.new(items:, cta:, home_href:, search_href:)
   end
 
   def ds_cta_band(title:, lede: nil, primary: nil, secondary: nil, tone: :contrast)

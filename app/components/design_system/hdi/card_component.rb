@@ -14,9 +14,10 @@ module DesignSystem
         @image_label = options[:image_label]
         @image_src = options[:image_src]
         @image_alt = options[:image_alt]
+        @tags = Array(options[:tags])
       end
 
-      attr_reader :title, :eyebrow, :meta, :href, :image_label, :image_src, :image_alt
+      attr_reader :title, :eyebrow, :meta, :href, :image_label, :image_src, :image_alt, :tags
     end
   end
 end

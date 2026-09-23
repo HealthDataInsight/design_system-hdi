@@ -20,5 +20,20 @@
     <% if meta.present? %>
       <p class="hdi-media-card__meta"><%= meta %></p>
     <% end %>
+    <% if tags.any? %>
+      <ul class="hdi-media-card__tags" aria-label="Keywords">
+        <% tags.each do |tag| %>
+          <% tag = tag.symbolize_keys %>
+          <li>
+            <%= render DesignSystem::Hdi::TagComponent.new(
+                  tag[:label],
+                  tag[:href],
+                  facet: (tag[:facet] || :keyword),
+                  active: false
+                ) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </article>

@@ -19,6 +19,7 @@ module DesignSystem
       def section_class
         classes = %w[hdi-section hdi-card-grid]
         classes << 'hdi-section--tint' if tone == :light
+        # :dark = indigo cards only (no full-bleed purple section).
         classes << "hdi-card-grid--#{tone}"
         classes.join(' ')
       end

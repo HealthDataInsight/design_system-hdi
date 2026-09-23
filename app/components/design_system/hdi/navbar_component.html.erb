@@ -25,6 +25,12 @@
       <% end %>
     </ul>
 
+    <% if search? %>
+      <div class="hdi-navbar__search">
+        <%= helpers.render 'hdi/searchbar', url: search_href, param: 'q', id: 'navbar-search' %>
+      </div>
+    <% end %>
+
     <% if cta.present? %>
       <%= helpers.ds_link_to cta[:label], cta[:href], type: :button %>
     <% end %>
@@ -32,6 +38,11 @@
     <details class="hdi-navbar__menu">
       <summary>Menu</summary>
       <div class="hdi-navbar__drawer">
+        <% if search? %>
+          <div class="hdi-navbar__search hdi-navbar__search--drawer">
+            <%= helpers.render 'hdi/searchbar', url: search_href, param: 'q', id: 'navbar-search-mobile' %>
+          </div>
+        <% end %>
         <% items.each do |item| %>
           <% item = item_hash(item) %>
           <%= link_to item[:label], item[:href], class: 'hdi-navbar__link' if item[:href].present? %>

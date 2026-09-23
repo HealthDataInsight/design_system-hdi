@@ -1,18 +1,24 @@
 import { Controller } from '@hotwired/stimulus'
 
-// Partner logo strip: gentle continuous scroll with prev/next controls.
-// Autoplay pauses for prefers-reduced-motion, hover, focus, and hidden tabs.
+// Horizontally scrolling strip with prev/next controls.
+// Autoplay is on by default (logo wall + About people). Set
+// data-carousel-autoplay-value="false" for manual-only strips. Autoplay
+// pauses for prefers-reduced-motion, hover, focus, and hidden tabs.
 export default class extends Controller {
   static targets = ['track']
   static values = {
-    speed: { type: Number, default: 0.35 },
-    step: { type: Number, default: 220 }
+    // scrollLeft is integer-backed in browsers; accumulate in scrollPos so
+    // fractional speeds still advance the strip.
+    speed: { type: Number, default: 0.6 },
+    step: { type: Number, default: 220 },
+    autoplay: { type: Boolean, default: true }
   }
 
   connect () {
     this.paused = false
     this.raf = null
     this.loopWidth = null
+    this.scrollPos = 0
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     this.onReducedMotionChange = () => this.syncAutoplay()
     this.onVisibilityChange = () => this.syncAutoplay()
@@ -55,13 +61,13 @@ export default class extends Controller {
 
   previous (event) {
     event?.preventDefault()
-    this.nudge(-this.stepValue)
+    this.nudge(-this.itemStep())
     this.restartAutoplay()
   }
 
   next (event) {
     event?.preventDefault()
-    this.nudge(this.stepValue)
+    this.nudge(this.itemStep())
     this.restartAutoplay()
   }
 
@@ -71,6 +77,7 @@ export default class extends Controller {
     const track = this.trackTarget
     track.querySelectorAll('[data-carousel-clone]').forEach((node) => node.remove())
     this.loopWidth = null
+    this.scrollPos = track.scrollLeft || 0
 
     if (track.scrollWidth <= track.clientWidth + 1) return
 
@@ -87,17 +94,29 @@ export default class extends Controller {
     })
   }
 
+  itemStep () {
+    if (!this.hasTrackTarget) return this.stepValue
+
+    const item = this.trackTarget.querySelector('.hdi-carousel__item')
+    if (!item) return this.stepValue
+
+    const styles = window.getComputedStyle(this.trackTarget)
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0
+    return item.getBoundingClientRect().width + gap
+  }
+
   nudge (delta) {
     if (!this.hasTrackTarget) return
 
     const track = this.trackTarget
     if (track.scrollWidth <= track.clientWidth + 1) return
 
-    let next = track.scrollLeft + delta
+    let next = (this.scrollPos || track.scrollLeft) + delta
     if (this.loopWidth) {
       if (next >= this.loopWidth) next -= this.loopWidth
       if (next < 0) next += this.loopWidth
     }
+    this.scrollPos = next
     track.scrollLeft = next
   }
 
@@ -108,10 +127,11 @@ export default class extends Controller {
     }
 
     const track = this.trackTarget
-    track.scrollLeft += this.speedValue
-    if (this.loopWidth && track.scrollLeft >= this.loopWidth) {
-      track.scrollLeft -= this.loopWidth
+    this.scrollPos = (this.scrollPos || track.scrollLeft) + this.speedValue
+    if (this.loopWidth && this.scrollPos >= this.loopWidth) {
+      this.scrollPos -= this.loopWidth
     }
+    track.scrollLeft = this.scrollPos
 
     this.raf = window.requestAnimationFrame(this.tick)
   }
@@ -148,6 +168,7 @@ export default class extends Controller {
   }
 
   canAutoplay () {
+    if (!this.autoplayValue) return false
     if (this.paused) return false
     if (document.hidden) return false
     if (this.reducedMotion.matches) return false

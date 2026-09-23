@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get 'about', to: 'pages#about'
     get 'people', to: 'pages#people'
+    get 'people/:slug', to: 'pages#person', as: :person
     get 'internships', to: 'pages#internships'
     get 'trust', to: 'pages#trust'
     get 'contact', to: 'pages#contact'

@@ -1,20 +1,87 @@
+# Team listing sourced from https://healthdatainsight.org.uk/category/team/
+# Headshots live under /website/people/ when available.
 directors:
   - name: Jem Rashbass
     role: Chief Executive Officer
-    summary: Co-founder. Clinical and data leadership across HDI’s NHS work.
+    image: /website/people/Jem-Rashbass-Aug-25.jpg
   - name: Hilary Wilderspin
     role: Director
-    summary: Co-founder. Delivery, partnerships and how we organise the work.
+    image: /website/people/hilary-wilderspin-400-colour-no-background.png
   - name: Kim Whittlestone
     role: Chief Operating Officer
-    summary: Day-to-day running of the company and the programmes we deliver.
+    image: /website/people/Kim-Whittlestone-Aug-25.jpg
   - name: Ev Brunton
     role: Non-executive Director
+    image: /website/people/Ev-Bruntonx400.png
   - name: Lisa Franklin
     role: Non-executive Director
+    image: /website/people/Lisa-Franklinx400-nobg.png
   - name: John Russell
     role: Non-executive Director
+    image: /website/people/John-Russell-400-colour-no-back.png
   - name: Richard Jeavons
     role: Non-executive Director
+    image: /website/people/Richard-Jeavons-400-colour-nobg.png
+
+team:
+  - name: Amy Zalin-Miller
+    role: Senior Health Data Analyst
+    image: /website/people/Amy-Zalin-Miller-Aug-25.jpg
+  - name: Clare Pearson
+    role: Senior Health Data Analyst
+    image: /website/people/Clare-Pearson-Aug-25.jpg
+  - name: Craig Knott
+    role: Principal Health Data Analyst
+    image: /website/people/Craig-Knott-Aug-25.jpg
+  - name: Filis Liu
+    role: Social Science Researcher
+    image: /website/people/Filis-Liu-Aug-25.jpg
+  - name: Ioana Preda
+    role: Data Scientist
+    image: /website/people/Ioana-Preda-Aug-25.jpg
+  - name: Karen Clements
+    role: Project Manager / Communications
+    image: /website/people/Karen-Clements-Aug-25.jpg
+  - name: Melissa Gannon
+    role: Senior Health Data Analyst
+    image: /website/people/Mel-Gannon-Aug-25.jpg
+  - name: Natasha Wood
+    role: Business Manager
+    image: /website/people/Tasha-Wood-Aug-25.jpg
+  - name: Nicholas Robinson
+    role: Software Developer
+    image: /website/people/Nick-Robinson-Aug-25.jpg
+  - name: Rebeca Fiadeiro
+    role: Project Manager and Internship Lead
+    image: /website/people/Rebeca-Fiadeiro-Aug-25.jpg
+  - name: Roger Cherry
+    role: Senior Health Data Analyst
+    image: /website/people/Roger-Cherry-Aug-25.jpg
+  - name: Rosemarie Gant
+    role: Office Manager
+    image: /website/people/Rosemarie-Gant-Aug-25.jpg
+  - name: Shilpi Goel
+    role: Senior Software Developer
+    image: /website/people/Shilpi-Goel-Aug-25.jpg
+  - name: Sophie Jose
+    role: Principal Health Data Analyst
+    image: /website/people/Sophie-Jose-Aug-25.jpg
+  - name: Tameera Rahman
+    role: Health Data Scientist
+    image: /website/people/Tameera-Rahman-Aug-25.jpg
+  - name: Tim Gentry
+    role: Chief Technology Officer
+    image: /website/people/Tim-Gentry-Aug-25.jpg
+
+associates:
+  - name: Brian Shand
+    role: Senior Software Developer
+    image: /website/people/BrianShand.jpg
+  - name: Gavin Baily
+    role: Senior Data Scientist
+    image: /website/people/Gavin-Baily-400-colour.jpg
+  - name: Oliver Tulloch
+    role: System Developer
+    image: /website/people/Ollie-tulloch.jpg
 
 team_blurb: Our team is made of health data analysts, data scientists, software and AI technologists, and project managers. We work remotely and from Cambridge on local and national problems.

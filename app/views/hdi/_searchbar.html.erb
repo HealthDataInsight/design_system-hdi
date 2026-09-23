@@ -1,7 +1,23 @@
-<% if @searchbar_url.present? %>
-  <form class="hdi-search-form" id="search" action="<%= @searchbar_url %>" method="get" role="search">
-    <label class="hdi-visually-hidden" for="search-field">Search the HDI website</label>
-    <input class="hdi-input hdi-search__input" id="search-field" name="search-field" type="search" placeholder="Search" autocomplete="off">
+<%
+  search_url = local_assigns.fetch(:url, @searchbar_url)
+  query_param = local_assigns.fetch(:param, 'search-field')
+  query_value = local_assigns.fetch(:value, params[query_param] || params[:q])
+  form_id = local_assigns.fetch(:id, 'search')
+  input_id = "#{form_id}-field"
+  hidden_fields = local_assigns.fetch(:hidden, {})
+  placeholder = local_assigns.fetch(:placeholder, 'Search')
+  label_text = local_assigns.fetch(:label, 'Search the HDI website')
+%>
+<% if search_url.present? %>
+  <form class="hdi-search-form" id="<%= form_id %>" action="<%= search_url %>" method="get" role="search">
+    <% hidden_fields.each do |name, value| %>
+      <% Array(value).each do |entry| %>
+        <%= hidden_field_tag name, entry if entry.present? %>
+      <% end %>
+    <% end %>
+    <label class="hdi-visually-hidden" for="<%= input_id %>"><%= label_text %></label>
+    <input class="hdi-input hdi-search__input" id="<%= input_id %>" name="<%= query_param %>" type="search"
+           placeholder="<%= placeholder %>" autocomplete="off" value="<%= query_value %>">
     <button class="hdi-search__submit" type="submit">
       <svg class="hdi-icon__search" stroke-width="2" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />

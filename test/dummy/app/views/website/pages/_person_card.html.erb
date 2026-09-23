@@ -1,0 +1,22 @@
+<% slug = person['slug'].presence || person['name'].to_s.parameterize %>
+<% variant = local_assigns.fetch(:variant, :default).to_sym %>
+<% card_class = ['card', 'hdi-person-card'] %>
+<% card_class << 'hdi-person-card--light' if variant == :light %>
+<article class="<%= card_class.join(' ') %>">
+  <%= link_to website_person_path(slug), class: 'hdi-person-card__link' do %>
+    <figure class="hdi-person-card__figure">
+      <% if person['image'].present? %>
+        <%= image_tag person['image'], alt: person['name'].to_s %>
+      <% else %>
+        <%= render DesignSystem::Hdi::MediaPlaceholderComponent.new(
+              label: 'Photo',
+              variant: :portrait
+            ) %>
+      <% end %>
+    </figure>
+    <div class="card-body hdi-person-card__body">
+      <h3 class="card-title hdi-person-card__name"><%= person['name'] %></h3>
+      <p class="hdi-person-card__role"><%= person['role'] %></p>
+    </div>
+  <% end %>
+</article>
