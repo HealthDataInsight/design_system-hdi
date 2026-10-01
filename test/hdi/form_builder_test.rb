@@ -16,6 +16,17 @@ module Hdi
                    DesignSystem::Registry.form_builder(@brand)
     end
 
+    # Regression for design_system 0.15.2 (#300): Rails 8.0 rejects model: nil.
+    # ds_form_with defaults model to false so url-only forms keep working.
+    test 'ds_form_with builds a form from a url with no model' do
+      @output_buffer = ds_form_with(url: '/reset_password', builder: @builder) do |f|
+        f.ds_submit('Submit')
+      end
+
+      assert_select('form[action="/reset_password"]')
+      assert_select('form button', text: 'Submit')
+    end
+
     test 'ds_collection_select without multiple' do
       @output_buffer = ds_form_with(model: assistants(:one), builder: @builder) do |f|
         f.ds_collection_select(:role_id, Role.all, :id, :title, { hint: 'Demo for ds_collection_select', prompt: 'Please select' })
