@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Migrated HDI `code` and `fixed_elements` adapters from PORO builders to ViewComponents to match `design_system` 0.15.2; raised minimum Rails to 7.2
 - Updated `design_system` dependency to `~> 0.15.2`
+- Added HDI component tests for fixed elements and lead paragraph, mirroring `design_system` coverage
 - Moved HDI breadcrumb home/divider icons from inline SVG markup into `hdi-frontend` CSS (`::before`), matching GOV.UK/NHS separators and `.hdi-back-link`
 - Migrated remaining HDI PORO builders (`button`, `grid`, `paragraph`, `inset_text`, `link`, `notification`/`alert`, `summary_list`, `tab`, `table`, breadcrumbs) to ViewComponents to match `design_system` 0.15.1; empty subclasses inherit parent markup where HDI structure matches
 - Made `FixedElements` an empty NHS UK subclass (caption-m comes from GOV.UK headings)

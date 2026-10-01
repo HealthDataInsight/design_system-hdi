@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the HDI breadcrumbs builder
+    module Components
+      # This tests the HDI breadcrumbs component
       class BreadcrumbsTest < ActionView::TestCase
         include DesignSystemHelper
 
