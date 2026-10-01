@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the HDI breadcrumbs builder
+    module Components
+      # This tests the HDI breadcrumbs component
       class BreadcrumbsTest < ActionView::TestCase
         include DesignSystemHelper
 
@@ -18,9 +20,8 @@ module DesignSystem
           end
 
           # Breadcrumbs are rendered with content_for(:breadcrumbs),
-          # so to test the generated HTML, we need to copy it to the
-          # output buffer.
-          @output_buffer = @view_flow.get(:breadcrumbs)
+          # so to test the generated HTML, we need to copy it to @rendered.
+          @rendered = @view_flow.get(:breadcrumbs)
 
           assert_select('nav', 'aria-label': 'Breadcrumb') do
             assert_select('ol[role=list]') do
