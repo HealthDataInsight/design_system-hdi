@@ -4,11 +4,10 @@ require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the hdi code builder
+    module Components
+      # This tests the hdi code component
       class CodeTest < ActionView::TestCase
         include DesignSystemHelper
-        include HdiHelper
 
         setup do
           @brand = 'hdi'

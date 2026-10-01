@@ -31,7 +31,7 @@ module HdiHelper
 
   # Renders a heroicon <img> by name (e.g. "users", "clipboard-document-list"),
   # or nothing when no name is given. Single source of the static icon path,
-  # shared by helpers and builders (via the view context).
+  # shared by helpers and components (via the view context).
   def hdi_icon(name, css_class: 'hdi-icon')
     return if name.blank?
 

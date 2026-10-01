@@ -18,9 +18,8 @@ module DesignSystem
           end
 
           # Breadcrumbs are rendered with content_for(:breadcrumbs),
-          # so to test the generated HTML, we need to copy it to the
-          # output buffer.
-          @output_buffer = @view_flow.get(:breadcrumbs)
+          # so to test the generated HTML, we need to copy it to @rendered.
+          @rendered = @view_flow.get(:breadcrumbs)
 
           assert_select('nav', 'aria-label': 'Breadcrumb') do
             assert_select('ol[role=list]') do

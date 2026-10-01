@@ -2,8 +2,8 @@ require 'test_helper'
 
 module DesignSystem
   module Hdi
-    module Builders
-      # This tests the HDI backlink builder
+    module Components
+      # This tests the HDI backlink via fixed elements
       class BacklinkTest < ActionView::TestCase
         include DesignSystemHelper
 
@@ -18,7 +18,7 @@ module DesignSystem
             ds.backlink nil, assistant_path(@assistant)
           end
 
-          @output_buffer = @view_flow.get(:backlink)
+          @rendered = @view_flow.get(:backlink)
           # The chevron is drawn via CSS (.hdi-back-link::before), not inline markup.
           assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Back')
         end
@@ -28,7 +28,7 @@ module DesignSystem
             ds.backlink 'Custom text', assistant_path(@assistant)
           end
 
-          @output_buffer = @view_flow.get(:backlink)
+          @rendered = @view_flow.get(:backlink)
           assert_select("a.#{@brand}-back-link", href: assistant_path(@assistant), text: 'Custom text')
         end
 

@@ -13,7 +13,7 @@ gem 'sprockets-rails'
 gem 'dartsass-rails', '~> 0.5'
 gem 'importmap-rails', '~> 2.1'
 gem 'ndr_dev_support', '~> 7.3'
-gem 'rails', '~> 7.1.5.2'
+gem 'rails', '~> 7.2'
 gem 'sqlite3', '~> 1.3'
 
 group :development, :test do
