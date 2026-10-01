@@ -30,6 +30,11 @@ Rails.application.routes.draw do
     get 'news', to: 'pages#news'
     get 'publications', to: 'pages#publications'
     get 'privacy', to: 'pages#privacy'
+    resources :reviews, only: %i[index create update destroy] do
+      post :reply, on: :member
+      delete 'replies/:reply_id', action: :destroy_reply, on: :member, as: :destroy_reply
+      get :image, on: :member
+    end
     get 'what-we-do/:slug', to: 'services#show', as: :service
     get 'our-work', to: 'projects#index', as: :work
     get 'our-work/:slug', to: 'projects#show', as: :project

@@ -1,0 +1,240 @@
+.hdi-review__toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 80;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: rgb(72 49 144);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgb(72 49 144 / 0.28);
+  cursor: pointer;
+}
+
+.hdi-review.is-open .hdi-review__toggle {
+  background: white;
+  color: rgb(72 49 144);
+  box-shadow: 0 0 0 3px rgb(72 49 144);
+}
+
+.hdi-review__status {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 80;
+  margin: 0;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: rgb(23 23 23);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.hdi-review__name {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: auto;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0;
+  background: rgb(15 15 20 / 0.45);
+  box-shadow: none;
+}
+
+.hdi-review__name[hidden],
+.hdi-review__status[hidden],
+.hdi-review__popover[hidden],
+.hdi-review__add[hidden] {
+  display: none !important;
+}
+
+.hdi-review__name-card,
+.hdi-review__popover {
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: white;
+  color: rgb(23 23 23);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.18);
+}
+
+.hdi-review__popover {
+  position: fixed;
+  z-index: 90;
+  padding-top: 2.1rem;
+}
+
+.hdi-review__drag {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  left: 0;
+  height: 2rem;
+  padding: 0.45rem 0.8rem 0;
+  color: rgb(115 115 115);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.hdi-review__drag:active {
+  cursor: grabbing;
+}
+
+.hdi-review__name p,
+.hdi-review__quote {
+  margin: 0 0 0.75rem;
+}
+
+.hdi-review__quote {
+  padding-left: 0.6rem;
+  border-left: 3px solid rgb(72 49 144);
+  color: rgb(82 82 82);
+  font-size: 0.9rem;
+}
+
+.hdi-review label {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.hdi-review input,
+.hdi-review textarea {
+  width: 100%;
+  border: 1px solid rgb(212 212 212);
+  border-radius: 0.4rem;
+  padding: 0.45rem 0.6rem;
+  font: inherit;
+  font-weight: 400;
+}
+
+.hdi-review__add {
+  position: fixed;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: white;
+  color: rgb(72 49 144);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.18);
+  cursor: pointer;
+}
+
+.hdi-review__add svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.hdi-review__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.45rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.hdi-review__thread {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.hdi-review__thread li {
+  font-size: 0.92rem;
+}
+
+.hdi-review__delete {
+  display: block;
+  width: fit-content;
+  margin-top: 0.25rem;
+  margin-left: auto;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgb(29 78 137);
+  font: inherit;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+
+.hdi-review__delete:hover {
+  color: rgb(15 48 92);
+}
+
+.hdi-review__thread strong {
+  display: block;
+}
+
+.hdi-page {
+  position: relative;
+}
+
+.hdi-review__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.hdi-review__tag {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 2px solid white;
+  border-radius: 999px;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.22);
+  cursor: grab;
+  pointer-events: auto;
+  transform: translate(-40%, -80%);
+}
+
+.hdi-review__tag:active {
+  cursor: grabbing;
+}
+
+.hdi-review__count {
+  position: absolute;
+  right: -0.35rem;
+  bottom: -0.25rem;
+  min-width: 0.95rem;
+  padding: 0 0.2rem;
+  border-radius: 999px;
+  background: white;
+  color: rgb(23 23 23);
+  font-size: 0.62rem;
+  line-height: 0.95rem;
+  text-align: center;
+}
+
+.hdi-page:not(.is-reviewing) .hdi-review__layer {
+  display: none;
+}

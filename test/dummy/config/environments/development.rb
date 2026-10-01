@@ -65,5 +65,11 @@ Rails.application.configure do
 
   # Allow public tunnels (ngrok / Cloudflare) to hit the dummy app.
   config.hosts.clear
+  config.hosts << 'localhost'
+  config.hosts << '127.0.0.1'
+  config.hosts << '[::1]'
+  config.hosts << 'pilotless-nonflawed-isreal.ngrok-free.dev'
+  config.hosts << /.*\.ngrok-free\.dev/
+  config.hosts << /.*\.ngrok\.io/
 
 end

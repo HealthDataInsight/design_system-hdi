@@ -297,6 +297,77 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     assert_select 'nav.hdi-pagination a[href*="q=cancer"]'
   end
 
+  test 'reviewers can leave a shared comment on a page' do
+    Website::ReviewStore::PATH.delete if Website::ReviewStore::PATH.exist?
+
+    get website_root_path
+    assert_response :success
+    assert_select '.hdi-review[data-controller=review]'
+
+    post website_reviews_path, params: {
+      review: {
+        path: '/website',
+        kind: 'text',
+        quote: 'We make health data useful.',
+        body: 'This headline is doing a lot of work.',
+        author: 'Ada'
+      }
+    }, as: :json
+
+    assert_response :created
+
+    get website_reviews_path, params: { path: '/website' }
+    assert_response :success
+    body = JSON.parse(response.body)
+    assert_equal 'Ada', body.first['author']
+    assert_equal 'This headline is doing a lot of work.', body.first['body']
+
+    post reply_website_review_path(body.first['id']), params: {
+      reply: { body: 'Agreed, it can be shorter.', author: 'Grace' }
+    }, as: :json
+    assert_response :success
+    assert_equal 'Grace', JSON.parse(response.body).dig('replies', 0, 'author')
+
+    patch website_review_path(body.first['id']), params: { x: 0.4, y: 0.2 }, as: :json
+    assert_response :success
+    assert_in_delta 0.4, JSON.parse(response.body)['x'].to_f, 0.001
+
+    reply_id = JSON.parse(response.body).dig('replies', 0, 'id')
+    delete destroy_reply_website_review_path(body.first['id'], reply_id), params: { author: 'Ada' }, as: :json
+    assert_response :forbidden
+    delete destroy_reply_website_review_path(body.first['id'], reply_id), params: { author: 'Grace' }, as: :json
+    assert_response :success
+    assert_empty JSON.parse(response.body)['replies']
+
+    delete website_review_path(body.first['id']), params: { author: 'Grace' }, as: :json
+    assert_response :forbidden
+    delete website_review_path(body.first['id']), params: { author: 'Ada' }, as: :json
+    assert_response :no_content
+    assert_empty Website::ReviewStore.for_path('/website')
+
+    jpeg = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//2Q=='
+    post website_reviews_path, params: {
+      review: {
+        path: '/website',
+        kind: 'region',
+        body: 'This block feels cramped.',
+        author: 'Ada',
+        image: jpeg,
+        region: { stroke: '0.10,0.20 0.30,0.20 0.30,0.40' }
+      }
+    }, as: :json
+
+    assert_response :created
+    saved = JSON.parse(response.body)
+    assert saved['image']
+    get image_website_review_path(saved['id'])
+    assert_response :success
+    assert_equal 'image/jpeg', response.media_type
+
+    delete website_review_path(saved['id']), params: { author: 'Ada' }, as: :json
+    assert_not Website::ReviewStore.image_path(saved['id'])
+  end
+
   test 'publications shows empty state when nothing matches' do
     get website_publications_path(q: 'zzzz-no-match')
 

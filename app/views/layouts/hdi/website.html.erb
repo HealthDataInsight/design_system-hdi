@@ -17,6 +17,7 @@
 
     <%= content_for?(:website_footer) ? yield(:website_footer) : ds_site_footer %>
   </div>
+  <%= yield :website_review %>
 <% end %>
 
 <%= render template: 'layouts/hdi/full_page' %>

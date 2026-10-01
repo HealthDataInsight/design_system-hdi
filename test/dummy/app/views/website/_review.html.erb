@@ -1,0 +1,34 @@
+<div class="hdi-review" data-controller="review" data-review-url-value="<%= website_reviews_path %>" data-review-path-value="<%= request.fullpath %>">
+  <button type="button" class="hdi-review__toggle" data-review-target="toggle" data-action="click->review#toggle" aria-pressed="false">Review</button>
+
+  <form class="hdi-review__name" data-review-target="nameDialog" data-action="submit->review#saveName" hidden>
+    <div class="hdi-review__name-card">
+      <p>Your name is shown on the comments you leave. You’ll only be asked once.</p>
+      <label>
+        Name
+        <input type="text" name="author" maxlength="40" required data-review-target="author" autocomplete="name">
+      </label>
+      <button type="submit" class="hdi-button">Start reviewing</button>
+    </div>
+  </form>
+
+  <p class="hdi-review__status" data-review-target="status" hidden>Select text, then use the comment icon.</p>
+
+  <button type="button" class="hdi-review__add" data-review-target="add" data-action="review#startComment" hidden aria-label="Add comment">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v10H8l-3 3V5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+  </button>
+
+  <div class="hdi-review__popover" data-review-target="popover" hidden>
+    <div class="hdi-review__drag" data-action="pointerdown->review#dragPopover">Comment</div>
+    <button type="button" class="hdi-review__close" data-action="review#hidePopover" aria-label="Close">×</button>
+    <p class="hdi-review__quote" data-review-target="quote"></p>
+    <ol class="hdi-review__thread" data-review-target="thread"></ol>
+    <form data-action="submit->review#submit">
+      <label>
+        Comment
+        <textarea data-review-target="body" maxlength="2000" required rows="3"></textarea>
+      </label>
+      <button type="submit" class="hdi-button">Add comment</button>
+    </form>
+  </div>
+</div>
