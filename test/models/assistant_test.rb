@@ -182,7 +182,7 @@ class AssistantTest < ActiveSupport::TestCase
     assistant.valid?
     assert_empty assistant.errors.details[:date_of_birth]
 
-    assistant.date_of_birth = Date.today
+    assistant.date_of_birth = Date.current
     refute assistant.valid?
     assert_includes assistant.errors.details[:date_of_birth], error: 'Your date of birth must be in the past'
 

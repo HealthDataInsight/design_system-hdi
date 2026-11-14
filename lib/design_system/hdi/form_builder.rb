@@ -13,7 +13,7 @@ module DesignSystem
       SVG
       # rubocop:enable Rails/OutputSafety
 
-      def ds_collection_select(method, collection, value_method, text_method, options = {}, html_options = {})
+      def ds_collection_select(method, collection, value_method, text_method, options = {}, html_options = {}) # rubocop:disable Metrics/ParameterLists
         label = optional_label(method, options)
 
         hint = options.delete(:hint)
@@ -21,7 +21,7 @@ module DesignSystem
 
         count = collection.count
 
-        if html_options[:multiple] && count > 0
+        if html_options[:multiple] && count.positive?
           # Expand dropdown size to fit the content
           html_options[:style] = Array(html_options[:style])
           html_options[:style] << "height: #{[count * 30, 250].min}px;"
@@ -32,11 +32,11 @@ module DesignSystem
         # value_method [Symbol] The method called against each member of the collection to provide the value
         # text_method [Symbol] The method called against each member of the collection to provide the text
         # options (rails_options) [Hash] Options hash passed through to Rails' +collection_select+ helper
-        govuk_collection_select(method, collection, value_method, text_method, options:, hint:, label:,
-                                                                               caption: {}, form_group: {}, **html_options)
+        govuk_collection_select(method, collection, value_method, text_method,
+                                options:, hint:, label:, caption: {}, form_group: {}, **html_options)
       end
 
-      def ds_password_field(method, options = {})
+      def ds_password_field(method, options = {}) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
         @brand = config.brand
         options[:id] = govuk_field_id(method, link_errors: true)
         password_field_options = css_class_options_merge(options,

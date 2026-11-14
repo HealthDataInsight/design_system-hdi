@@ -14,7 +14,8 @@ module ApplicationHelper
   end
 
   def component_preview(key = nil, html: nil, fragment: nil, &block)
-    key = key || @component || @style
+    # @component / @style are set by the preview controllers to name the page being shown.
+    key = key || @component || @style # rubocop:disable Rails/HelperInstanceVariable
     heading, reference_url = component_preview_config(key)
     id = key.to_s.tr('_', '-')
 
@@ -25,9 +26,10 @@ module ApplicationHelper
     erb_source = capture(&block)
     display_source = hide_demo_attributes(erb_source)
 
-    html ||= render(inline: erb_source)
+    # Previews deliberately render the ERB sample itself, so the code shown is the code run.
+    html ||= render(inline: erb_source) # rubocop:disable Rails/RenderInline
     html = extract_html_fragment(html, fragment) if fragment
-    pretty_html = pretty_print(html)
+    pretty_html = format_html(html)
 
     # The rendered preview is what pa11y/axe scans. Because a page can preview the same
     # component more than once, prefix element ids (and their references) per preview so the
@@ -78,10 +80,10 @@ module ApplicationHelper
     extracted = doc.at_css(target_tag)
     return html unless extracted
 
-    extracted.to_xml(indent: 2).html_safe
+    extracted.to_xml(indent: 2).html_safe # rubocop:disable Rails/OutputSafety -- our own rendered preview
   end
 
-  def pretty_print(html)
+  def format_html(html)
     fragment = Nokogiri::HTML.fragment(html)
 
     fragment.traverse do |node|
@@ -151,7 +153,7 @@ module ApplicationHelper
   def render_output(html, pretty_html, id)
     ds_heading('Output', level: 4) +
       ds_tab do |tab|
-        tab.add_tab_panel('Rendered', nil, "rendered-#{id}", selected: true) { html.html_safe }
+        tab.add_tab_panel('Rendered', nil, "rendered-#{id}", selected: true) { html.html_safe } # rubocop:disable Rails/OutputSafety
         tab.add_tab_panel('HTML', nil, "html-#{id}") { ds_code(pretty_html, 'xml') }
       end
   end

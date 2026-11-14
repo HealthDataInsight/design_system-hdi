@@ -39,7 +39,7 @@ module Hdi
         assert_equal 'assistant_role_id', select['id']
         assert_equal 'assistant[role_id]', select['name']
 
-        assert_equal 3, Role.all.count
+        assert_equal 3, Role.count
         assert_nil select['style']
 
         options = assert_select('option')
@@ -64,7 +64,7 @@ module Hdi
         assert_equal 'assistant_role_id', select['id']
         assert_equal 'assistant[role_id][]', select['name']
 
-        assert_equal 3, Role.all.count
+        assert_equal 3, Role.count
         assert_equal 'height: 90px;', select['style']
 
         options = assert_select('option')

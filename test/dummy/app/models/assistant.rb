@@ -25,6 +25,8 @@ class Assistant < ApplicationRecord
   belongs_to :department, optional: true
   belongs_to :role, optional: true
 
+  # Demo copy is kept inline so the validations read as a self-contained example.
+  # rubocop:disable Rails/I18nLocaleTexts
   validates :age,
             presence: { message: 'Enter an age' },
             numericality: { greater_than_or_equal_to: 0, message: 'Age must be greater than 0' }
@@ -48,6 +50,7 @@ class Assistant < ApplicationRecord
 
   validates :department_id, presence: { message: 'Select a department' }
   validates :role_id, presence: { message: 'Select at least one role' }
+  # rubocop:enable Rails/I18nLocaleTexts
 
   validate :dob_must_be_in_the_past, if: -> { date_of_birth.present? }
   validate :must_select_at_least_one_filling
@@ -62,12 +65,12 @@ class Assistant < ApplicationRecord
   end
 
   def must_select_at_least_one_filling
-    return unless desired_filling.blank? || desired_filling.reject(&:blank?).empty?
+    return unless desired_filling.blank? || desired_filling.compact_blank.empty?
 
     errors.add(:desired_filling, 'Select at least one filling')
   end
 
   def dob_must_be_in_the_past
-    errors.add(:date_of_birth, 'Your date of birth must be in the past') unless date_of_birth < Date.today
+    errors.add(:date_of_birth, 'Your date of birth must be in the past') unless date_of_birth < Date.current
   end
 end
