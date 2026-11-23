@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `design_system` to `~> 0.17.0`; HDI summary cards inherit the new `heading_level:` option
+- The HDI layout's sidebar logo now links to the overridable `ds_root_path` instead of `main_app.root_path`
+
+### Fixed
+
+- Fixed the HDI `PaginationRenderer` emitting ARIA attributes as a stringified Ruby hash (e.g. `aria="{:current=>...}"`)
+
 ### Added
 
 - Added grouped HDI sidebar navigation: items with an `options[:group]` label are rendered under collapsible (`<details>`) section headings

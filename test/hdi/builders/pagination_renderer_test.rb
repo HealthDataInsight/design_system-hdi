@@ -32,10 +32,11 @@ module DesignSystem
                 'Next'
               end
             end
-            assert_select('a.hdi-pagination-item.hdi-pagination-item--active') do
+            assert_select('a.hdi-pagination-item.hdi-pagination-item--active[aria-current="page"]') do
               '1'
             end
           end
+          assert_no_match(/aria="\{/, @output_buffer.to_s)
         end
       end
     end
