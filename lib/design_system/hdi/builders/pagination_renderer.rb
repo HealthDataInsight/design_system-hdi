@@ -24,7 +24,7 @@ module DesignSystem
         def build_pagination_div(page, link, css_class, aria_label)
           return unless page
 
-          tag(:div, link, class: css_class, aria: { label: aria_label })
+          tag(:div, link, class: css_class, 'aria-label': aria_label)
         end
 
         def link_with_prev_title(target)
@@ -47,7 +47,7 @@ module DesignSystem
           if page == current_page
             tag(:a, page,
                 class: "#{brand}-pagination-item #{brand}-pagination-item--active",
-                href: '#', aria: { current: 'page' })
+                href: '#', 'aria-current': 'page')
           else
             tag(:a, page,
                 class: "#{brand}-pagination-item",
