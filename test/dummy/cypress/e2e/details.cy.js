@@ -1,6 +1,6 @@
 describe('HDI Details Content Visibility', () => {
   beforeEach(() => {
-    cy.visit('/?brand=hdi'); 
+    cy.visit('/components/details?brand=hdi'); 
   });
 
   it('toggles visibility correctly', () => {

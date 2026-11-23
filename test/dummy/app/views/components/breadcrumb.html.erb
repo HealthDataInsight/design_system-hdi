@@ -4,8 +4,9 @@ ds_fixed_elements do |ds|
 
   ds.breadcrumb('Home', root_path)
   ds.breadcrumb('Components', components_path)
+  ds.breadcrumb('A Super Long Breadcrumb Name That Should Be Truncated', component_path('breadcrumb'))
 
-  ds.lead_paragraph 'Use breadcrumbs to help users understand where they are in the service.'
+  ds.lead_paragraph 'Use breadcrumbs to help users understand where they are in the service. Long labels are truncated with an ellipsis.'
 end
 %>
 
@@ -15,5 +16,6 @@ end
 <%%= ds_fixed_elements do |ds|
   ds.breadcrumb 'Home', root_path
   ds.breadcrumb 'Components', components_path
+  ds.breadcrumb 'A Super Long Breadcrumb Name That Should Be Truncated', component_path('breadcrumb')
 end %>
 <% end %>

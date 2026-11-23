@@ -1,6 +1,6 @@
 describe('HDI Breadcrumbs Layout', () => {
   beforeEach(() => {
-    cy.visit('/?brand=hdi'); 
+    cy.visit('/components/breadcrumb?brand=hdi'); 
   });
 
   it('should visually truncate the super long breadcrumb', () => {  
@@ -33,7 +33,7 @@ describe('HDI Breadcrumbs Layout', () => {
       .invoke('outerHeight')
       .then((heightBefore) => {
         cy.get("[data-test='breadcrumb_list']")
-          .invoke('css', 'max-width', '400px');
+          .invoke('css', 'max-width', '250px');
         cy.wait(100);
         cy.get("[data-test='breadcrumb_list']")
           .invoke('outerHeight')
