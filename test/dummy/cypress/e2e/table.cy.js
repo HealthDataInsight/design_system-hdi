@@ -1,6 +1,6 @@
 describe('HDI Table Responsive Display', () => {
   beforeEach(() => {
-    cy.visit('/?brand=hdi');
+    cy.visit('/components/table?brand=hdi');
   });
 
   it('should display a table with headers on large screens', () => {
